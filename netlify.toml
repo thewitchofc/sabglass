@@ -1,0 +1,10 @@
+# Netlify — בילד SPA (Vite). ללא קובץ זה, אם ב-UI נבחר תיקייה שגויה האתר לא ייטען.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# SPA: כל הנתיבים מחזירים index.html (מונע 404 ברענון /catalog, /articles/... וכו')
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

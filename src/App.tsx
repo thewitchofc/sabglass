@@ -1,0 +1,53 @@
+import { lazy, Suspense } from 'react'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { FloatingWhatsApp } from './components/FloatingWhatsApp'
+import { ScrollToTop } from './components/ScrollToTop'
+import { SeoHead } from './components/SeoHead'
+import { SiteHeader } from './components/SiteHeader'
+import { StickyMobileCta } from './components/StickyMobileCta'
+import { HomePage } from './pages/HomePage'
+
+const CatalogPage = lazy(() =>
+  import('./pages/CatalogPage').then((m) => ({ default: m.CatalogPage })),
+)
+const ShowerGlassServicePage = lazy(() =>
+  import('./pages/ShowerGlassServicePage').then((m) => ({ default: m.ShowerGlassServicePage })),
+)
+const ArticlesIndexPage = lazy(() =>
+  import('./pages/ArticlesIndexPage').then((m) => ({ default: m.ArticlesIndexPage })),
+)
+const ArticlePage = lazy(() =>
+  import('./pages/ArticlePage').then((m) => ({ default: m.ArticlePage })),
+)
+const MiklahonGuidePage = lazy(() =>
+  import('./pages/MiklahonGuidePage').then((m) => ({ default: m.MiklahonGuidePage })),
+)
+const MiklahonCenterIsraelPage = lazy(() =>
+  import('./pages/MiklahonCenterIsraelPage').then((m) => ({ default: m.MiklahonCenterIsraelPage })),
+)
+
+function App() {
+  return (
+    <BrowserRouter>
+      <ScrollToTop />
+      <SeoHead />
+      <SiteHeader />
+      <Suspense fallback={null}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/catalog" element={<CatalogPage />} />
+          <Route path="/shower-glass-custom" element={<ShowerGlassServicePage />} />
+          <Route path="/articles" element={<ArticlesIndexPage />} />
+          <Route path="/articles/:slug" element={<ArticlePage />} />
+          <Route path="/miklahon-guide" element={<MiklahonGuidePage />} />
+          <Route path="/miklahon-center-israel" element={<MiklahonCenterIsraelPage />} />
+          <Route path="/miklahon-rishon-lezion" element={<Navigate to="/miklahon-center-israel" replace />} />
+        </Routes>
+      </Suspense>
+      <FloatingWhatsApp />
+      <StickyMobileCta />
+    </BrowserRouter>
+  )
+}
+
+export default App

@@ -1,0 +1,22 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Heebo', system-ui, sans-serif;
+  --color-gold: #b8a369;
+  --color-gold-soft: #d4c59a;
+}
+
+@layer base {
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+  /**
+   * subpixel-antialiased = טקסט כהה על רקע בהיר חד יותר לעין.
+   * אזורים עם טקסט בהיר על כהה (Hero, MidCta וכו׳) מקבלים `antialiased` מקומית.
+   */
+  body {
+    @apply bg-white text-neutral-800 subpixel-antialiased;
+  }
+}
