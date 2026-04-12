@@ -20,3 +20,19 @@
     @apply bg-white text-neutral-800 subpixel-antialiased;
   }
 }
+
+/**
+ * Enable.co.il — כפתור ההפעלה (#enable-toolbar-trigger) במובייל בלבד:
+ * שמאל־תחתון, מרווח מספיק מהקצה (אין עוד CTA צף בתחתית).
+ */
+@media (max-width: 767px) {
+  #enable-toolbar-trigger {
+    position: fixed !important;
+    left: max(16px, env(safe-area-inset-left, 0px)) !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 24px) !important;
+    transform: scale(0.88) !important;
+    transform-origin: bottom center !important;
+  }
+}

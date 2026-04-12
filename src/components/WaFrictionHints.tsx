@@ -20,7 +20,7 @@ export function WaMicroLine({
   tone = 'standard',
 }: Props) {
   const { conversion } = premiumCopy
-  const text = variant === 'onDark' ? 'text-white/65' : 'text-neutral-500'
+  const text = variant === 'onDark' ? 'text-white/80' : 'text-neutral-600'
   const top = compact ? 'mt-2' : 'mt-3'
 
   const secondLine =

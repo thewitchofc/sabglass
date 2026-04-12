@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
 import { WHATSAPP_PHOTO_MESSAGE } from '../../config/site'
 import { premiumCopy } from '../../content/premium'
-import { SectionBridgeCta } from '../SectionBridgeCta'
 import { WaMicroLine } from '../WaFrictionHints'
 import { FadeIn } from '../ui/FadeIn'
 import { WhatsAppLink } from '../ui/WhatsAppLink'
@@ -11,7 +10,7 @@ export function HowItWorks() {
 
   return (
     <section className="bg-neutral-50" aria-labelledby="how-heading">
-      <div className="mx-auto max-w-6xl py-24 pl-[max(1.25rem,env(safe-area-inset-left,0px))] pr-[max(1.25rem,env(safe-area-inset-right,0px))] md:px-8 md:py-28">
+      <div className="mx-auto max-w-6xl py-14 pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] md:px-8 md:py-28">
         <FadeIn>
           <h2
             id="how-heading"
@@ -44,8 +43,16 @@ export function HowItWorks() {
                 {i + 1}
               </span>
               <div className="pt-1">
-                <h3 className="text-lg font-medium text-neutral-950 md:text-xl">{step.title}</h3>
-                <p className="mt-2 max-w-[95%] text-sm font-light leading-relaxed text-neutral-600 md:max-w-md md:text-base">
+                <h3 className="text-lg font-medium text-neutral-950 md:text-xl">
+                  <span className="md:hidden">
+                    {'titleMobile' in step && step.titleMobile ? step.titleMobile : step.title}
+                  </span>
+                  <span className="hidden md:inline">{step.title}</span>
+                </h3>
+                <p className="mt-2 max-w-[95%] text-sm font-light leading-relaxed text-neutral-600 md:hidden">
+                  {step.textMobile}
+                </p>
+                <p className="mt-2 hidden max-w-[95%] text-sm font-light leading-relaxed text-neutral-600 md:block md:max-w-md md:text-base">
                   {step.text}
                 </p>
               </div>
@@ -55,7 +62,7 @@ export function HowItWorks() {
         </div>
 
         <motion.div
-          className="mt-16 flex max-w-md flex-col md:mt-20"
+          className="mt-16 hidden max-w-md flex-col md:mt-20 md:flex"
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-40px' }}
@@ -72,8 +79,6 @@ export function HowItWorks() {
           </WhatsAppLink>
           <WaMicroLine />
         </motion.div>
-
-        <SectionBridgeCta />
       </div>
     </section>
   )

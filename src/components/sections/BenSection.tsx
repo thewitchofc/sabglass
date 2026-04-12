@@ -1,14 +1,11 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { BEN_PORTRAIT_SRC, WHATSAPP_CONSULT_MESSAGE, WHATSAPP_PHOTO_MESSAGE } from '../../config/site'
+import { BEN_PORTRAIT_SRC } from '../../config/site'
 import { premiumCopy } from '../../content/premium'
-import { SectionBridgeCta } from '../SectionBridgeCta'
-import { WaMicroLine } from '../WaFrictionHints'
 import { FadeIn } from '../ui/FadeIn'
-import { WhatsAppLink } from '../ui/WhatsAppLink'
 
 export function BenSection() {
-  const { ben, about, primaryCta, secondaryCtas, a11y } = premiumCopy
+  const { ben, about } = premiumCopy
   const [imgFailed, setImgFailed] = useState(false)
 
   return (
@@ -17,7 +14,7 @@ export function BenSection() {
       className="scroll-mt-20 border-b border-neutral-200/80 bg-neutral-50 md:scroll-mt-[4.5rem]"
       aria-labelledby="ben-heading"
     >
-      <div className="mx-auto max-w-6xl py-24 pl-[max(1.25rem,env(safe-area-inset-left,0px))] pr-[max(1.25rem,env(safe-area-inset-right,0px))] md:px-8 md:py-28">
+      <div className="mx-auto max-w-6xl py-14 pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] md:px-8 md:py-28">
         <div className="grid items-center gap-12 max-md:gap-14 md:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] md:gap-16">
           <FadeIn>
             <h2
@@ -31,18 +28,23 @@ export function BenSection() {
             <p className="mt-2 max-w-xl text-sm font-light text-neutral-600 md:text-base">
               {ben.personalLine}
             </p>
-            {about.intro.map((paragraph, i) => (
-              <p
-                key={`about-intro-${i}`}
-                className={
-                  i === 0
-                    ? 'mt-6 max-w-[95%] text-pretty text-base font-light leading-relaxed text-neutral-600 md:max-w-xl md:text-lg'
-                    : 'mt-4 max-w-[95%] text-pretty text-base font-light leading-relaxed text-neutral-600 md:max-w-xl md:text-lg'
-                }
-              >
-                {paragraph}
-              </p>
-            ))}
+            <p className="mt-6 max-w-[95%] text-pretty text-base font-light leading-relaxed text-neutral-600 md:hidden">
+              {about.introMobile}
+            </p>
+            <div className="hidden md:block">
+              {about.intro.map((paragraph, i) => (
+                <p
+                  key={`about-intro-${i}`}
+                  className={
+                    i === 0
+                      ? 'mt-6 max-w-[95%] text-pretty text-base font-light leading-relaxed text-neutral-600 md:max-w-xl md:text-lg'
+                      : 'mt-4 max-w-[95%] text-pretty text-base font-light leading-relaxed text-neutral-600 md:max-w-xl md:text-lg'
+                  }
+                >
+                  {paragraph}
+                </p>
+              ))}
+            </div>
             <p className="mt-5 text-sm font-medium text-neutral-800 md:text-base">{about.servicesHeading}</p>
             <ul className="mt-3 max-w-xl space-y-2 text-pretty text-base font-light leading-relaxed text-neutral-600 md:text-lg">
               {about.services.map((line) => (
@@ -55,39 +57,24 @@ export function BenSection() {
                 </li>
               ))}
             </ul>
-            <p className="mt-5 max-w-[95%] text-pretty text-base font-light leading-relaxed text-neutral-600 md:max-w-xl md:text-lg">
+            <p className="mt-5 max-w-[95%] text-pretty text-base font-light leading-relaxed text-neutral-600 md:hidden">
+              {about.closingMobile}
+            </p>
+            <p className="mt-5 hidden max-w-[95%] text-pretty text-base font-light leading-relaxed text-neutral-600 md:block md:max-w-xl md:text-lg">
               {about.closing}
             </p>
-            {ben.body.map((paragraph, i) => (
-              <p
-                key={`ben-${i}`}
-                className="mt-4 max-w-[95%] text-pretty text-base font-light leading-relaxed text-neutral-600 md:max-w-xl md:text-lg"
-              >
-                {paragraph}
-              </p>
-            ))}
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-start sm:gap-6">
-              <div className="flex w-full flex-col sm:w-auto">
-                <WhatsAppLink
-                  variant="whatsapp"
-                  message={WHATSAPP_PHOTO_MESSAGE}
-                  ariaLabel={a11y.whatsappSendPhotoQuote}
-                  trackingLabel="article"
-                  className="w-full sm:w-auto"
+            <p className="mt-4 max-w-[95%] text-pretty text-base font-light leading-relaxed text-neutral-600 md:hidden">
+              {ben.bodyMobile}
+            </p>
+            <div className="hidden md:block">
+              {ben.body.map((paragraph, i) => (
+                <p
+                  key={`ben-${i}`}
+                  className="mt-4 max-w-[95%] text-pretty text-base font-light leading-relaxed text-neutral-600 md:max-w-xl md:text-lg"
                 >
-                  {primaryCta}
-                </WhatsAppLink>
-                <WaMicroLine />
-              </div>
-              <WhatsAppLink
-                variant="outline"
-                message={WHATSAPP_CONSULT_MESSAGE}
-                ariaLabel={a11y.whatsappConsult}
-                trackingLabel="article"
-                className="w-full sm:w-auto"
-              >
-                {secondaryCtas.consult}
-              </WhatsAppLink>
+                  {paragraph}
+                </p>
+              ))}
             </div>
           </FadeIn>
 
@@ -111,16 +98,14 @@ export function BenSection() {
               />
             ) : (
               <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-neutral-100 px-6 text-center">
-                <span className="text-4xl font-light tracking-widest text-neutral-400">SAB</span>
-                <span className="text-xs font-light text-neutral-500">
+                <span className="text-4xl font-light tracking-widest text-neutral-500">SAB</span>
+                <span className="text-xs font-light text-neutral-600">
                   יש להוסיף תמונה בשם ben.png בתיקיית הקבצים הציבוריים של האתר
                 </span>
               </div>
             )}
           </motion.div>
         </div>
-
-        <SectionBridgeCta className="mt-16 border-neutral-200/80 md:mt-20" />
       </div>
     </section>
   )

@@ -2,7 +2,7 @@
  * מעקב אחר לחיצות וואטסאפ ל־GTM / GA4 (dataLayer + gtag אם קיים).
  * ב־GTM: טריגר מותאם על Custom Event בשם whatsapp_click, או על dataLayer key event === whatsapp_click
  */
-export type WhatsAppClickLabel = 'hero' | 'sticky' | 'article' | 'gallery'
+export type WhatsAppClickLabel = 'article' | 'gallery'
 
 declare global {
   interface Window {

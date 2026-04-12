@@ -16,14 +16,21 @@ export function SiteHeader() {
   const location = useLocation()
   const [mobileOpen, setMobileOpen] = useState(false)
   const [catalogOpen, setCatalogOpen] = useState(false)
+  /** תפריט מובייל: קטלוג כ־accordion (סגור כברירת מחדל) */
+  const [mobileCatalogExpanded, setMobileCatalogExpanded] = useState(false)
   const catalogRef = useRef<HTMLDivElement>(null)
   const waHref = whatsappHref(WHATSAPP_PHOTO_MESSAGE)
-  const { primaryCta, a11y, footer } = premiumCopy
+  const { primaryCta, a11y, footer, brand } = premiumCopy
 
   const closeAll = useCallback(() => {
     setMobileOpen(false)
     setCatalogOpen(false)
+    setMobileCatalogExpanded(false)
   }, [])
+
+  useEffect(() => {
+    if (!mobileOpen) setMobileCatalogExpanded(false)
+  }, [mobileOpen])
 
   useEffect(() => {
     if (!mobileOpen) return
@@ -91,7 +98,6 @@ export function SiteHeader() {
   return (
     <header
       className="fixed inset-x-0 top-0 z-[70] border-b border-neutral-200/70 bg-white/90 pt-[env(safe-area-inset-top,0px)] backdrop-blur-md supports-[backdrop-filter]:bg-white/80"
-      role="banner"
     >
       <div className="relative mx-auto flex h-14 max-w-6xl items-center justify-between gap-3 pl-[max(1.25rem,env(safe-area-inset-left,0px))] pr-[max(1.25rem,env(safe-area-inset-right,0px))] md:h-[3.25rem] md:gap-6 md:pl-8 md:pr-8">
         <Link
@@ -99,29 +105,21 @@ export function SiteHeader() {
           onClick={onHomeClick}
           className="relative z-[71] flex shrink-0 flex-col items-start gap-0.5 rounded-sm text-neutral-950 transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950/35 focus-visible:ring-offset-2 [text-rendering:geometricPrecision]"
         >
-          <span className="text-sm font-bold tracking-[0.14em]">SAB Glass</span>
+          <span className="text-sm font-bold tracking-[0.14em]">{brand.name}</span>
           <span className="hidden max-w-[11rem] text-[10px] font-medium leading-tight text-neutral-600 md:block">
-            מקלחוני זכוכית בהתאמה אישית
+            {brand.tagline}
           </span>
         </Link>
 
         <nav
-          className="absolute left-1/2 top-1/2 z-[71] hidden -translate-x-1/2 -translate-y-1/2 items-center gap-8 md:flex"
-          aria-label="ניווט ראשי"
+          className="absolute left-1/2 top-1/2 z-[71] hidden -translate-x-1/2 -translate-y-1/2 items-center gap-10 lg:gap-12 md:flex"
+          aria-label="ניווט ראשי באתר — קטלוג, מדריך מקלחונים וצור קשר"
         >
-          <Link to="/" onClick={onHomeClick} className={`${linkClass} px-1 py-0.5`}>
-            {navCopy.home}
-          </Link>
-          <Link to="/#about" onClick={onHomeHashClick('#about')} className={`${linkClass} px-1 py-0.5`}>
-            {navCopy.about}
-          </Link>
-
           <div className="relative" ref={catalogRef}>
             <button
               type="button"
-              className={`${linkClass} inline-flex items-center gap-1`}
+              className={`${linkClass} inline-flex items-center gap-1 font-semibold text-neutral-900 hover:text-neutral-950`}
               aria-expanded={catalogOpen}
-              aria-haspopup="true"
               aria-controls="catalog-submenu"
               onClick={(e) => {
                 e.stopPropagation()
@@ -136,20 +134,17 @@ export function SiteHeader() {
             {catalogOpen && (
               <div
                 id="catalog-submenu"
-                role="menu"
                 className="absolute start-0 top-[calc(100%+0.35rem)] z-50 min-w-[16rem] rounded-sm border border-neutral-200/90 bg-white/95 py-1.5 shadow-[0_12px_40px_-12px_rgba(0,0,0,0.15)] backdrop-blur-md"
               >
                 <Link
                   to="/catalog"
-                  role="menuitem"
-                  className="block rounded-sm px-4 py-2 text-[12px] font-medium text-neutral-500 transition-colors hover:bg-neutral-50 hover:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-neutral-950/20"
+                  className="block rounded-sm px-4 py-2 text-[12px] font-medium text-neutral-600 transition-colors hover:bg-neutral-50 hover:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-neutral-950/20"
                   onClick={onCatalogRootClick}
                 >
                   {navCopy.catalog}, הכל
                 </Link>
                 <Link
                   to="/shower-glass-custom"
-                  role="menuitem"
                   className="block rounded-sm px-4 py-2 text-[12px] font-light text-neutral-700 transition-colors hover:bg-neutral-50 hover:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-neutral-950/20"
                   onClick={closeAll}
                 >
@@ -160,7 +155,6 @@ export function SiteHeader() {
                   <Link
                     key={p.id}
                     to={`/catalog#catalog-${p.id}`}
-                    role="menuitem"
                     className="block rounded-sm px-4 py-2 text-[12px] font-light text-neutral-700 transition-colors hover:bg-neutral-50 hover:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-neutral-950/20"
                     onClick={(e) => {
                       e.stopPropagation()
@@ -174,9 +168,6 @@ export function SiteHeader() {
             )}
           </div>
 
-          <Link to="/articles" className={`${linkClass} px-1 py-0.5`} onClick={closeAll}>
-            {navCopy.articles}
-          </Link>
           <Link to="/miklahon-guide" className={`${linkClass} px-1 py-0.5`} onClick={closeAll}>
             מדריך מקלחונים
           </Link>
@@ -191,7 +182,7 @@ export function SiteHeader() {
             href={waHref}
             target="_blank"
             rel="noopener noreferrer"
-            className={headerWaClass}
+            className={`${headerWaClass} hidden md:inline-flex`}
             aria-label={a11y.whatsappHeader}
             onClick={() => {
               trackWhatsAppClick('article')
@@ -260,33 +251,61 @@ export function SiteHeader() {
             >
               {navCopy.about}
             </Link>
-            <p className="mt-2 px-3 text-[11px] font-medium uppercase tracking-[0.2em] text-neutral-400">
-              {navCopy.catalog}
-            </p>
-            <Link
-              to="/catalog"
-              className="rounded-sm px-3 py-2.5 text-sm text-neutral-700 hover:bg-neutral-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-neutral-950/20"
-              onClick={onCatalogRootClick}
+            <button
+              type="button"
+              id="mobile-catalog-accordion-trigger"
+              className="flex w-full items-center justify-between gap-2 rounded-sm px-3 py-3 text-start text-sm font-medium text-neutral-800 transition-colors hover:bg-neutral-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-neutral-950/20"
+              aria-expanded={mobileCatalogExpanded}
+              aria-controls="mobile-catalog-accordion-panel"
+              onClick={() => setMobileCatalogExpanded((v) => !v)}
             >
-              {navCopy.catalog}, הכל
-            </Link>
-            {catalogProducts.map((p) => (
-              <Link
-                key={p.id}
-                to={`/catalog#catalog-${p.id}`}
-                className="rounded-sm px-3 py-2.5 ps-6 text-sm font-light text-neutral-600 hover:bg-neutral-50 hover:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-neutral-950/20"
-                onClick={onCatalogHashClick(`#catalog-${p.id}`)}
+              <span>{navCopy.catalog}</span>
+              <svg
+                className={`h-4 w-4 shrink-0 text-neutral-500 transition-transform duration-200 ${mobileCatalogExpanded ? 'rotate-180' : ''}`}
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden
               >
-                {p.title}
-              </Link>
-            ))}
-            <Link
-              to="/shower-glass-custom"
-              className="rounded-sm px-3 py-2.5 text-sm font-light text-neutral-700 hover:bg-neutral-50 hover:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-neutral-950/20"
-              onClick={closeAll}
-            >
-              {footer.linkServiceShower}
-            </Link>
+                <path
+                  fillRule="evenodd"
+                  d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.94a.75.75 0 111.08 1.04l-4.24 4.5a.75.75 0 01-1.08 0l-4.24-4.5a.75.75 0 01.02-1.06z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
+            {mobileCatalogExpanded && (
+              <div
+                id="mobile-catalog-accordion-panel"
+                role="region"
+                aria-labelledby="mobile-catalog-accordion-trigger"
+                className="ms-2 flex flex-col gap-1 border-s border-neutral-200/90 ps-3 pt-0.5"
+              >
+                <Link
+                  to="/catalog"
+                  className="rounded-sm py-2.5 text-sm font-medium text-neutral-700 hover:bg-neutral-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-neutral-950/20"
+                  onClick={onCatalogRootClick}
+                >
+                  {navCopy.catalog}, הכל
+                </Link>
+                {catalogProducts.map((p) => (
+                  <Link
+                    key={p.id}
+                    to={`/catalog#catalog-${p.id}`}
+                    className="rounded-sm py-2.5 text-sm font-light text-neutral-600 hover:bg-neutral-50 hover:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-neutral-950/20"
+                    onClick={onCatalogHashClick(`#catalog-${p.id}`)}
+                  >
+                    {p.title}
+                  </Link>
+                ))}
+                <Link
+                  to="/shower-glass-custom"
+                  className="rounded-sm py-2.5 text-sm font-light text-neutral-700 hover:bg-neutral-50 hover:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-neutral-950/20"
+                  onClick={closeAll}
+                >
+                  {footer.linkServiceShower}
+                </Link>
+              </div>
+            )}
             <Link
               to="/articles"
               className="rounded-sm px-3 py-3 text-sm font-medium text-neutral-800 hover:bg-neutral-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-neutral-950/20"

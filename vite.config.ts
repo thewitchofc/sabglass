@@ -115,12 +115,25 @@ export default defineConfig(({ mode }) => {
       {
         name: 'seo-index-html',
         transformIndexHtml(html) {
-          return html
+          let out = html
             .replaceAll('__SITE_URL__', siteUrl)
             .replace('__JSON_LD__', jsonLd)
             .replace('__GTM_HEAD__', gtmHead)
             .replace('__GTM_BODY__', gtmBody)
             .replace('__GA4_HEAD__', ga4Head)
+
+          // CSS מבילד Vite — טעינה ללא חסימת פרסור; noscript לסוכנים ללא JS
+          out = out.replace(
+            /<link rel="stylesheet"([^>]*?)href="(\/assets\/[^"]+\.css)"([^>]*)>/g,
+            (_full, pre: string, href: string, post: string) => {
+              const before = pre.includes('crossorigin') ? pre : ` crossorigin${pre}`
+              const after = post
+              return `<link rel="preload" as="style"${before}href="${href}"${after} onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet"${before}href="${href}"${after}></noscript>`
+            },
+          )
+
+          return out
         },
       },
     ],

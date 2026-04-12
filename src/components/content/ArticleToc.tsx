@@ -105,7 +105,7 @@ export function ArticleToc({ title, items }: { title: string; items: ArticleTocI
             style={{ width: `${readPct}%` }}
           />
         </div>
-        <p id={progressId} className="mt-1.5 text-center text-[11px] font-light tabular-nums text-neutral-400 md:text-start">
+        <p id={progressId} className="mt-1.5 text-center text-[11px] font-light tabular-nums text-neutral-600 md:text-start">
           {readPct}%&nbsp;נקרא
         </p>
       </div>
@@ -123,7 +123,7 @@ export function ArticleToc({ title, items }: { title: string; items: ArticleTocI
                 className={`rounded-sm px-1 py-0.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-800 focus-visible:ring-offset-2 ${
                   isActive
                     ? 'font-medium text-emerald-950 decoration-emerald-700/70'
-                    : 'text-neutral-800 decoration-neutral-300'
+                    : 'text-neutral-800 decoration-neutral-400'
                 } underline underline-offset-[5px] hover:text-neutral-950 hover:decoration-neutral-600`}
                 aria-current={isActive ? 'location' : undefined}
               >

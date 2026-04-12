@@ -21,11 +21,11 @@ export function ArticleRelated({ articles }: { articles: ArticleContent[] }) {
               to={a.path}
               className="group inline-block max-w-full rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-800 focus-visible:ring-offset-2"
             >
-              <span className="text-pretty text-base font-medium text-neutral-900 underline decoration-neutral-300 underline-offset-[5px] transition-colors group-hover:text-emerald-950 group-hover:decoration-emerald-800/40 md:text-lg">
+              <span className="text-pretty text-base font-medium text-neutral-900 underline decoration-neutral-400 underline-offset-[5px] transition-colors group-hover:text-emerald-950 group-hover:decoration-emerald-800/40 md:text-lg">
                 {articleLinkTitle(a)}
               </span>
             </Link>
-            <p className="mt-1.5 max-w-[62ch] text-pretty text-sm font-light leading-relaxed text-neutral-500">
+            <p className="mt-1.5 max-w-[62ch] text-pretty text-sm font-light leading-relaxed text-neutral-600">
               {a.intro}
             </p>
           </li>

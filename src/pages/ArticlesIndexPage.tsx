@@ -15,9 +15,9 @@ import { SERVICE_AREA_COPY } from '../content/serviceAreaCopy'
 
 export function ArticlesIndexPage() {
   return (
-    <main className="min-h-dvh bg-white pb-[calc(10rem+env(safe-area-inset-bottom,0px))] font-sans text-neutral-900 antialiased md:pb-0">
-      <div className="mx-auto max-w-2xl pb-10 pl-[max(1.25rem,env(safe-area-inset-left,0px))] pr-[max(1.25rem,env(safe-area-inset-right,0px))] pt-24 md:px-8 md:pt-28">
-        <nav className="text-sm font-light text-neutral-500" aria-label="שביל ניווט">
+    <main className="min-h-dvh bg-white pb-[calc(5.5rem+env(safe-area-inset-bottom,0px))] font-sans text-neutral-900 antialiased md:pb-0">
+      <div className="mx-auto max-w-2xl pb-10 pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] pt-24 md:px-8 md:pt-28">
+        <nav className="text-sm font-light text-neutral-600" aria-label="שביל ניווט בעמוד מאמרים">
           <ol className="flex flex-wrap items-center gap-x-2 gap-y-1">
             <li>
               <Link
@@ -152,7 +152,7 @@ export function ArticlesIndexPage() {
             <h2 id="planned-title" className="text-lg font-medium text-neutral-950">
               בקרוב במדריך
             </h2>
-            <p className="mt-2 max-w-[65ch] text-sm font-light leading-relaxed text-neutral-500">
+            <p className="mt-2 max-w-[65ch] text-sm font-light leading-relaxed text-neutral-600">
               נושאים שנוסיף כמאמרים נפרדים — עקבו אחר העדכונים בעמוד זה.
             </p>
             <ul className="mt-4 space-y-2 text-sm font-light text-neutral-600">

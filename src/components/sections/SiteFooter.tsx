@@ -1,28 +1,30 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { trackWhatsAppClick } from '../../analytics/whatsappTracking'
 import { premiumCopy } from '../../content/premium'
 import { DEVELOPER_BRAND_LOGO_SRC, WHATSAPP_DISPLAY, WHATSAPP_PHOTO_MESSAGE, whatsappHref } from '../../config/site'
 
 export function SiteFooter() {
+  const { pathname } = useLocation()
   const { footer, primaryCta, conversion, a11y } = premiumCopy
   const wa = whatsappHref(WHATSAPP_PHOTO_MESSAGE)
+  const waMobileLabel = pathname === '/' ? footer.whatsappCtaLabelMobile : primaryCta
 
   return (
     <footer
       id="contact"
       className="scroll-mt-20 border-t border-neutral-200 bg-white md:scroll-mt-[4.5rem]"
-      role="contentinfo"
       aria-labelledby="contact-heading"
     >
-      <div className="mx-auto max-w-6xl py-[4.5rem] pl-[max(1.25rem,env(safe-area-inset-left,0px))] pr-[max(1.25rem,env(safe-area-inset-right,0px))] md:px-8 md:py-20">
+      <div className="mx-auto max-w-6xl py-14 pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] md:px-8 md:py-20">
         <div className="grid gap-14 max-md:gap-16 md:grid-cols-3 md:gap-8 md:[&>div]:min-w-0">
           <div className="min-w-0 text-start">
             <p className="text-xs font-medium uppercase tracking-[0.25em] text-gold">Premium</p>
             <p className="mt-3 text-xl font-light tracking-wide text-neutral-950">{footer.brand}</p>
             <p className="mt-1 text-sm font-light text-neutral-600">{footer.serviceAreaLine}</p>
-            <p className="mt-1 text-sm font-medium text-neutral-700">{footer.serviceAreaReachLine}</p>
-            <p className="mt-2 text-sm font-light text-neutral-500">{footer.rights}</p>
-            <h4 className="mt-10 text-xs font-medium uppercase tracking-[0.2em] text-neutral-400">{footer.learnTitle}</h4>
+            <p className="mt-1 text-sm font-medium text-neutral-700 md:hidden">{footer.serviceAreaReachLineMobile}</p>
+            <p className="mt-1 hidden text-sm font-medium text-neutral-700 md:block">{footer.serviceAreaReachLine}</p>
+            <p className="mt-2 text-sm font-light text-neutral-600">{footer.rights}</p>
+            <h4 className="mt-10 text-xs font-medium uppercase tracking-[0.2em] text-neutral-600">{footer.learnTitle}</h4>
             <ul className="mt-3 space-y-2 text-sm font-light">
               <li>
                 <Link
@@ -66,19 +68,20 @@ export function SiteFooter() {
             <h3 className="text-sm font-medium text-neutral-950">{footer.whatsapp}</h3>
             <a
               href={wa}
-              className="mt-4 inline-block max-w-full break-words rounded-sm text-sm font-light text-neutral-600 underline-offset-4 transition-colors hover:text-neutral-950 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950/30 focus-visible:ring-offset-2"
+              className={`mt-4 inline-block max-w-full break-words rounded-sm text-sm font-light text-neutral-600 underline-offset-4 transition-colors hover:text-neutral-950 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950/30 focus-visible:ring-offset-2 ${pathname === '/' ? 'max-md:text-xs' : ''}`}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={a11y.whatsappSendPhotoQuote}
               onClick={() => trackWhatsAppClick('article')}
             >
-              {primaryCta}
+              <span className="md:hidden">{waMobileLabel}</span>
+              <span className="hidden md:inline">{primaryCta}</span>
             </a>
-            <div className="mt-3 max-w-xs space-y-1 text-xs font-light leading-relaxed text-neutral-500">
+            <div className="mt-3 max-w-xs space-y-1 text-xs font-light leading-relaxed text-neutral-600">
               <p>{conversion.priceLine1}</p>
               <p>{conversion.priceLine2}</p>
             </div>
-            <p className="mt-2 text-xs font-light text-neutral-400">
+            <p className="mt-2 text-xs font-light text-neutral-600">
               <span aria-hidden>⏱️</span> {conversion.microQuick}
             </p>
           </div>
@@ -102,7 +105,7 @@ export function SiteFooter() {
                 loading="lazy"
               />
             </div>
-            <p className="mt-3 text-xs font-medium tracking-wide text-neutral-500">
+            <p className="mt-3 text-xs font-medium tracking-wide text-neutral-600">
               {footer.developerCopyright}
             </p>
           </div>

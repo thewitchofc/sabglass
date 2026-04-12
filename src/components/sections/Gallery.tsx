@@ -3,7 +3,6 @@ import { motion } from 'framer-motion'
 import { WHATSAPP_PHOTO_MESSAGE } from '../../config/site'
 import { premiumCopy } from '../../content/premium'
 import { catalogProducts, getFlatGalleryItems } from '../../data/catalog'
-import { SectionBridgeCta } from '../SectionBridgeCta'
 import { WaMicroLine } from '../WaFrictionHints'
 import { FadeIn } from '../ui/FadeIn'
 import { WhatsAppLink } from '../ui/WhatsAppLink'
@@ -44,7 +43,7 @@ export function Gallery() {
       className="scroll-mt-20 border-b border-neutral-200/80 bg-white md:scroll-mt-[4.5rem]"
       aria-labelledby="gallery-heading"
     >
-      <div className="mx-auto max-w-6xl py-24 pl-[max(1.25rem,env(safe-area-inset-left,0px))] pr-[max(1.25rem,env(safe-area-inset-right,0px))] md:px-8 md:py-28">
+      <div className="mx-auto max-w-6xl py-14 pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] md:px-8 md:py-28">
         <FadeIn>
           <h1
             id="gallery-heading"
@@ -55,14 +54,15 @@ export function Gallery() {
           <p className="mt-2 text-xl font-light tracking-tight text-neutral-950 md:mt-3 md:text-2xl">
             {gallery.titlePick}
           </p>
-          <p className="mt-5 max-w-[95%] text-sm font-light leading-relaxed text-neutral-500 md:max-w-2xl md:text-base">
+          <p className="mt-5 max-w-[95%] text-sm font-light leading-relaxed text-neutral-600 md:hidden">
+            {gallery.subtitleMobile}
+          </p>
+          <p className="mt-5 hidden max-w-[95%] text-sm font-light leading-relaxed text-neutral-600 md:block md:max-w-2xl md:text-base">
             {gallery.subtitle}
           </p>
         </FadeIn>
 
-        <SectionBridgeCta className="mt-10 border-0 pt-0" align="center" />
-
-        <div className="mt-12 flex flex-col gap-24 md:mt-16 md:gap-24">
+        <div className="mt-10 flex flex-col gap-14 md:mt-16 md:gap-24">
           {catalogProducts.map((product, productIndex) => {
             const startIndex = productStartIndices[productIndex] ?? 0
 
@@ -81,7 +81,7 @@ export function Gallery() {
                 }}
               >
                 <div
-                  className={`pt-12 md:pt-14 ${productIndex > 0 ? 'border-t border-neutral-200' : ''}`}
+                  className={`pt-8 md:pt-14 ${productIndex > 0 ? 'border-t border-neutral-200' : ''}`}
                 >
                   <h2 className="text-xl font-medium tracking-tight text-neutral-950 max-md:text-[1.25rem] md:text-2xl">
                     {product.title}
@@ -90,16 +90,16 @@ export function Gallery() {
                     {product.description}
                   </p>
 
-                  <div className="mt-8 grid grid-cols-1 gap-3 max-md:gap-4 sm:grid-cols-2 sm:gap-3 md:grid-cols-3 md:gap-4">
+                  <div className="mt-5 grid grid-cols-2 gap-2 sm:gap-3 md:mt-8 md:grid-cols-3 md:gap-4">
                     {product.images.map((item, imageIndex) => {
                       const globalIndex = startIndex + imageIndex
                       return (
                         <button
                           key={item.src}
                           type="button"
-                          className="group relative aspect-[3/4] cursor-zoom-in overflow-hidden rounded-sm border border-neutral-200/90 bg-neutral-100 text-start transition-shadow duration-500 hover:border-neutral-400 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2"
+                          className="group relative aspect-square cursor-zoom-in overflow-hidden rounded-sm border border-neutral-200/90 bg-neutral-100 text-start transition-shadow duration-500 hover:border-neutral-400 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 md:aspect-[3/4]"
                           onClick={() => setLightboxIndex(globalIndex)}
-                          aria-label={`פתיחת תצוגה מוגדלת: ${item.alt}`}
+                          aria-label={`פתיחת תצוגת גלריה מוגדלת — ${item.alt}`}
                         >
                           <img
                             src={item.src}
@@ -144,8 +144,6 @@ export function Gallery() {
             </div>
           </div>
         </FadeIn>
-
-        <SectionBridgeCta className="mt-16 border-neutral-200 md:mt-20" />
       </div>
 
       <GalleryLightbox

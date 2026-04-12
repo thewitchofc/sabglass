@@ -1,10 +1,9 @@
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useEffect } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { FloatingWhatsApp } from './components/FloatingWhatsApp'
 import { ScrollToTop } from './components/ScrollToTop'
 import { SeoHead } from './components/SeoHead'
 import { SiteHeader } from './components/SiteHeader'
-import { StickyMobileCta } from './components/StickyMobileCta'
 import { HomePage } from './pages/HomePage'
 
 const CatalogPage = lazy(() =>
@@ -27,6 +26,10 @@ const MiklahonCenterIsraelPage = lazy(() =>
 )
 
 function App() {
+  useEffect(() => {
+    document.getElementById('static-hero-lcp-fallback')?.remove()
+  }, [])
+
   return (
     <BrowserRouter>
       <ScrollToTop />
@@ -45,7 +48,6 @@ function App() {
         </Routes>
       </Suspense>
       <FloatingWhatsApp />
-      <StickyMobileCta />
     </BrowserRouter>
   )
 }

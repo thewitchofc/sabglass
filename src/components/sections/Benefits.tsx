@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import { premiumCopy } from '../../content/premium'
-import { SectionBridgeCta } from '../SectionBridgeCta'
 import { FadeIn } from '../ui/FadeIn'
 
 export function Benefits() {
@@ -8,7 +7,7 @@ export function Benefits() {
 
   return (
     <section className="bg-neutral-50" aria-labelledby="benefits-heading">
-      <div className="mx-auto max-w-6xl py-24 pl-[max(1.25rem,env(safe-area-inset-left,0px))] pr-[max(1.25rem,env(safe-area-inset-right,0px))] md:px-8 md:py-28">
+      <div className="mx-auto max-w-6xl py-14 pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] md:px-8 md:py-28">
         <FadeIn>
           <h2
             id="benefits-heading"
@@ -16,7 +15,10 @@ export function Benefits() {
           >
             {benefits.title}
           </h2>
-          <p className="mt-4 max-w-[95%] text-sm font-light leading-relaxed text-neutral-500 md:max-w-xl md:text-base md:leading-normal">
+          <p className="mt-4 max-w-[95%] text-sm font-light leading-relaxed text-neutral-600 md:hidden">
+            {benefits.leadMobile}
+          </p>
+          <p className="mt-4 hidden max-w-[95%] text-sm font-light leading-relaxed text-neutral-600 md:block md:max-w-xl md:text-base md:leading-normal">
             {benefits.lead}
           </p>
         </FadeIn>
@@ -35,7 +37,7 @@ export function Benefits() {
                 ease: [0.22, 1, 0.36, 1],
               }}
             >
-              <span className="text-xs font-medium tabular-nums text-neutral-400 transition-colors group-hover:text-neutral-600">
+              <span className="text-xs font-medium tabular-nums text-neutral-600 transition-colors group-hover:text-neutral-700">
                 {String(i + 1).padStart(2, '0')}
               </span>
               <p className="mt-4 text-base font-light leading-relaxed text-neutral-800 md:text-lg">
@@ -44,7 +46,6 @@ export function Benefits() {
             </motion.article>
           ))}
         </div>
-        <SectionBridgeCta />
       </div>
     </section>
   )

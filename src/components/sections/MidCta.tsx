@@ -19,7 +19,7 @@ export function MidCta() {
         }}
         aria-hidden
       />
-      <div className="relative mx-auto max-w-3xl py-28 pl-[max(1.25rem,env(safe-area-inset-left,0px))] pr-[max(1.25rem,env(safe-area-inset-right,0px))] text-center md:px-8 md:py-32">
+      <div className="relative mx-auto max-w-3xl py-12 pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] text-center md:px-8 md:py-32">
         <motion.h2
           id="mid-cta-heading"
           className="text-balance text-2xl font-light leading-snug tracking-tight max-md:text-[1.625rem] md:text-4xl md:leading-snug"
@@ -31,7 +31,7 @@ export function MidCta() {
           {midCta.title}
         </motion.h2>
         <motion.p
-          className="mx-auto mt-6 max-w-[95%] text-pretty text-base font-light leading-relaxed text-neutral-400 md:max-w-md md:text-xl"
+          className="mx-auto mt-6 max-w-[95%] text-pretty text-base font-light leading-relaxed text-white/80 md:max-w-md md:text-xl"
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -40,7 +40,7 @@ export function MidCta() {
           {midCta.body}
         </motion.p>
         <motion.div
-          className="mx-auto mt-6 max-w-lg space-y-1 text-pretty text-xs font-light leading-relaxed text-white/45 md:text-sm"
+          className="mx-auto mt-6 hidden max-w-lg space-y-1 text-pretty text-xs font-light leading-relaxed text-white/75 md:block md:text-sm"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -50,7 +50,26 @@ export function MidCta() {
           <p>{conversion.priceLine2}</p>
         </motion.div>
         <motion.div
-          className="mt-10 flex flex-col items-center"
+          className="mt-8 flex flex-col items-center gap-3 md:hidden"
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <WhatsAppLink
+            variant="whatsapp"
+            size="lg"
+            message={WHATSAPP_PHOTO_MESSAGE}
+            ariaLabel={a11y.whatsappSendPhotoQuote}
+            trackingLabel="article"
+            className="w-full max-w-md !rounded-full shadow-[0_4px_22px_rgba(37,211,102,0.38)]"
+          >
+            {primaryCta}
+          </WhatsAppLink>
+          <WaMicroLine variant="onDark" className="max-w-md [&_p]:text-center" />
+        </motion.div>
+        <motion.div
+          className="mt-10 hidden flex-col items-center md:flex"
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

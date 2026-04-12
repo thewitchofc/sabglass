@@ -1,28 +1,24 @@
-import { BenSection } from '../components/sections/BenSection'
-import { Benefits } from '../components/sections/Benefits'
-import { CtaStrip } from '../components/sections/CtaStrip'
+import { lazy, Suspense } from 'react'
 import { Hero } from '../components/sections/Hero'
-import { HowItWorks } from '../components/sections/HowItWorks'
-import { MidCta } from '../components/sections/MidCta'
-import { PhotoLeadSection } from '../components/sections/PhotoLeadSection'
-import { SiteFooter } from '../components/sections/SiteFooter'
-import { Trust } from '../components/sections/Trust'
+import { useDeferredHomeBelowFold } from '../hooks/useDeferredHomeBelowFold'
 import { useScrollToHash } from '../hooks/useScrollToHash'
+
+const HomePageBelowFold = lazy(() =>
+  import('./HomePageBelowFold').then((m) => ({ default: m.HomePageBelowFold })),
+)
 
 export function HomePage() {
   useScrollToHash()
+  const loadBelowFold = useDeferredHomeBelowFold()
 
   return (
-    <main className="min-h-dvh bg-white pb-[calc(10rem+env(safe-area-inset-bottom,0px))] font-sans text-neutral-900 antialiased md:pb-0">
+    <main className="min-h-dvh bg-white pb-[calc(1.25rem+env(safe-area-inset-bottom,0px))] font-sans text-neutral-900 antialiased md:pb-0">
       <Hero />
-      <BenSection />
-      <Benefits />
-      <CtaStrip />
-      <PhotoLeadSection />
-      <HowItWorks />
-      <Trust />
-      <MidCta />
-      <SiteFooter />
+      {loadBelowFold ? (
+        <Suspense fallback={null}>
+          <HomePageBelowFold />
+        </Suspense>
+      ) : null}
     </main>
   )
 }

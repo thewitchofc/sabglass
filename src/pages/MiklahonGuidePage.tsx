@@ -9,9 +9,9 @@ export function MiklahonGuidePage() {
   const p = pillarMiklahonGuidePage
 
   return (
-    <main className="min-h-dvh bg-white pb-[calc(10rem+env(safe-area-inset-bottom,0px))] font-sans text-neutral-900 antialiased md:pb-0">
-      <article className="mx-auto max-w-2xl pb-10 pl-[max(1.25rem,env(safe-area-inset-left,0px))] pr-[max(1.25rem,env(safe-area-inset-right,0px))] pt-24 md:px-8 md:pt-28">
-        <nav className="text-sm font-light text-neutral-500" aria-label="שביל ניווט">
+    <main className="min-h-dvh bg-white pb-[calc(5.5rem+env(safe-area-inset-bottom,0px))] font-sans text-neutral-900 antialiased md:pb-0">
+      <article className="mx-auto max-w-2xl pb-10 pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] pt-24 md:px-8 md:pt-28">
+        <nav className="text-sm font-light text-neutral-600" aria-label="שביל ניווט במדריך מקלחונים">
           <ol className="flex flex-wrap items-center gap-x-2 gap-y-1">
             <li>
               <Link
@@ -91,11 +91,11 @@ export function MiklahonGuidePage() {
           </Fragment>
         ))}
 
-        <nav className="mt-14 border-t border-neutral-200 pt-10" aria-label="המשך קריאה">
+        <nav className="mt-14 border-t border-neutral-200 pt-10" aria-label="מעבר חזרה למרכז המאמרים אחרי המדריך">
           <p className="text-sm font-medium text-neutral-950">כל המדריכים</p>
           <Link
             to="/articles"
-            className="mt-3 inline-block text-base font-light text-neutral-700 underline decoration-neutral-300 underline-offset-[5px] hover:text-neutral-950"
+            className="mt-3 inline-block text-base font-light text-neutral-700 underline decoration-neutral-400 underline-offset-[5px] hover:text-neutral-950"
           >
             חזרה למרכז המאמרים
           </Link>

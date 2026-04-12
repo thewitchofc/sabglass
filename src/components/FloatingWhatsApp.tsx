@@ -10,7 +10,7 @@ export function FloatingWhatsApp() {
   return (
     <motion.a
       href={href}
-      className="fixed start-5 bottom-8 z-40 hidden h-14 w-14 items-center justify-center rounded-full bg-neutral-950 text-white shadow-[0_8px_30px_rgba(0,0,0,0.25)] ring-2 ring-white transition-transform duration-300 hover:scale-105 hover:bg-neutral-800 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 md:flex md:start-8 md:bottom-8 md:h-16 md:w-16"
+      className="fixed z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_8px_28px_rgba(37,211,102,0.42)] ring-2 ring-white/90 transition-transform duration-300 hover:scale-105 hover:bg-[#1DA851] hover:shadow-[0_10px_32px_rgba(29,168,81,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#25D366] start-4 bottom-[max(1rem,calc(0.75rem+env(safe-area-inset-bottom,0px)))] md:start-8 md:bottom-8 md:h-16 md:w-16"
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}

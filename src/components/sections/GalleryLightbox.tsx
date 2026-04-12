@@ -46,7 +46,7 @@ export function GalleryLightbox({ items, index, onClose, onPrev, onNext }: Props
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/92 p-3 pt-[max(0.75rem,env(safe-area-inset-top,0px))] pb-[max(0.75rem,env(safe-area-inset-bottom,0px))] pl-[max(0.75rem,env(safe-area-inset-left,0px))] pr-[max(0.75rem,env(safe-area-inset-right,0px))] backdrop-blur-sm sm:p-4"
           role="dialog"
           aria-modal="true"
-          aria-label={item.alt}
+          aria-label={`תצוגת גלריה מוגדלת — ${item.alt}`}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -60,7 +60,7 @@ export function GalleryLightbox({ items, index, onClose, onPrev, onNext }: Props
               e.stopPropagation()
               onClose()
             }}
-            aria-label="סגירה"
+            aria-label="סגירת חלון תצוגת התמונות המוגדלת"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.1 }}
@@ -75,7 +75,7 @@ export function GalleryLightbox({ items, index, onClose, onPrev, onNext }: Props
               e.stopPropagation()
               onPrev()
             }}
-            aria-label="תמונה קודמת"
+            aria-label="הצגת התמונה הקודמת בגלריה"
           >
             <Chevron dir="prev" />
           </button>
@@ -86,7 +86,7 @@ export function GalleryLightbox({ items, index, onClose, onPrev, onNext }: Props
               e.stopPropagation()
               onNext()
             }}
-            aria-label="תמונה הבאה"
+            aria-label="הצגת התמונה הבאה בגלריה"
           >
             <Chevron dir="next" />
           </button>

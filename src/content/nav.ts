@@ -4,6 +4,6 @@ export const navCopy = {
   catalog: 'קטלוג',
   articles: 'מאמרים',
   contact: 'צור קשר',
-  openMenu: 'פתיחת תפריט',
-  closeMenu: 'סגירת תפריט',
+  openMenu: 'פתיחת תפריט הניווט הראשי במובייל',
+  closeMenu: 'סגירת תפריט הניווט הראשי במובייל',
 } as const

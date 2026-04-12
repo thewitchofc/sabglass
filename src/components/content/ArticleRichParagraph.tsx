@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import type { RichTextSegment } from '../../content/seoContent'
 
 const linkClass =
-  'font-medium text-neutral-900 underline decoration-neutral-400 underline-offset-[5px] transition-colors hover:decoration-neutral-900'
+  'font-medium text-neutral-900 underline decoration-neutral-500 underline-offset-[5px] transition-colors hover:decoration-neutral-900'
 
 export function ArticleRichParagraph({
   segments,

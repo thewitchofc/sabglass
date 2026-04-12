@@ -77,7 +77,7 @@ export function ArticleScrollNudge({
         <motion.div
           key="article-scroll-nudge"
           role="status"
-          className="pointer-events-none fixed inset-x-0 z-40 flex justify-center pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] max-md:bottom-[calc(9.5rem+env(safe-area-inset-bottom,0px))] max-md:pb-1 md:bottom-0 md:justify-end md:px-6 md:pb-6"
+          className="pointer-events-none fixed inset-x-0 z-40 flex justify-center pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] max-md:bottom-[calc(1rem+env(safe-area-inset-bottom,0px))] max-md:pb-1 md:bottom-0 md:justify-end md:px-6 md:pb-6"
           initial={reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 10 }}
@@ -101,14 +101,14 @@ export function ArticleScrollNudge({
               <button
                 type="button"
                 onClick={() => setDismissed(true)}
-                className="shrink-0 rounded-sm px-2 py-1 text-xs font-light text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-800 focus-visible:ring-offset-2"
-                aria-label="סגירת ההצעה הצפה"
+                className="shrink-0 rounded-sm px-2 py-1 text-xs font-light text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-800 focus-visible:ring-offset-2"
+                aria-label="סגירת ההצעה הצפה לשליחת תמונה או ייעוץ בוואטסאפ"
               >
                 סגירה
               </button>
             </div>
             {microLine ? (
-              <p className="text-center text-[11px] font-light text-neutral-500 md:text-start">{microLine}</p>
+              <p className="text-center text-[11px] font-light text-neutral-600 md:text-start">{microLine}</p>
             ) : null}
           </div>
         </motion.div>

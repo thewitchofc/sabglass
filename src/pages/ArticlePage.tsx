@@ -29,10 +29,10 @@ export function ArticlePage() {
 
   return (
     <main
-      className={`min-h-dvh bg-white font-sans text-neutral-900 antialiased ${article.scrollNudgeCta ? 'pb-[calc(12rem+env(safe-area-inset-bottom,0px))] md:pb-32' : 'pb-[calc(9rem+env(safe-area-inset-bottom,0px))] md:pb-0'}`}
+      className={`min-h-dvh bg-white font-sans text-neutral-900 antialiased ${article.scrollNudgeCta ? 'pb-[calc(7.5rem+env(safe-area-inset-bottom,0px))] md:pb-32' : 'pb-[calc(5.5rem+env(safe-area-inset-bottom,0px))] md:pb-0'}`}
     >
-      <article className="mx-auto max-w-2xl pb-10 pl-[max(1.25rem,env(safe-area-inset-left,0px))] pr-[max(1.25rem,env(safe-area-inset-right,0px))] pt-24 md:px-8 md:pt-28 [&_h2]:max-md:text-[1.625rem] [&_section_p]:max-w-[65ch] [&_section_p]:leading-[1.75] max-md:[&_p]:max-w-[95%] max-md:[&_p]:leading-relaxed max-md:[&_section_p]:max-w-[95%]">
-        <nav className="text-sm font-light text-neutral-500" aria-label="שביל ניווט">
+      <article className="mx-auto max-w-2xl pb-10 pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] pt-24 md:px-8 md:pt-28 [&_h2]:max-md:text-[1.625rem] [&_section_p]:max-w-[65ch] [&_section_p]:leading-[1.75] max-md:[&_p]:max-w-[100%] max-md:[&_p]:leading-[1.75] max-md:[&_section_p]:max-w-[100%]">
+        <nav className="text-sm font-light text-neutral-600" aria-label="שביל ניווט במאמר">
           <ol className="flex flex-wrap items-center gap-x-2 gap-y-1">
             <li>
               <Link to="/" className="rounded-sm hover:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-800 focus-visible:ring-offset-2">
@@ -71,10 +71,10 @@ export function ArticlePage() {
           </p>
         ) : null}
         {article.readingTimeLabel ? (
-          <p className="mt-4 text-sm font-light text-neutral-500">{article.readingTimeLabel}</p>
+          <p className="mt-4 text-sm font-light text-neutral-600">{article.readingTimeLabel}</p>
         ) : null}
         {article.lastUpdated ? (
-          <p className="mt-2 text-sm font-light text-neutral-400">
+          <p className="mt-2 text-sm font-light text-neutral-600">
             עודכן לאחרונה: {formatArticleLastUpdated(article.lastUpdated)}
           </p>
         ) : null}
@@ -127,8 +127,8 @@ export function ArticlePage() {
             <section
               className={
                 idx === 0
-                  ? 'mt-12'
-                  : 'mt-14 border-t border-neutral-200 pt-14'
+                  ? 'mt-14 md:mt-12'
+                  : 'mt-16 border-t border-neutral-200 pt-16 md:mt-14 md:pt-14'
               }
             >
               <h2
@@ -194,7 +194,7 @@ export function ArticlePage() {
 
         {article.beforeAfter ? (
           <section
-            className="mt-14 border-t border-neutral-200 pt-14"
+            className="mt-16 border-t border-neutral-200 pt-16 md:mt-14 md:pt-14"
             aria-labelledby="article-before-after-title"
           >
             <h2
@@ -223,7 +223,7 @@ export function ArticlePage() {
 
         {article.faq && article.faq.length > 0 ? (
           <section
-            className="mt-14 border-t border-neutral-200 pt-14"
+            className="mt-16 border-t border-neutral-200 pt-16 md:mt-14 md:pt-14"
             aria-labelledby="faq"
           >
             <h2
@@ -266,8 +266,8 @@ export function ArticlePage() {
         ) : null}
 
         <nav
-          className="mt-14 border-t border-neutral-200 pt-12"
-          aria-label="מדריך ושירות"
+          className="mt-16 border-t border-neutral-200 pt-14 md:mt-14 md:pt-12"
+          aria-label="קישורים למדריך מקלחונים ולשירות מקלחון זכוכית בהתאמה אישית"
         >
           <p className="text-sm font-medium text-neutral-950">ממשיכים בתכנון?</p>
           <p className="mt-3 max-w-[65ch] text-pretty text-base font-light leading-[1.75] text-neutral-600">
@@ -300,7 +300,7 @@ export function ArticlePage() {
           subtitle={article.ctaEndSubtitle ?? ARTICLE_DEFAULT_END_CTA.subtitle}
           className="mt-12 text-center md:text-start"
         />
-        <p className="mt-3 max-w-[65ch] text-center text-xs font-light leading-relaxed text-neutral-500 md:text-start">
+        <p className="mt-3 max-w-[65ch] text-center text-xs font-light leading-relaxed text-neutral-600 md:text-start">
           {premiumCopy.conversion.microPhotoLong}
         </p>
       </article>

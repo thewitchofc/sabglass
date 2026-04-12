@@ -252,5 +252,5 @@ export function getFlatGalleryItems(): GalleryItem[] {
   )
 }
 
-/** רקע Hero, מקלחון זכוכית ומיתוג SAB Glass. קובץ: public/hero-bg.png */
-export const heroBackgroundImage = '/hero-bg.png'
+/** רקע Hero, מקלחון זכוכית ומיתוג SAB Glass. קובץ: public/hero-bg.webp (מיושר ל־fallback ב־index.html) */
+export const heroBackgroundImage = '/hero-bg.webp'
