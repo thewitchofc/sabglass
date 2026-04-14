@@ -56,13 +56,16 @@ export function SiteFooter() {
               {footer.sendPhotoLink}
             </Link>
             <h4 className="mt-8 text-sm font-medium text-neutral-950">{footer.hoursTitle}</h4>
-            <p className="mt-3 text-sm font-light text-neutral-600">
-              {footer.hoursWeekdaysLabel}{' '}
-              <span dir="ltr" className="inline-block tabular-nums [unicode-bidi:isolate]">
-                {footer.hoursWeekdaysTimes}
-              </span>
-            </p>
-            <p className="mt-1 text-sm font-light text-neutral-600">{footer.hoursClosed}</p>
+            <div className="mt-3 space-y-1 text-sm font-light text-neutral-600">
+              {footer.hoursByDay.map((item) => (
+                <p key={item.day}>
+                  {item.day}:{' '}
+                  <span dir="ltr" className="inline-block tabular-nums [unicode-bidi:isolate]">
+                    {item.hours}
+                  </span>
+                </p>
+              ))}
+            </div>
           </div>
           <div className="min-w-0 text-start">
             <h3 className="text-sm font-medium text-neutral-950">{footer.whatsapp}</h3>

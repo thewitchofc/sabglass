@@ -190,9 +190,15 @@ export const premiumCopy = {
     /** מובייל: קישור וואטסאפ בפוטר — לא כפילות מול ה־Hero */
     whatsappCtaLabelMobile: 'פתיחת וואטסאפ',
     hoursTitle: 'שעות עבודה',
-    hoursWeekdaysLabel: 'א׳–ה׳:',
-    hoursWeekdaysTimes: '09:00 - 19:00',
-    hoursClosed: 'שישי ושבת: סגור',
+    hoursByDay: [
+      { day: 'יום א׳', hours: '09:00 - 19:00' },
+      { day: 'יום ב׳', hours: '09:00 - 19:00' },
+      { day: 'יום ג׳', hours: '09:00 - 19:00' },
+      { day: 'יום ד׳', hours: '09:00 - 19:00' },
+      { day: 'יום ה׳', hours: '09:00 - 19:00' },
+      { day: 'יום ו׳', hours: 'סגור' },
+      { day: 'שבת', hours: 'סגור' },
+    ],
     whatsapp: 'וואטסאפ',
     rights: 'כל הזכויות שמורות',
     developerCreditTitle: 'קרדיט פיתוח',
