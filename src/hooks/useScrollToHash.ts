@@ -14,9 +14,22 @@ export function useScrollToHash() {
     if (navigationType === 'POP') return
 
     const id = location.hash.slice(1)
-    const frame = requestAnimationFrame(() => {
-      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    })
-    return () => cancelAnimationFrame(frame)
+    let rafId = 0
+    let tries = 0
+    const maxTries = 45
+
+    const tryScroll = () => {
+      const target = document.getElementById(id)
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        return
+      }
+      if (tries >= maxTries) return
+      tries += 1
+      rafId = requestAnimationFrame(tryScroll)
+    }
+
+    rafId = requestAnimationFrame(tryScroll)
+    return () => cancelAnimationFrame(rafId)
   }, [location.pathname, location.hash, navigationType])
 }
