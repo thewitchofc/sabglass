@@ -3,13 +3,11 @@ import { BenSection } from '../components/sections/BenSection'
 import { Benefits } from '../components/sections/Benefits'
 import { HowItWorks } from '../components/sections/HowItWorks'
 import { PhotoLeadSection } from '../components/sections/PhotoLeadSection'
+import { SiteFooter } from '../components/sections/SiteFooter'
 import { Trust } from '../components/sections/Trust'
 
 const MidCta = lazy(() =>
   import('../components/sections/MidCta').then((m) => ({ default: m.MidCta })),
-)
-const SiteFooter = lazy(() =>
-  import('../components/sections/SiteFooter').then((m) => ({ default: m.SiteFooter })),
 )
 
 function DeferredSection({ Component }: { Component: ComponentType }) {
@@ -53,7 +51,7 @@ export function HomePageBelowFold() {
       <HowItWorks />
       <Trust />
       <DeferredSection Component={MidCta} />
-      <DeferredSection Component={SiteFooter} />
+      <SiteFooter />
     </>
   )
 }
