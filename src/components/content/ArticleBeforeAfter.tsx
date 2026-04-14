@@ -29,6 +29,8 @@ export function ArticleBeforeAfter({
         <figure className="overflow-hidden rounded-sm border border-neutral-200/90 transition-shadow duration-300 md:group-hover:shadow-md md:group-hover:ring-1 md:group-hover:ring-neutral-300/80">
           <img
             src={beforeSrc}
+            srcSet={`${beforeSrc} 480w, ${beforeSrc} 768w, ${beforeSrc} 1200w`}
+            sizes="(max-width: 768px) 100vw, 50vw"
             alt={beforeAltFull}
             width={1200}
             height={800}
@@ -60,6 +62,8 @@ export function ArticleBeforeAfter({
         <figure className="overflow-hidden rounded-sm border border-neutral-200/90 transition-shadow duration-300 md:group-hover:shadow-md md:group-hover:ring-1 md:group-hover:ring-neutral-300/80">
           <img
             src={afterSrc}
+            srcSet={`${afterSrc} 480w, ${afterSrc} 768w, ${afterSrc} 1200w`}
+            sizes="(max-width: 768px) 100vw, 50vw"
             alt={afterAltFull}
             width={1200}
             height={800}

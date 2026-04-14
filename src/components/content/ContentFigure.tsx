@@ -14,6 +14,8 @@ export function ContentFigure({ src, alt, caption, className = '', priority = fa
     >
       <img
         src={src}
+        srcSet={`${src} 480w, ${src} 768w, ${src} 1200w`}
+        sizes="(max-width: 768px) 100vw, 1200px"
         alt={alt}
         width={1200}
         height={800}

@@ -16,10 +16,13 @@ export function Hero() {
       <div className="absolute inset-0 overflow-hidden bg-neutral-900" aria-hidden>
         <img
           src={heroBackgroundImage}
+          srcSet={`${heroBackgroundImage} 480w, ${heroBackgroundImage} 768w, ${heroBackgroundImage} 1200w`}
+          sizes="100vw"
           alt=""
           width={1920}
           height={1080}
           fetchPriority="high"
+          loading="eager"
           decoding="async"
           className="h-full w-full object-cover object-[76%_40%] md:object-center"
         />

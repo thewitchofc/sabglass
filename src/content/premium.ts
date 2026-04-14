@@ -184,7 +184,7 @@ export const premiumCopy = {
     /** אזור שירות אחיד */
     serviceAreaLine: 'שירות ב' + SERVICE_AREA_COPY.short,
     serviceAreaReachLine: SERVICE_AREA_COPY.reachTrust,
-    serviceAreaReachLineMobile: 'מגיעים אליכם — המרכז וירושלים',
+    serviceAreaReachLineMobile: 'מגיעים אליכם — איזור המרכז',
     contact: 'יצירת קשר',
     sendPhotoLink: 'שליחת תמונה להצעת מחיר',
     /** מובייל: קישור וואטסאפ בפוטר — לא כפילות מול ה־Hero */

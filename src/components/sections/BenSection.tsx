@@ -88,6 +88,8 @@ export function BenSection() {
             {!imgFailed ? (
               <img
                 src={BEN_PORTRAIT_SRC}
+                srcSet={`${BEN_PORTRAIT_SRC} 480w, ${BEN_PORTRAIT_SRC} 768w, ${BEN_PORTRAIT_SRC} 1200w`}
+                sizes="(max-width: 768px) 12rem, 14rem"
                 alt={ben.imageAlt}
                 width={800}
                 height={800}

@@ -102,9 +102,13 @@ export function GalleryLightbox({ items, index, onClose, onPrev, onNext }: Props
           >
             <img
               src={item.src}
+              srcSet={`${item.src} 480w, ${item.src} 768w, ${item.src} 1200w`}
+              sizes="90vw"
               alt={item.alt}
               width={1200}
               height={1600}
+              loading="lazy"
+              decoding="async"
               className="max-h-[80dvh] w-auto max-w-full rounded-sm object-contain shadow-2xl"
             />
             <figcaption className="mt-4 text-center text-sm font-light text-neutral-300">

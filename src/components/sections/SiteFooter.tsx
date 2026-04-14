@@ -97,6 +97,8 @@ export function SiteFooter() {
             <div className="mt-4 inline-flex opacity-95">
               <img
                 src={DEVELOPER_BRAND_LOGO_SRC}
+                srcSet={`${DEVELOPER_BRAND_LOGO_SRC} 480w, ${DEVELOPER_BRAND_LOGO_SRC} 768w, ${DEVELOPER_BRAND_LOGO_SRC} 1200w`}
+                sizes="(max-width: 768px) 120px, 104px"
                 alt={footer.developerLogoAlt}
                 width={120}
                 height={120}

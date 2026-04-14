@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { lazy, Suspense, useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 import { WHATSAPP_PHOTO_MESSAGE } from '../../config/site'
 import { premiumCopy } from '../../content/premium'
@@ -6,7 +6,9 @@ import { catalogProducts, getFlatGalleryItems } from '../../data/catalog'
 import { WaMicroLine } from '../WaFrictionHints'
 import { FadeIn } from '../ui/FadeIn'
 import { WhatsAppLink } from '../ui/WhatsAppLink'
-import { GalleryLightbox } from './GalleryLightbox'
+const GalleryLightbox = lazy(() =>
+  import('./GalleryLightbox').then((m) => ({ default: m.GalleryLightbox })),
+)
 
 export function Gallery() {
   const flatItems = useMemo(() => getFlatGalleryItems(), [])
@@ -103,6 +105,8 @@ export function Gallery() {
                         >
                           <img
                             src={item.src}
+                            srcSet={`${item.src} 480w, ${item.src} 768w, ${item.src} 1200w`}
+                            sizes="(max-width: 768px) 50vw, 33vw"
                             alt={item.alt}
                             width={900}
                             height={1200}
@@ -146,13 +150,17 @@ export function Gallery() {
         </FadeIn>
       </div>
 
-      <GalleryLightbox
-        items={flatItems}
-        index={lightboxIndex}
-        onClose={close}
-        onPrev={goPrev}
-        onNext={goNext}
-      />
+      {lightboxIndex !== null ? (
+        <Suspense fallback={null}>
+          <GalleryLightbox
+            items={flatItems}
+            index={lightboxIndex}
+            onClose={close}
+            onPrev={goPrev}
+            onNext={goNext}
+          />
+        </Suspense>
+      ) : null}
     </section>
   )
 }
