@@ -29,7 +29,7 @@ export function ArticlePage() {
 
   return (
     <main
-      className={`min-h-dvh bg-white font-sans text-neutral-900 antialiased ${article.scrollNudgeCta ? 'pb-[calc(7.5rem+env(safe-area-inset-bottom,0px))] md:pb-32' : 'pb-[calc(5.5rem+env(safe-area-inset-bottom,0px))] md:pb-0'}`}
+      className={`min-h-screen bg-white font-sans text-neutral-900 antialiased ${article.scrollNudgeCta ? 'pb-[calc(7.5rem+env(safe-area-inset-bottom,0px))] md:pb-32' : 'pb-[calc(5.5rem+env(safe-area-inset-bottom,0px))] md:pb-0'}`}
     >
       <article className="mx-auto max-w-2xl pb-10 pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] pt-24 md:px-8 md:pt-28 [&_h2]:max-md:text-[1.625rem] [&_section_p]:max-w-[65ch] [&_section_p]:leading-[1.75] max-md:[&_p]:max-w-[100%] max-md:[&_p]:leading-[1.75] max-md:[&_section_p]:max-w-[100%]">
         <nav className="text-sm font-light text-neutral-600" aria-label="שביל ניווט במאמר">

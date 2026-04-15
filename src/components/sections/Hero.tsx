@@ -7,7 +7,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative flex flex-col justify-end scroll-mt-0 antialiased"
+      className="relative flex flex-none flex-col justify-end scroll-mt-0 antialiased"
       style={{ minHeight: 'calc(var(--vh, 1vh) * 100)' }}
       aria-labelledby="hero-heading"
     >

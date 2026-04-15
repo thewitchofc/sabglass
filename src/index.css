@@ -9,6 +9,7 @@
 @layer base {
   html,
   body {
+    height: auto;
     min-height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
@@ -32,6 +33,7 @@
   main {
     height: auto;
     overflow: visible;
+    overflow-y: visible;
   }
 }
 

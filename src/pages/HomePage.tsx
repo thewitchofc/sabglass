@@ -12,7 +12,7 @@ export function HomePage() {
   const loadBelowFold = useDeferredHomeBelowFold()
 
   return (
-    <main className="min-h-dvh bg-white pb-[calc(1.25rem+env(safe-area-inset-bottom,0px))] font-sans text-neutral-900 antialiased md:pb-0">
+    <main className="min-h-screen bg-white pb-[calc(1.25rem+env(safe-area-inset-bottom,0px))] font-sans text-neutral-900 antialiased md:pb-0">
       <Hero />
       {loadBelowFold ? (
         <Suspense fallback={null}>

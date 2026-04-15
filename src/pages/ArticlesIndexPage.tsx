@@ -15,7 +15,7 @@ import { SERVICE_AREA_COPY } from '../content/serviceAreaCopy'
 
 export function ArticlesIndexPage() {
   return (
-    <main className="min-h-dvh bg-white pb-[calc(5.5rem+env(safe-area-inset-bottom,0px))] font-sans text-neutral-900 antialiased md:pb-0">
+    <main className="min-h-screen bg-white pb-[calc(5.5rem+env(safe-area-inset-bottom,0px))] font-sans text-neutral-900 antialiased md:pb-0">
       <div className="mx-auto max-w-2xl pb-10 pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] pt-24 md:px-8 md:pt-28">
         <nav className="text-sm font-light text-neutral-600" aria-label="שביל ניווט בעמוד מאמרים">
           <ol className="flex flex-wrap items-center gap-x-2 gap-y-1">
