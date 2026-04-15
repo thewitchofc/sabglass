@@ -7,10 +7,9 @@
 }
 
 @layer base {
-  @media (prefers-reduced-motion: no-preference) {
-    html {
-      scroll-behavior: smooth;
-    }
+  html,
+  body {
+    overflow-x: hidden;
   }
   /**
    * subpixel-antialiased = טקסט כהה על רקע בהיר חד יותר לעין.
@@ -32,7 +31,6 @@
     right: auto !important;
     top: auto !important;
     bottom: calc(env(safe-area-inset-bottom, 0px) + 24px) !important;
-    transform: scale(0.88) !important;
-    transform-origin: bottom center !important;
+    transform: none !important;
   }
 }

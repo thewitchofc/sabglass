@@ -39,6 +39,20 @@ function App() {
     document.getElementById('static-hero-lcp-fallback')?.remove()
   }, [])
 
+  useEffect(() => {
+    const setViewportHeight = () => {
+      const vh = window.innerHeight * 0.01
+      document.documentElement.style.setProperty('--vh', `${vh}px`)
+    }
+
+    setViewportHeight()
+    window.addEventListener('resize', setViewportHeight)
+
+    return () => {
+      window.removeEventListener('resize', setViewportHeight)
+    }
+  }, [])
+
   return (
     <BrowserRouter>
       <ScrollToTop />
