@@ -41,7 +41,7 @@ export function useDeferredHomeBelowFold() {
     window.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('resize', onScroll)
 
-    const opts: AddEventListenerOptions = { once: true, capture: true, passive: true }
+    const opts: AddEventListenerOptions = { once: true, passive: true }
     window.addEventListener('pointerdown', load, opts)
     window.addEventListener('touchstart', load, opts)
     window.addEventListener('keydown', load, opts)
@@ -59,10 +59,10 @@ export function useDeferredHomeBelowFold() {
       cancelled = true
       window.removeEventListener('scroll', onScroll)
       window.removeEventListener('resize', onScroll)
-      window.removeEventListener('pointerdown', load, { capture: true } as AddEventListenerOptions)
-      window.removeEventListener('touchstart', load, { capture: true } as AddEventListenerOptions)
-      window.removeEventListener('keydown', load, { capture: true } as AddEventListenerOptions)
-      window.removeEventListener('wheel', load, { capture: true } as AddEventListenerOptions)
+      window.removeEventListener('pointerdown', load)
+      window.removeEventListener('touchstart', load)
+      window.removeEventListener('keydown', load)
+      window.removeEventListener('wheel', load)
       window.clearTimeout(fallbackId)
       if (idleId !== undefined && typeof window.cancelIdleCallback === 'function') {
         window.cancelIdleCallback(idleId)

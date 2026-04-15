@@ -9,6 +9,7 @@
 @layer base {
   html,
   body {
+    min-height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
     overscroll-behavior: none;
@@ -20,6 +21,17 @@
   body {
     @apply bg-white text-neutral-800 subpixel-antialiased;
     touch-action: pan-y;
+  }
+
+  #root {
+    min-height: 100vh;
+    height: auto;
+    overflow: visible;
+  }
+
+  main {
+    height: auto;
+    overflow: visible;
   }
 }
 
