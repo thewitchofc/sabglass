@@ -12,7 +12,7 @@ export function Hero() {
       aria-labelledby="hero-heading"
     >
       {/* רקע: במובייל מזיזים מיקוד לצד המקלחון (ימין בתמונה); בדסקטופ מרכז */}
-      <div className="absolute inset-0 overflow-hidden bg-neutral-900" aria-hidden>
+      <div className="pointer-events-none absolute inset-0 overflow-hidden bg-neutral-900" aria-hidden>
         <img
           src="/hero-bg-1200.webp"
           srcSet="/hero-bg-480.webp 480w, /hero-bg-768.webp 768w, /hero-bg-1200.webp 1200w"
@@ -31,7 +31,7 @@ export function Hero() {
         className="pointer-events-none absolute inset-0 bg-gradient-to-l from-black/55 via-black/25 to-transparent md:hidden"
         aria-hidden
       />
-      <div className="absolute inset-0 bg-black/10" aria-hidden />
+      <div className="pointer-events-none absolute inset-0 bg-black/10" aria-hidden />
       <div
         className="pointer-events-none absolute inset-x-0 bottom-0 h-[min(58dvh,480px)] bg-gradient-to-t from-black/68 via-black/28 to-transparent"
         aria-hidden

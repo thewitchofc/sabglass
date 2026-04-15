@@ -41,7 +41,7 @@ export function useDeferredHomeBelowFold() {
     window.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('resize', onScroll)
 
-    const opts: AddEventListenerOptions = { once: true, capture: true }
+    const opts: AddEventListenerOptions = { once: true, capture: true, passive: true }
     window.addEventListener('pointerdown', load, opts)
     window.addEventListener('touchstart', load, opts)
     window.addEventListener('keydown', load, opts)
