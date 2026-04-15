@@ -26,10 +26,12 @@ export function SiteHeader() {
     setMobileOpen(false)
     setCatalogOpen(false)
     setMobileCatalogExpanded(false)
+    document.body.style.overflow = ''
   }, [])
 
   useEffect(() => {
     if (!mobileOpen) setMobileCatalogExpanded(false)
+    if (!mobileOpen) document.body.style.overflow = ''
   }, [mobileOpen])
 
   useEffect(() => {
@@ -39,11 +41,10 @@ export function SiteHeader() {
       if (e.key === 'Escape') closeAll()
     }
     window.addEventListener('keydown', onKey)
-    const prev = document.body.style.overflow
     document.body.style.overflow = 'hidden'
     return () => {
       window.removeEventListener('keydown', onKey)
-      document.body.style.overflow = prev
+      document.body.style.overflow = ''
     }
   }, [mobileOpen, closeAll])
 
@@ -56,7 +57,10 @@ export function SiteHeader() {
       }
     }
     window.addEventListener('resize', onResize)
-    return () => window.removeEventListener('resize', onResize)
+    return () => {
+      window.removeEventListener('resize', onResize)
+      document.body.style.overflow = ''
+    }
   }, [])
 
   useEffect(() => {
