@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { premiumCopy } from '../../content/premium'
 
@@ -9,7 +8,7 @@ export function Hero() {
     <section
       id="home"
       className="relative flex flex-col justify-end overflow-hidden scroll-mt-0 antialiased"
-      style={{ height: 'calc(var(--vh) * 100)' }}
+      style={{ height: 'calc(var(--vh, 1vh) * 100)' }}
       aria-labelledby="hero-heading"
     >
       {/* רקע: במובייל מזיזים מיקוד לצד המקלחון (ימין בתמונה); בדסקטופ מרכז */}
@@ -57,33 +56,24 @@ export function Hero() {
             </span>
           </Link>
         </div>
-        <motion.h1
+        <h1
           id="hero-heading"
           className="sr-only max-w-[95%] text-balance text-3xl font-light leading-[1.15] tracking-tight text-white md:not-sr-only md:max-w-4xl md:text-5xl lg:text-6xl xl:text-7xl"
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.85, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
         >
           {hero.titleLine1}
-        </motion.h1>
+        </h1>
 
-        <motion.div
+        <div
           className="mt-4 max-w-[95%] space-y-1.5 md:hidden"
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
         >
           <p className="text-pretty text-[0.8125rem] font-light leading-relaxed text-white/90">
             {hero.leadMobileLine1}
           </p>
           <p className="text-pretty text-[11px] font-light leading-relaxed text-white/78">{hero.leadMobileLine2}</p>
-        </motion.div>
+        </div>
 
-        <motion.ul
+        <ul
           className="mt-6 max-w-[min(17.5rem,calc(100vw-2rem))] space-y-1 text-start md:hidden"
-          initial={{ opacity: 0, y: 6 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.28, ease: [0.22, 1, 0.36, 1] }}
           aria-label="למה אפשר לסמוך"
         >
           {hero.trustMicroMobile.map((line) => (
@@ -97,43 +87,31 @@ export function Hero() {
               <span className="text-pretty">{line}</span>
             </li>
           ))}
-        </motion.ul>
+        </ul>
 
-        <motion.p
+        <p
           className="mt-5 hidden max-w-[95%] text-sm font-light leading-relaxed tracking-wide text-white/90 md:block md:max-w-2xl md:text-base md:leading-normal"
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.75, delay: 0.24, ease: [0.22, 1, 0.36, 1] }}
         >
           {hero.differentiators}
-        </motion.p>
+        </p>
 
-        <motion.p
+        <p
           className="mt-4 hidden max-w-[95%] text-xs font-light leading-relaxed text-white/90 md:block md:max-w-2xl md:text-sm"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
         >
           {hero.scarcity}
-        </motion.p>
+        </p>
 
-        <motion.p
+        <p
           className="mt-6 hidden max-w-[95%] text-sm font-light leading-relaxed text-white/90 md:block md:max-w-xl md:text-base md:leading-normal"
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: 0.32, ease: [0.22, 1, 0.36, 1] }}
         >
           {hero.outcomeHint}
-        </motion.p>
+        </p>
 
-        <motion.p
+        <p
           className="mt-3 hidden max-w-[95%] text-xs font-light leading-relaxed text-white/90 md:block md:max-w-xl md:text-sm"
-          initial={{ opacity: 0, y: 6 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.34, ease: [0.22, 1, 0.36, 1] }}
         >
           {hero.serviceReach}
-        </motion.p>
+        </p>
           </div>
         </div>
       </div>

@@ -20,7 +20,7 @@
         margin: 0;
         background-color: #000;
         color: #262626;
-        font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+        font-family: 'Heebo', 'Arial Hebrew', 'Noto Sans Hebrew', system-ui, -apple-system, 'Segoe UI', sans-serif;
       }
       #root {
         position: relative;
@@ -77,6 +77,13 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFhsqMA6aw.woff2"
+      crossorigin
+    />
     <link
       rel="preload"
       as="style"
@@ -159,12 +166,21 @@
     <div id="root" style="position: relative; z-index: 1"></div>
     <script type="module" src="/src/main.tsx"></script>
     <script>
-      window.addEventListener('load', () => {
-        var s = document.createElement('script')
-        s.src = 'https://cdn.enable.co.il/licenses/enable-L54786fccdpmdkdu-0426-81289/init.js'
-        s.async = true
-        document.body.appendChild(s)
-      })
+      (function () {
+        var loaded = false
+        var loadScript = function () {
+          if (loaded) return
+          loaded = true
+          window.removeEventListener('scroll', loadScript)
+          window.removeEventListener('click', loadScript)
+          var s = document.createElement('script')
+          s.src = 'https://cdn.enable.co.il/licenses/enable-L54786fccdpmdkdu-0426-81289/init.js'
+          s.async = true
+          document.body.appendChild(s)
+        }
+        window.addEventListener('scroll', loadScript, { once: true, passive: true })
+        window.addEventListener('click', loadScript, { once: true })
+      })()
     </script>
   </body>
 </html>
