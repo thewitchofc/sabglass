@@ -9,7 +9,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative flex h-[100lvh] flex-col justify-end overflow-hidden scroll-mt-0 antialiased md:h-[100dvh]"
+      className="relative flex h-screen flex-col justify-end overflow-hidden scroll-mt-0 antialiased"
       aria-labelledby="hero-heading"
     >
       {/* רקע: במובייל מזיזים מיקוד לצד המקלחון (ימין בתמונה); בדסקטופ מרכז */}
@@ -24,7 +24,7 @@ export function Hero() {
           fetchPriority="high"
           loading="eager"
           decoding="async"
-          className="h-full w-full object-cover object-[76%_40%] max-md:!transform-none max-md:!scale-100 max-md:!translate-x-0 max-md:!translate-y-0 max-md:!animate-none md:object-center"
+          className="h-full w-full object-cover object-[76%_40%] md:object-center"
         />
       </div>
       {/* קריאות טקסט לבן ב־RTL: כהה מהצד שבו הטקסט (התחלה = ימין) */}
