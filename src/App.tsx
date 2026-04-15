@@ -24,6 +24,15 @@ const MiklahonGuidePage = lazy(() =>
 const MiklahonCenterIsraelPage = lazy(() =>
   import('./pages/MiklahonCenterIsraelPage').then((m) => ({ default: m.MiklahonCenterIsraelPage })),
 )
+const PrivacyPolicyPage = lazy(() =>
+  import('./pages/PrivacyPolicyPage').then((m) => ({ default: m.PrivacyPolicyPage })),
+)
+const TermsOfUsePage = lazy(() =>
+  import('./pages/TermsOfUsePage').then((m) => ({ default: m.TermsOfUsePage })),
+)
+const AccessibilityStatementPage = lazy(() =>
+  import('./pages/AccessibilityStatementPage').then((m) => ({ default: m.AccessibilityStatementPage })),
+)
 
 function App() {
   useEffect(() => {
@@ -45,6 +54,9 @@ function App() {
           <Route path="/miklahon-guide" element={<MiklahonGuidePage />} />
           <Route path="/miklahon-center-israel" element={<MiklahonCenterIsraelPage />} />
           <Route path="/miklahon-rishon-lezion" element={<Navigate to="/miklahon-center-israel" replace />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="/terms-of-use" element={<TermsOfUsePage />} />
+          <Route path="/accessibility-statement" element={<AccessibilityStatementPage />} />
         </Routes>
       </Suspense>
       <FloatingWhatsApp />

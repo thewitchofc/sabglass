@@ -208,6 +208,10 @@ export const premiumCopy = {
     learnTitle: 'מידע ושירות',
     linkArticles: 'מאמרים ומדריכים',
     linkServiceShower: 'מקלחונים בהתאמה אישית מזכוכית',
+    legalTitle: 'מידע משפטי',
+    linkPrivacyPolicy: 'מדיניות פרטיות',
+    linkTermsOfUse: 'תנאי שימוש',
+    linkAccessibilityStatement: 'הצהרת נגישות',
   },
   secondaryCtas: {
     consult: 'דברו איתנו',

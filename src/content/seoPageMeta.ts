@@ -12,6 +12,9 @@ const ARTICLES_INDEX_DESC =
 
 const CATALOG_DESC =
   'צילומים מהשטח, מקלחונים, אמבטיונים ומראות בהתאמה אישית. שלחו תמונה ל־SAB Glass לייעוץ והצעה מדויקת.'
+const PRIVACY_POLICY_DESC = 'מדיניות הפרטיות של SAB Glass: פירוט סוגי המידע שנאסף, מטרות שימוש ושמירה על מידע אישי.'
+const TERMS_OF_USE_DESC = 'תנאי השימוש באתר SAB Glass: כללי שימוש, אחריות, קניין רוחני והבהרות בנוגע לתוכן ולהצעות מחיר.'
+const ACCESSIBILITY_STATEMENT_DESC = 'הצהרת הנגישות של SAB Glass: מחויבות להנגשת האתר, פרטי פנייה ודיווח על בעיות נגישות.'
 
 /** כותרת ותיאור לכל נתיב (למטא דינמי ב־SPA) */
 export function getSeoForPath(pathname: string): { title: string; description: string } {
@@ -29,6 +32,15 @@ export function getSeoForPath(pathname: string): { title: string; description: s
   }
   if (norm === '/articles') {
     return { title: ARTICLES_INDEX_TITLE, description: ARTICLES_INDEX_DESC }
+  }
+  if (norm === '/privacy-policy') {
+    return { title: 'מדיניות פרטיות | SAB Glass', description: PRIVACY_POLICY_DESC }
+  }
+  if (norm === '/terms-of-use') {
+    return { title: 'תנאי שימוש | SAB Glass', description: TERMS_OF_USE_DESC }
+  }
+  if (norm === '/accessibility-statement') {
+    return { title: 'הצהרת נגישות | SAB Glass', description: ACCESSIBILITY_STATEMENT_DESC }
   }
   if (norm === '/miklahon-guide') {
     return {
@@ -67,6 +79,18 @@ export function getBreadcrumbs(pathname: string): BreadcrumbItem[] | null {
   }
   if (norm === '/articles') {
     items.push({ name: 'מאמרים', path: '/articles' })
+    return items
+  }
+  if (norm === '/privacy-policy') {
+    items.push({ name: 'מדיניות פרטיות', path: '/privacy-policy' })
+    return items
+  }
+  if (norm === '/terms-of-use') {
+    items.push({ name: 'תנאי שימוש', path: '/terms-of-use' })
+    return items
+  }
+  if (norm === '/accessibility-statement') {
+    items.push({ name: 'הצהרת נגישות', path: '/accessibility-statement' })
     return items
   }
   if (norm === '/miklahon-guide') {

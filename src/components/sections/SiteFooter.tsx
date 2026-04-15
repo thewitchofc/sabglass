@@ -43,6 +43,33 @@ export function SiteFooter() {
                 </Link>
               </li>
             </ul>
+            <h4 className="mt-8 text-xs font-medium uppercase tracking-[0.2em] text-neutral-600">{footer.legalTitle}</h4>
+            <ul className="mt-3 space-y-2 text-sm font-light">
+              <li>
+                <Link
+                  to="/privacy-policy"
+                  className="text-neutral-600 underline-offset-4 transition-colors hover:text-neutral-950 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950/25 focus-visible:ring-offset-2"
+                >
+                  {footer.linkPrivacyPolicy}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/terms-of-use"
+                  className="text-neutral-600 underline-offset-4 transition-colors hover:text-neutral-950 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950/25 focus-visible:ring-offset-2"
+                >
+                  {footer.linkTermsOfUse}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/accessibility-statement"
+                  className="text-neutral-600 underline-offset-4 transition-colors hover:text-neutral-950 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950/25 focus-visible:ring-offset-2"
+                >
+                  {footer.linkAccessibilityStatement}
+                </Link>
+              </li>
+            </ul>
           </div>
           <div className="min-w-0 text-start">
             <h3 id="contact-heading" className="text-sm font-medium text-neutral-950">
