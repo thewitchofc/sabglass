@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { premiumCopy } from '../../content/premium'
-import { heroBackgroundImage } from '../../data/catalog'
 
 export function Hero() {
   const { hero, brand } = premiumCopy
@@ -14,20 +13,16 @@ export function Hero() {
       aria-labelledby="hero-heading"
     >
       {/* רקע: במובייל מזיזים מיקוד לצד המקלחון (ימין בתמונה); בדסקטופ מרכז */}
-      <div className="absolute inset-0 overflow-hidden bg-neutral-900" aria-hidden>
-        <img
-          src={heroBackgroundImage}
-          srcSet={`${heroBackgroundImage} 480w, ${heroBackgroundImage} 768w, ${heroBackgroundImage} 1200w`}
-          sizes="100vw"
-          alt=""
-          width={1920}
-          height={1080}
-          fetchPriority="high"
-          loading="eager"
-          decoding="async"
-          className="h-full w-full object-cover object-[76%_40%] md:object-center"
-        />
-      </div>
+      <div
+        className="absolute inset-0 h-full w-full overflow-hidden bg-neutral-900"
+        style={{
+          backgroundImage: "url('/hero-bg.webp')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+        aria-hidden
+      />
       {/* קריאות טקסט לבן ב־RTL: כהה מהצד שבו הטקסט (התחלה = ימין) */}
       <div
         className="pointer-events-none absolute inset-0 bg-gradient-to-l from-black/45 via-black/15 to-transparent md:hidden"
