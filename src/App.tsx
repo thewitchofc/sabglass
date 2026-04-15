@@ -53,6 +53,38 @@ function App() {
     }
   }, [])
 
+  useEffect(() => {
+    const isInsideScrollableElement = (target: EventTarget | null) => {
+      if (!(target instanceof Element)) return false
+      let el: Element | null = target
+      while (el && el !== document.body) {
+        const style = window.getComputedStyle(el)
+        const overflowY = style.overflowY
+        if ((overflowY === 'auto' || overflowY === 'scroll') && el.scrollHeight > el.clientHeight) return true
+        el = el.parentElement
+      }
+      return false
+    }
+
+    const hasBlockingOverlayOpen = () => {
+      const modalOpen = Boolean(document.querySelector('[role="dialog"][aria-modal="true"]'))
+      const mobileMenuOpen = Boolean(document.getElementById('mobile-nav'))
+      return modalOpen || mobileMenuOpen
+    }
+
+    const handleWheel = (e: WheelEvent) => {
+      if (e.defaultPrevented) return
+      if (hasBlockingOverlayOpen()) return
+      if (isInsideScrollableElement(e.target)) return
+      window.scrollBy({ top: e.deltaY, behavior: 'auto' })
+    }
+
+    window.addEventListener('wheel', handleWheel, { passive: true })
+    return () => {
+      window.removeEventListener('wheel', handleWheel)
+    }
+  }, [])
+
   return (
     <BrowserRouter>
       <ScrollToTop />
