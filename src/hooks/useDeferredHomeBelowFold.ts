@@ -16,14 +16,12 @@ function needsBelowFoldForHash(hash: string): boolean {
  */
 export function useDeferredHomeBelowFold() {
   const { hash } = useLocation()
-  const [ready, setReady] = useState(() => needsBelowFoldForHash(hash))
+  const hashNeedsBelowFold = needsBelowFoldForHash(hash)
+  const [ready, setReady] = useState(() => hashNeedsBelowFold)
+  const shouldLoad = ready || hashNeedsBelowFold
 
   useEffect(() => {
-    if (needsBelowFoldForHash(hash)) setReady(true)
-  }, [hash])
-
-  useEffect(() => {
-    if (ready) return
+    if (shouldLoad) return
 
     let cancelled = false
     const load = () => {
@@ -68,7 +66,7 @@ export function useDeferredHomeBelowFold() {
         window.cancelIdleCallback(idleId)
       }
     }
-  }, [ready])
+  }, [shouldLoad])
 
-  return ready
+  return shouldLoad
 }

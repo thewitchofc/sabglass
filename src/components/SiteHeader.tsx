@@ -30,7 +30,6 @@ export function SiteHeader() {
   }, [])
 
   useEffect(() => {
-    if (!mobileOpen) setMobileCatalogExpanded(false)
     if (!mobileOpen) document.body.style.overflow = ''
   }, [mobileOpen])
 
@@ -237,7 +236,12 @@ export function SiteHeader() {
             aria-expanded={mobileOpen}
             aria-controls="mobile-nav"
             aria-label={mobileOpen ? navCopy.closeMenu : navCopy.openMenu}
-            onClick={() => setMobileOpen((v) => !v)}
+            onClick={() =>
+              setMobileOpen((v) => {
+                if (v) setMobileCatalogExpanded(false)
+                return !v
+              })
+            }
           >
             <span className="sr-only">{mobileOpen ? navCopy.closeMenu : navCopy.openMenu}</span>
             <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>

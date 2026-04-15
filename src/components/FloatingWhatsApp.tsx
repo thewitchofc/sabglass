@@ -8,20 +8,26 @@ export function FloatingWhatsApp() {
   const label = premiumCopy.a11y.whatsappFloating
 
   return (
-    <motion.a
-      href={href}
-      className="fixed z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_8px_28px_rgba(37,211,102,0.42)] ring-2 ring-white/90 transition-transform duration-300 hover:scale-105 hover:bg-[#1DA851] hover:shadow-[0_10px_32px_rgba(29,168,81,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#25D366] right-4 bottom-4"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={label}
-      onClick={() => trackWhatsAppClick('article')}
-      initial={{ opacity: 0, scale: 0.85 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-      whileTap={{ scale: 0.95 }}
+    <section
+      role="region"
+      aria-label="פעולה מהירה"
+      className="fixed right-4 bottom-4 z-40 h-14 w-14"
     >
-      <WhatsAppIcon className="h-7 w-7 md:h-8 md:w-8" />
-    </motion.a>
+      <motion.a
+        href={href}
+        className="flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_8px_28px_rgba(37,211,102,0.42)] ring-2 ring-white/90 transition-transform duration-300 hover:scale-105 hover:bg-[#1DA851] hover:shadow-[0_10px_32px_rgba(29,168,81,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#25D366]"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={label}
+        onClick={() => trackWhatsAppClick('article')}
+        initial={{ opacity: 0, scale: 0.85 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <WhatsAppIcon className="h-7 w-7 md:h-8 md:w-8" />
+      </motion.a>
+    </section>
   )
 }
 

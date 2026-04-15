@@ -1,5 +1,9 @@
 import { defineConfig, devices } from '@playwright/test'
 
+/** פורט נפרד מ־`vite` הרגיל (5173) כדי שלא ייטען פרויקט אחר כש־`reuseExistingServer` פעיל */
+const E2E_DEV_PORT = 5174
+const e2eBaseUrl = `http://localhost:${E2E_DEV_PORT}`
+
 export default defineConfig({
   testDir: './e2e',
   fullyParallel: true,
@@ -7,14 +11,13 @@ export default defineConfig({
   retries: 0,
   reporter: 'list',
   use: {
-    baseURL: 'http://localhost:5173',
+    baseURL: e2eBaseUrl,
     trace: 'on-first-retry',
   },
   projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
   webServer: {
-    command: 'npm run dev',
-    url: 'http://localhost:5173',
-    // מאפשר הרצה מקומית כש־`npm run dev` כבר רץ; ב־CI הפורט בדרך כלל פנוי והשרת יעלה כאן
-    reuseExistingServer: true,
+    command: `npm run dev -- --port ${E2E_DEV_PORT}`,
+    url: e2eBaseUrl,
+    reuseExistingServer: false,
   },
 })

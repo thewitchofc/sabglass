@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom'
+import { WhatsAppLink } from '../ui/WhatsAppLink'
 import { premiumCopy } from '../../content/premium'
+import { WHATSAPP_PHOTO_MESSAGE } from '../../config/site'
 
 export function Hero() {
-  const { hero, brand } = premiumCopy
+  const { hero, brand, primaryCta, a11y } = premiumCopy
 
   return (
     <section
@@ -106,6 +108,17 @@ export function Hero() {
         >
           {hero.outcomeHint}
         </p>
+
+        <WhatsAppLink
+          variant="whatsapp"
+          size="lg"
+          message={WHATSAPP_PHOTO_MESSAGE}
+          ariaLabel={a11y.whatsappSendPhotoQuote}
+          trackingLabel="hero"
+          className="mt-6 w-fit"
+        >
+          {primaryCta}
+        </WhatsAppLink>
 
         <p
           className="mt-3 hidden max-w-[95%] text-xs font-light leading-relaxed text-white md:block md:max-w-xl md:text-sm"
