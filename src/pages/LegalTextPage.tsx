@@ -2,7 +2,7 @@ import { SiteFooter } from '../components/sections/SiteFooter'
 
 type LegalSection = {
   title: string
-  paragraphs: string[]
+  paragraphs: readonly string[]
 }
 
 type LegalTextPageProps = {
