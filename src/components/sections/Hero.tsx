@@ -9,11 +9,12 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden pt-20 scroll-mt-0 antialiased md:h-[calc(var(--vh)*100)] md:items-stretch md:justify-end md:pt-0"
+      className="relative flex flex-col justify-end overflow-hidden scroll-mt-0 antialiased"
+      style={{ height: 'calc(var(--vh) * 100)' }}
       aria-labelledby="hero-heading"
     >
       {/* רקע: במובייל מזיזים מיקוד לצד המקלחון (ימין בתמונה); בדסקטופ מרכז */}
-      <div className="max-md:relative md:absolute md:inset-0 w-full h-full overflow-hidden bg-neutral-900" aria-hidden>
+      <div className="absolute inset-0 overflow-hidden bg-neutral-900" aria-hidden>
         <img
           src={heroBackgroundImage}
           srcSet={`${heroBackgroundImage} 480w, ${heroBackgroundImage} 768w, ${heroBackgroundImage} 1200w`}
@@ -24,7 +25,7 @@ export function Hero() {
           fetchPriority="high"
           loading="eager"
           decoding="async"
-          className="h-full w-full max-md:h-full max-md:w-full object-cover object-[76%_40%] md:object-center"
+          className="h-full w-full object-cover object-[76%_40%] md:object-center"
         />
       </div>
       {/* קריאות טקסט לבן ב־RTL: כהה מהצד שבו הטקסט (התחלה = ימין) */}
@@ -39,8 +40,9 @@ export function Hero() {
       />
 
       {/* justify-start ב־RTL = יישור לימין המסך */}
-      <div className="relative z-10 flex w-full justify-start pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] pb-[max(1.5rem,env(safe-area-inset-bottom,0px))] pt-10 max-md:mb-6 md:mb-0 md:px-8 md:pb-24 md:pt-48">
-        <div className="w-full max-w-6xl">
+      <div className="relative z-10 pt-14 md:pt-[3.25rem]">
+        <div className="flex w-full justify-start pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] pb-[max(1.5rem,env(safe-area-inset-bottom,0px))] pt-10 max-md:mb-6 md:mb-0 md:px-8 md:pb-24 md:pt-48">
+          <div className="w-full max-w-6xl">
         {/* מובייל: לוגו ממורכז, טיפוגרפיה בולטת וקריאה על רקע התמונה */}
         <div className="mb-4 flex w-full flex-col items-center justify-center text-center [text-rendering:geometricPrecision] md:hidden">
           <Link
@@ -133,6 +135,7 @@ export function Hero() {
         >
           {hero.serviceReach}
         </motion.p>
+          </div>
         </div>
       </div>
     </section>

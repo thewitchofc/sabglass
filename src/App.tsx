@@ -58,7 +58,7 @@ function App() {
       <ScrollToTop />
       <SeoHead />
       <SiteHeader />
-      <main className="pt-14 md:pt-[3.25rem]">
+      <main>
         <Suspense fallback={null}>
           <Routes>
             <Route path="/" element={<HomePage />} />
