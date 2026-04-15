@@ -14,7 +14,7 @@ export function Hero() {
       aria-labelledby="hero-heading"
     >
       {/* רקע: במובייל מזיזים מיקוד לצד המקלחון (ימין בתמונה); בדסקטופ מרכז */}
-      <div className="absolute inset-0 overflow-hidden bg-neutral-900" aria-hidden>
+      <div className="max-md:relative md:absolute md:inset-0 overflow-hidden bg-neutral-900" aria-hidden>
         <img
           src={heroBackgroundImage}
           srcSet={`${heroBackgroundImage} 480w, ${heroBackgroundImage} 768w, ${heroBackgroundImage} 1200w`}
@@ -25,7 +25,7 @@ export function Hero() {
           fetchPriority="high"
           loading="eager"
           decoding="async"
-          className="h-full w-full object-cover object-[76%_40%] md:object-center"
+          className="h-full w-full max-md:h-full max-md:w-full object-cover object-[76%_40%] md:object-center"
         />
       </div>
       {/* קריאות טקסט לבן ב־RTL: כהה מהצד שבו הטקסט (התחלה = ימין) */}
