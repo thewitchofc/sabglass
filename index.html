@@ -166,6 +166,10 @@
     <div id="root" style="position: relative; z-index: 1"></div>
     <script type="module" src="/src/main.tsx"></script>
     <script>
+      window.addEventListener('load', () => {
+        document.body.style.overflow = ''
+      })
+
       (function () {
         var loaded = false
         var loadScript = function () {

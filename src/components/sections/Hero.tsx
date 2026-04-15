@@ -7,8 +7,8 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative flex flex-col justify-end overflow-hidden scroll-mt-0 antialiased"
-      style={{ height: 'calc(var(--vh, 1vh) * 100)' }}
+      className="relative flex flex-col justify-end scroll-mt-0 antialiased"
+      style={{ minHeight: 'calc(var(--vh, 1vh) * 100)' }}
       aria-labelledby="hero-heading"
     >
       {/* רקע: במובייל מזיזים מיקוד לצד המקלחון (ימין בתמונה); בדסקטופ מרכז */}
