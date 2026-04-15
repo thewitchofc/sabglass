@@ -53,9 +53,9 @@ export function Gallery() {
           >
             {gallery.title}
           </h1>
-          <p className="mt-2 text-xl font-light tracking-tight text-neutral-950 md:mt-3 md:text-2xl">
+          <h2 className="mt-2 text-xl font-light tracking-tight text-neutral-950 md:mt-3 md:text-2xl">
             {gallery.titlePick}
-          </p>
+          </h2>
           <p className="mt-5 max-w-[95%] text-sm font-light leading-relaxed text-neutral-600 md:hidden">
             {gallery.subtitleMobile}
           </p>

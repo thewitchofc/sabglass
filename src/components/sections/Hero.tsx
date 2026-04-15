@@ -13,16 +13,20 @@ export function Hero() {
       aria-labelledby="hero-heading"
     >
       {/* רקע: במובייל מזיזים מיקוד לצד המקלחון (ימין בתמונה); בדסקטופ מרכז */}
-      <div
-        className="absolute inset-0 h-full w-full overflow-hidden bg-neutral-900"
-        style={{
-          backgroundImage: "url('/hero-bg.webp')",
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-        }}
-        aria-hidden
-      />
+      <div className="absolute inset-0 overflow-hidden bg-neutral-900" aria-hidden>
+        <img
+          src="/hero-bg-1200.webp"
+          srcSet="/hero-bg-480.webp 480w, /hero-bg-768.webp 768w, /hero-bg-1200.webp 1200w"
+          sizes="100vw"
+          alt=""
+          width={1920}
+          height={1080}
+          fetchPriority="high"
+          decoding="async"
+          loading="eager"
+          className="h-full w-full object-cover object-[76%_40%] md:object-center"
+        />
+      </div>
       {/* קריאות טקסט לבן ב־RTL: כהה מהצד שבו הטקסט (התחלה = ימין) */}
       <div
         className="pointer-events-none absolute inset-0 bg-gradient-to-l from-black/45 via-black/15 to-transparent md:hidden"
@@ -55,7 +59,7 @@ export function Hero() {
         </div>
         <motion.h1
           id="hero-heading"
-          className="hidden max-w-[95%] text-balance text-3xl font-light leading-[1.15] tracking-tight text-white md:block md:max-w-4xl md:text-5xl lg:text-6xl xl:text-7xl"
+          className="sr-only max-w-[95%] text-balance text-3xl font-light leading-[1.15] tracking-tight text-white md:not-sr-only md:max-w-4xl md:text-5xl lg:text-6xl xl:text-7xl"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.85, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}

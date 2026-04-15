@@ -57,8 +57,11 @@ function App() {
     <BrowserRouter>
       <ScrollToTop />
       <SeoHead />
+      <a href="#main-content" className="sr-only focus:not-sr-only">
+        דלג לתוכן הראשי
+      </a>
       <SiteHeader />
-      <main>
+      <main id="main-content">
         <Suspense fallback={null}>
           <Routes>
             <Route path="/" element={<HomePage />} />

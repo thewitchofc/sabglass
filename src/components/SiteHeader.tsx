@@ -94,6 +94,12 @@ export function SiteHeader() {
 
   const headerWaClass =
     'inline-flex max-w-[10.5rem] shrink-0 items-center justify-center gap-1.5 rounded-sm border-2 border-neutral-950 bg-white px-2 py-2 text-center text-[10px] font-medium leading-tight text-neutral-950 transition-colors hover:bg-neutral-950 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 md:max-w-[14rem] md:px-3 md:py-2 md:text-xs md:leading-snug lg:max-w-none lg:text-[13px]'
+  const isHomeCurrent = location.pathname === '/' && (!location.hash || location.hash === '#home')
+  const isGuideCurrent = location.pathname === '/miklahon-guide'
+  const isContactCurrent = location.pathname === '/' && location.hash === '#contact'
+  const isArticlesCurrent = location.pathname === '/articles' || location.pathname.startsWith('/articles/')
+  const isCatalogCurrent =
+    location.pathname === '/catalog' || location.pathname === '/shower-glass-custom' || location.pathname === '/catalog/'
 
   return (
     <header
@@ -103,6 +109,7 @@ export function SiteHeader() {
         <Link
           to="/"
           onClick={onHomeClick}
+          aria-current={isHomeCurrent ? 'page' : undefined}
           className="relative z-[71] flex shrink-0 flex-col items-start gap-0.5 rounded-sm text-neutral-950 transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950/35 focus-visible:ring-offset-2 [text-rendering:geometricPrecision]"
         >
           <span className="text-sm font-bold tracking-[0.14em]">{brand.name}</span>
@@ -138,6 +145,7 @@ export function SiteHeader() {
               >
                 <Link
                   to="/catalog"
+                  aria-current={isCatalogCurrent ? 'page' : undefined}
                   className="block rounded-sm px-4 py-2 text-[12px] font-medium text-neutral-600 transition-colors hover:bg-neutral-50 hover:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-neutral-950/20"
                   onClick={onCatalogRootClick}
                 >
@@ -145,6 +153,7 @@ export function SiteHeader() {
                 </Link>
                 <Link
                   to="/shower-glass-custom"
+                  aria-current={location.pathname === '/shower-glass-custom' ? 'page' : undefined}
                   className="block rounded-sm px-4 py-2 text-[12px] font-light text-neutral-700 transition-colors hover:bg-neutral-50 hover:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-neutral-950/20"
                   onClick={closeAll}
                 >
@@ -168,11 +177,21 @@ export function SiteHeader() {
             )}
           </div>
 
-          <Link to="/miklahon-guide" className={`${linkClass} px-1 py-0.5`} onClick={closeAll}>
+          <Link
+            to="/miklahon-guide"
+            className={`${linkClass} px-1 py-0.5`}
+            onClick={closeAll}
+            aria-current={isGuideCurrent ? 'page' : undefined}
+          >
             מדריך מקלחונים
           </Link>
 
-          <Link to="/#contact" onClick={onHomeHashClick('#contact')} className={`${linkClass} px-1 py-0.5`}>
+          <Link
+            to="/#contact"
+            onClick={onHomeHashClick('#contact')}
+            className={`${linkClass} px-1 py-0.5`}
+            aria-current={isContactCurrent ? 'page' : undefined}
+          >
             {navCopy.contact}
           </Link>
         </nav>
@@ -239,6 +258,7 @@ export function SiteHeader() {
             </a>
             <Link
               to="/"
+              aria-current={isHomeCurrent ? 'page' : undefined}
               className="rounded-sm px-3 py-3 text-sm font-medium text-neutral-800 hover:bg-neutral-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-neutral-950/20"
               onClick={onHomeClick}
             >
@@ -282,6 +302,7 @@ export function SiteHeader() {
               >
                 <Link
                   to="/catalog"
+                  aria-current={isCatalogCurrent ? 'page' : undefined}
                   className="rounded-sm py-2.5 text-sm font-medium text-neutral-700 hover:bg-neutral-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-neutral-950/20"
                   onClick={onCatalogRootClick}
                 >
@@ -299,6 +320,7 @@ export function SiteHeader() {
                 ))}
                 <Link
                   to="/shower-glass-custom"
+                  aria-current={location.pathname === '/shower-glass-custom' ? 'page' : undefined}
                   className="rounded-sm py-2.5 text-sm font-light text-neutral-700 hover:bg-neutral-50 hover:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-neutral-950/20"
                   onClick={closeAll}
                 >
@@ -308,6 +330,7 @@ export function SiteHeader() {
             )}
             <Link
               to="/articles"
+              aria-current={isArticlesCurrent ? 'page' : undefined}
               className="rounded-sm px-3 py-3 text-sm font-medium text-neutral-800 hover:bg-neutral-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-neutral-950/20"
               onClick={closeAll}
             >
@@ -315,6 +338,7 @@ export function SiteHeader() {
             </Link>
             <Link
               to="/miklahon-guide"
+              aria-current={isGuideCurrent ? 'page' : undefined}
               className="rounded-sm px-3 py-3 text-sm font-medium text-neutral-800 hover:bg-neutral-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-neutral-950/20"
               onClick={closeAll}
             >
@@ -322,6 +346,7 @@ export function SiteHeader() {
             </Link>
             <Link
               to="/#contact"
+              aria-current={isContactCurrent ? 'page' : undefined}
               className="mt-4 rounded-sm px-3 py-3 text-sm font-medium text-neutral-800 hover:bg-neutral-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-neutral-950/20"
               onClick={onHomeHashClick('#contact')}
             >

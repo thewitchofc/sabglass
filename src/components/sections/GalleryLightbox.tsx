@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { useCallback, useEffect } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 import type { GalleryItem } from '../../data/catalog'
 
 type Props = {
@@ -13,6 +13,8 @@ type Props = {
 export function GalleryLightbox({ items, index, onClose, onPrev, onNext }: Props) {
   const open = index !== null
   const item = open ? items[index] : null
+  const dialogRef = useRef<HTMLDivElement | null>(null)
+  const previousFocusedRef = useRef<HTMLElement | null>(null)
 
   const onKeyDown = useCallback(
     (e: KeyboardEvent) => {
@@ -31,22 +33,72 @@ export function GalleryLightbox({ items, index, onClose, onPrev, onNext }: Props
 
   useEffect(() => {
     if (open) {
+      previousFocusedRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null
       const prev = document.body.style.overflow
       document.body.style.overflow = 'hidden'
+      const focusTimer = window.setTimeout(() => {
+        const dialog = dialogRef.current
+        if (!dialog) return
+        const firstFocusable = dialog.querySelector<HTMLElement>(
+          'button:not([disabled]), a[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        )
+        ;(firstFocusable ?? dialog).focus()
+      }, 0)
       return () => {
+        window.clearTimeout(focusTimer)
         document.body.style.overflow = prev
+        previousFocusedRef.current?.focus()
       }
     }
+  }, [open])
+
+  useEffect(() => {
+    if (!open) return
+
+    const trapFocus = (e: KeyboardEvent) => {
+      if (e.key !== 'Tab') return
+      const dialog = dialogRef.current
+      if (!dialog) return
+
+      const focusables = Array.from(
+        dialog.querySelectorAll<HTMLElement>(
+          'button:not([disabled]), a[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        ),
+      ).filter((el) => !el.hasAttribute('disabled') && el.tabIndex !== -1)
+
+      if (focusables.length === 0) {
+        e.preventDefault()
+        dialog.focus()
+        return
+      }
+
+      const first = focusables[0]
+      const last = focusables[focusables.length - 1]
+      const active = document.activeElement as HTMLElement | null
+
+      if (!e.shiftKey && active === last) {
+        e.preventDefault()
+        first.focus()
+      } else if (e.shiftKey && (active === first || active === dialog)) {
+        e.preventDefault()
+        last.focus()
+      }
+    }
+
+    window.addEventListener('keydown', trapFocus)
+    return () => window.removeEventListener('keydown', trapFocus)
   }, [open])
 
   return (
     <AnimatePresence>
       {open && item && (
         <motion.div
+          ref={dialogRef}
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/92 p-3 pt-[max(0.75rem,env(safe-area-inset-top,0px))] pb-[max(0.75rem,env(safe-area-inset-bottom,0px))] pl-[max(0.75rem,env(safe-area-inset-left,0px))] pr-[max(0.75rem,env(safe-area-inset-right,0px))] backdrop-blur-sm sm:p-4"
           role="dialog"
           aria-modal="true"
           aria-label={`תצוגת גלריה מוגדלת — ${item.alt}`}
+          tabIndex={-1}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
