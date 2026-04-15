@@ -169,22 +169,6 @@
       window.addEventListener('load', () => {
         document.body.style.overflow = ''
       })
-
-      (function () {
-        var loaded = false
-        var loadScript = function () {
-          if (loaded) return
-          loaded = true
-          window.removeEventListener('scroll', loadScript)
-          window.removeEventListener('click', loadScript)
-          var s = document.createElement('script')
-          s.src = 'https://cdn.enable.co.il/licenses/enable-L54786fccdpmdkdu-0426-81289/init.js'
-          s.async = true
-          document.body.appendChild(s)
-        }
-        window.addEventListener('scroll', loadScript, { once: true, passive: true })
-        window.addEventListener('click', loadScript, { once: true })
-      })()
     </script>
   </body>
 </html>
