@@ -34,6 +34,7 @@ export function SiteHeader() {
 
   useEffect(() => {
     if (!mobileOpen) return
+    if (typeof window !== 'undefined' && window.matchMedia('(min-width: 768px)').matches) return
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') closeAll()
     }
@@ -45,6 +46,18 @@ export function SiteHeader() {
       document.body.style.overflow = prev
     }
   }, [mobileOpen, closeAll])
+
+  useEffect(() => {
+    const onResize = () => {
+      if (window.matchMedia('(min-width: 768px)').matches) {
+        setMobileOpen(false)
+        setMobileCatalogExpanded(false)
+        document.body.style.overflow = ''
+      }
+    }
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
 
   useEffect(() => {
     const onDocClick = (e: MouseEvent) => {
