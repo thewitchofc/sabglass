@@ -24,7 +24,7 @@ export function Hero() {
           fetchPriority="high"
           loading="eager"
           decoding="async"
-          className="h-full w-full object-cover object-[76%_40%] md:object-center"
+          className="h-full w-full object-cover object-[76%_40%] max-md:!transform-none max-md:!scale-100 max-md:!translate-x-0 max-md:!translate-y-0 max-md:!animate-none md:object-center"
         />
       </div>
       {/* קריאות טקסט לבן ב־RTL: כהה מהצד שבו הטקסט (התחלה = ימין) */}
