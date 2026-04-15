@@ -9,12 +9,11 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative flex flex-col justify-end overflow-hidden scroll-mt-0 antialiased"
-      style={{ height: 'calc(var(--vh) * 100)' }}
+      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden pt-20 scroll-mt-0 antialiased md:h-[calc(var(--vh)*100)] md:items-stretch md:justify-end md:pt-0"
       aria-labelledby="hero-heading"
     >
       {/* רקע: במובייל מזיזים מיקוד לצד המקלחון (ימין בתמונה); בדסקטופ מרכז */}
-      <div className="max-md:relative md:absolute md:inset-0 overflow-hidden bg-neutral-900" aria-hidden>
+      <div className="max-md:relative md:absolute md:inset-0 w-full h-full overflow-hidden bg-neutral-900" aria-hidden>
         <img
           src={heroBackgroundImage}
           srcSet={`${heroBackgroundImage} 480w, ${heroBackgroundImage} 768w, ${heroBackgroundImage} 1200w`}

@@ -58,21 +58,23 @@ function App() {
       <ScrollToTop />
       <SeoHead />
       <SiteHeader />
-      <Suspense fallback={null}>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/catalog" element={<CatalogPage />} />
-          <Route path="/shower-glass-custom" element={<ShowerGlassServicePage />} />
-          <Route path="/articles" element={<ArticlesIndexPage />} />
-          <Route path="/articles/:slug" element={<ArticlePage />} />
-          <Route path="/miklahon-guide" element={<MiklahonGuidePage />} />
-          <Route path="/miklahon-center-israel" element={<MiklahonCenterIsraelPage />} />
-          <Route path="/miklahon-rishon-lezion" element={<Navigate to="/miklahon-center-israel" replace />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-          <Route path="/terms-of-use" element={<TermsOfUsePage />} />
-          <Route path="/accessibility-statement" element={<AccessibilityStatementPage />} />
-        </Routes>
-      </Suspense>
+      <main className="pt-14 md:pt-[3.25rem]">
+        <Suspense fallback={null}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/catalog" element={<CatalogPage />} />
+            <Route path="/shower-glass-custom" element={<ShowerGlassServicePage />} />
+            <Route path="/articles" element={<ArticlesIndexPage />} />
+            <Route path="/articles/:slug" element={<ArticlePage />} />
+            <Route path="/miklahon-guide" element={<MiklahonGuidePage />} />
+            <Route path="/miklahon-center-israel" element={<MiklahonCenterIsraelPage />} />
+            <Route path="/miklahon-rishon-lezion" element={<Navigate to="/miklahon-center-israel" replace />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+            <Route path="/terms-of-use" element={<TermsOfUsePage />} />
+            <Route path="/accessibility-statement" element={<AccessibilityStatementPage />} />
+          </Routes>
+        </Suspense>
+      </main>
       <FloatingWhatsApp />
     </BrowserRouter>
   )
