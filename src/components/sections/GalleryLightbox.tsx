@@ -97,7 +97,8 @@ export function GalleryLightbox({ items, index, onClose, onPrev, onNext }: Props
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/92 p-3 pt-[max(0.75rem,env(safe-area-inset-top,0px))] pb-[max(0.75rem,env(safe-area-inset-bottom,0px))] pl-[max(0.75rem,env(safe-area-inset-left,0px))] pr-[max(0.75rem,env(safe-area-inset-right,0px))] backdrop-blur-sm sm:p-4"
           role="dialog"
           aria-modal="true"
-          aria-label={`תצוגת גלריה מוגדלת — ${item.alt}`}
+          aria-labelledby="lightbox-title"
+          aria-describedby="lightbox-description"
           tabIndex={-1}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -105,6 +106,12 @@ export function GalleryLightbox({ items, index, onClose, onPrev, onNext }: Props
           transition={{ duration: 0.35 }}
           onClick={onClose}
         >
+          <h2 id="lightbox-title" className="sr-only">
+            תצוגת תמונה
+          </h2>
+          <p id="lightbox-description" className="sr-only">
+            חלון תצוגת תמונה מוגדלת. ניתן לנווט בין תמונות בעזרת החיצים ולסגור עם מקש Escape.
+          </p>
           <motion.button
             type="button"
             className="absolute z-[110] flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white transition-colors hover:border-white/50 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/80 end-[max(1rem,env(safe-area-inset-right,0px))] top-[max(1rem,env(safe-area-inset-top,0px))]"

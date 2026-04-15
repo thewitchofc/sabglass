@@ -31,7 +31,7 @@ export function MidCta() {
           {midCta.title}
         </motion.h2>
         <motion.p
-          className="mx-auto mt-6 max-w-[95%] text-pretty text-base font-light leading-relaxed text-white/80 md:max-w-md md:text-xl"
+          className="mx-auto mt-6 max-w-[95%] text-pretty text-base font-light leading-relaxed text-white md:max-w-md md:text-xl"
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

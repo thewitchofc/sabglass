@@ -28,7 +28,7 @@ export function Hero() {
       </div>
       {/* קריאות טקסט לבן ב־RTL: כהה מהצד שבו הטקסט (התחלה = ימין) */}
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-l from-black/45 via-black/15 to-transparent md:hidden"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-l from-black/55 via-black/25 to-transparent md:hidden"
         aria-hidden
       />
       <div className="absolute inset-0 bg-black/10" aria-hidden />
@@ -66,10 +66,10 @@ export function Hero() {
         <div
           className="mt-4 max-w-[95%] space-y-1.5 md:hidden"
         >
-          <p className="text-pretty text-[0.8125rem] font-light leading-relaxed text-white/90">
+          <p className="text-pretty text-[0.8125rem] font-light leading-relaxed text-white">
             {hero.leadMobileLine1}
           </p>
-          <p className="text-pretty text-[11px] font-light leading-relaxed text-white/78">{hero.leadMobileLine2}</p>
+          <p className="text-pretty text-[11px] font-light leading-relaxed text-white">{hero.leadMobileLine2}</p>
         </div>
 
         <ul
@@ -79,7 +79,7 @@ export function Hero() {
           {hero.trustMicroMobile.map((line) => (
             <li
               key={line}
-              className="flex items-start gap-2 text-[10.5px] font-light leading-snug text-white/75"
+              className="flex items-start gap-2 text-[10.5px] font-light leading-snug text-white"
             >
               <span className="mt-px shrink-0 text-white/55" aria-hidden>
                 ✔
@@ -90,25 +90,25 @@ export function Hero() {
         </ul>
 
         <p
-          className="mt-5 hidden max-w-[95%] text-sm font-light leading-relaxed tracking-wide text-white/90 md:block md:max-w-2xl md:text-base md:leading-normal"
+          className="mt-5 hidden max-w-[95%] text-sm font-light leading-relaxed tracking-wide text-white md:block md:max-w-2xl md:text-base md:leading-normal"
         >
           {hero.differentiators}
         </p>
 
         <p
-          className="mt-4 hidden max-w-[95%] text-xs font-light leading-relaxed text-white/90 md:block md:max-w-2xl md:text-sm"
+          className="mt-4 hidden max-w-[95%] text-xs font-light leading-relaxed text-white md:block md:max-w-2xl md:text-sm"
         >
           {hero.scarcity}
         </p>
 
         <p
-          className="mt-6 hidden max-w-[95%] text-sm font-light leading-relaxed text-white/90 md:block md:max-w-xl md:text-base md:leading-normal"
+          className="mt-6 hidden max-w-[95%] text-sm font-light leading-relaxed text-white md:block md:max-w-xl md:text-base md:leading-normal"
         >
           {hero.outcomeHint}
         </p>
 
         <p
-          className="mt-3 hidden max-w-[95%] text-xs font-light leading-relaxed text-white/90 md:block md:max-w-xl md:text-sm"
+          className="mt-3 hidden max-w-[95%] text-xs font-light leading-relaxed text-white md:block md:max-w-xl md:text-sm"
         >
           {hero.serviceReach}
         </p>
