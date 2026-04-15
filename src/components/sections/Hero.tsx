@@ -9,7 +9,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden scroll-mt-0 antialiased md:min-h-[100dvh]"
+      className="relative flex h-[100lvh] flex-col justify-end overflow-hidden scroll-mt-0 antialiased md:h-[100dvh]"
       aria-labelledby="hero-heading"
     >
       {/* רקע: במובייל מזיזים מיקוד לצד המקלחון (ימין בתמונה); בדסקטופ מרכז */}
