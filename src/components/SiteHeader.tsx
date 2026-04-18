@@ -16,6 +16,9 @@ export function SiteHeader() {
   const location = useLocation()
   const [mobileOpen, setMobileOpen] = useState(false)
   const [catalogOpen, setCatalogOpen] = useState(false)
+  /** דסקטופ בדף הבית: כותרת שקופה מעל ה־Hero כדי שהמותג ייראה טבוע בתמונה */
+  const [atHeroTop, setAtHeroTop] = useState(true)
+  const [isDesktop, setIsDesktop] = useState(false)
   /** תפריט מובייל: קטלוג כ־accordion (סגור כברירת מחדל) */
   const [mobileCatalogExpanded, setMobileCatalogExpanded] = useState(false)
   const catalogRef = useRef<HTMLDivElement>(null)
@@ -63,6 +66,21 @@ export function SiteHeader() {
   }, [])
 
   useEffect(() => {
+    const mq = window.matchMedia('(min-width: 768px)')
+    const syncDesktop = () => setIsDesktop(mq.matches)
+    syncDesktop()
+    mq.addEventListener('change', syncDesktop)
+    return () => mq.removeEventListener('change', syncDesktop)
+  }, [])
+
+  useEffect(() => {
+    const onScroll = () => setAtHeroTop(window.scrollY < 48)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  useEffect(() => {
     const onDocClick = (e: MouseEvent) => {
       if (!catalogRef.current?.contains(e.target as Node)) setCatalogOpen(false)
     }
@@ -106,10 +124,10 @@ export function SiteHeader() {
   }
 
   const linkClass =
-    'rounded-sm text-[13px] font-medium tracking-wide text-neutral-600 transition-colors duration-300 hover:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950/35 focus-visible:ring-offset-2'
+    'rounded-sm text-[13px] font-medium tracking-wide transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2'
 
   const headerWaClass =
-    'inline-flex max-w-[10.5rem] shrink-0 items-center justify-center gap-1.5 rounded-sm border-2 border-neutral-950 bg-white px-2 py-2 text-center text-[10px] font-medium leading-tight text-neutral-950 transition-colors hover:bg-neutral-950 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 md:max-w-[14rem] md:px-3 md:py-2 md:text-xs md:leading-snug lg:max-w-none lg:text-[13px]'
+    'inline-flex max-w-[10.5rem] shrink-0 items-center justify-center gap-1.5 rounded-sm border-2 px-2 py-2 text-center text-[10px] font-medium leading-tight transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 md:max-w-[14rem] md:px-3 md:py-2 md:text-xs md:leading-snug lg:max-w-none lg:text-[13px]'
   const isHomeCurrent = location.pathname === '/' && (!location.hash || location.hash === '#home')
   const isGuideCurrent = location.pathname === '/miklahon-guide'
   const isContactCurrent = location.pathname === '/' && location.hash === '#contact'
@@ -117,19 +135,50 @@ export function SiteHeader() {
   const isCatalogCurrent =
     location.pathname === '/catalog' || location.pathname === '/shower-glass-custom' || location.pathname === '/catalog/'
 
+  const blendOverHero =
+    isHomeCurrent &&
+    isDesktop &&
+    atHeroTop &&
+    !mobileOpen &&
+    !catalogOpen
+
+  const midNavLinkClass = blendOverHero
+    ? `${linkClass} px-1 py-0.5 text-white/90 drop-shadow-[0_1px_10px_rgba(0,0,0,0.45)] hover:text-white focus-visible:ring-white/45 focus-visible:ring-offset-transparent`
+    : `${linkClass} px-1 py-0.5 text-neutral-600 hover:text-neutral-950 focus-visible:ring-neutral-950/35 focus-visible:ring-offset-2`
+
+  const catalogTriggerClass = blendOverHero
+    ? `${linkClass} inline-flex items-center gap-1 px-0.5 font-semibold text-white drop-shadow-[0_1px_10px_rgba(0,0,0,0.45)] hover:text-white focus-visible:ring-white/45 focus-visible:ring-offset-transparent`
+    : `${linkClass} inline-flex items-center gap-1 px-0.5 font-semibold text-neutral-900 hover:text-neutral-950 focus-visible:ring-neutral-950/35 focus-visible:ring-offset-2`
+
+  const headerWaToneClass = blendOverHero
+    ? 'border-white bg-white/12 text-white hover:bg-white hover:text-neutral-950 focus-visible:ring-white/55 focus-visible:ring-offset-transparent'
+    : 'border-neutral-950 bg-white text-neutral-950 hover:bg-neutral-950 hover:text-white focus-visible:ring-neutral-950 focus-visible:ring-offset-2'
+
   return (
     <header
-      className="fixed inset-x-0 top-0 z-[70] min-h-[calc(3.5rem+env(safe-area-inset-top,0px))] border-b border-neutral-200/70 bg-white/90 pt-[env(safe-area-inset-top,0px)] backdrop-blur-md supports-[backdrop-filter]:bg-white/80 md:min-h-[calc(3.25rem+env(safe-area-inset-top,0px))]"
+      className={`fixed inset-x-0 top-0 z-[70] min-h-[calc(3.5rem+env(safe-area-inset-top,0px))] pt-[env(safe-area-inset-top,0px)] transition-[background-color,border-color,backdrop-filter] duration-300 md:min-h-[calc(3.25rem+env(safe-area-inset-top,0px))] ${
+        blendOverHero
+          ? 'border-b border-white/15 bg-gradient-to-b from-black/45 via-black/20 to-transparent backdrop-blur-[2px] supports-[backdrop-filter]:from-black/40'
+          : 'border-b border-neutral-200/70 bg-white/90 backdrop-blur-md supports-[backdrop-filter]:bg-white/80'
+      }`}
     >
       <div className="relative mx-auto flex h-14 max-w-6xl items-center justify-between gap-3 pl-[max(1.25rem,env(safe-area-inset-left,0px))] pr-[max(1.25rem,env(safe-area-inset-right,0px))] md:h-[3.25rem] md:gap-6 md:pl-8 md:pr-8">
         <Link
           to="/"
           onClick={onHomeClick}
           aria-current={isHomeCurrent ? 'page' : undefined}
-          className="relative z-[71] flex shrink-0 flex-col items-start gap-0.5 rounded-sm text-neutral-950 transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950/35 focus-visible:ring-offset-2 [text-rendering:geometricPrecision]"
+          className={`relative z-[71] flex shrink-0 flex-col items-start gap-0.5 rounded-sm transition-[color,opacity,filter] duration-300 hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 [text-rendering:geometricPrecision] ${
+            blendOverHero
+              ? 'text-white focus-visible:ring-white/50 focus-visible:ring-offset-transparent drop-shadow-[0_2px_14px_rgba(0,0,0,0.55)]'
+              : 'text-neutral-950 focus-visible:ring-neutral-950/35 focus-visible:ring-offset-2'
+          }`}
         >
           <span className="text-sm font-bold tracking-[0.14em]">{brand.name}</span>
-          <span className="hidden max-w-[11rem] text-[10px] font-medium leading-tight text-neutral-600 md:block">
+          <span
+            className={`hidden max-w-[11rem] text-[10px] font-medium leading-tight md:block ${
+              blendOverHero ? 'text-white/88 drop-shadow-[0_1px_10px_rgba(0,0,0,0.45)]' : 'text-neutral-600'
+            }`}
+          >
             {brand.tagline}
           </span>
         </Link>
@@ -141,7 +190,7 @@ export function SiteHeader() {
           <div className="relative" ref={catalogRef}>
             <button
               type="button"
-              className={`${linkClass} inline-flex items-center gap-1 font-semibold text-neutral-900 hover:text-neutral-950`}
+              className={catalogTriggerClass}
               aria-expanded={catalogOpen}
               aria-controls="catalog-submenu"
               onClick={(e) => {
@@ -150,7 +199,7 @@ export function SiteHeader() {
               }}
             >
               {navCopy.catalog}
-              <span className="text-[10px] opacity-60" aria-hidden>
+              <span className={`text-[10px] ${blendOverHero ? 'opacity-75' : 'opacity-60'}`} aria-hidden>
                 ▾
               </span>
             </button>
@@ -195,7 +244,7 @@ export function SiteHeader() {
 
           <Link
             to="/miklahon-guide"
-            className={`${linkClass} px-1 py-0.5`}
+            className={midNavLinkClass}
             onClick={closeAll}
             aria-current={isGuideCurrent ? 'page' : undefined}
           >
@@ -205,7 +254,7 @@ export function SiteHeader() {
           <Link
             to="/#contact"
             onClick={onHomeHashClick('#contact')}
-            className={`${linkClass} px-1 py-0.5`}
+            className={midNavLinkClass}
             aria-current={isContactCurrent ? 'page' : undefined}
           >
             {navCopy.contact}
@@ -217,7 +266,7 @@ export function SiteHeader() {
             href={waHref}
             target="_blank"
             rel="noopener noreferrer"
-            className={`${headerWaClass} hidden md:inline-flex`}
+            className={`${headerWaClass} ${headerWaToneClass} hidden md:inline-flex`}
             aria-label={a11y.whatsappHeader}
             onClick={() => {
               trackWhatsAppClick('article')

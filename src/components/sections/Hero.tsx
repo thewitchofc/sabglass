@@ -39,6 +39,29 @@ export function Hero() {
         aria-hidden
       />
 
+      {/*
+        דסקטופ: טקסט וקטורי מעל האזור שבו המותג מוטמע בצילום — חדות ואנטי־אליאסינג כמו במובייל.
+        המותג האינטראקטיבי נשאר בכותרת; כאן רק כיסוי ויזואלי (aria-hidden).
+      */}
+      <div
+        className="pointer-events-none absolute inset-x-0 z-[8] hidden text-center md:block"
+        style={{ top: 'calc(env(safe-area-inset-top, 0px) + 3.75rem)' }}
+        aria-hidden
+      >
+        <div className="mx-auto flex max-w-6xl justify-center px-8">
+          <div className="[text-rendering:geometricPrecision]">
+            <div className="flex flex-col items-center gap-2.5 text-white">
+              <span className="text-[clamp(1.75rem,2.75vw,2.625rem)] font-bold leading-none tracking-[0.18em] drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)] antialiased">
+                {brand.name}
+              </span>
+              <span className="max-w-[22rem] text-pretty text-[0.8125rem] font-medium leading-snug text-white drop-shadow-[0_1px_8px_rgba(0,0,0,0.35)] antialiased sm:text-sm">
+                {brand.tagline}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* justify-start ב־RTL = יישור לימין המסך */}
       <div className="relative z-10 pt-14 md:pt-[3.25rem]">
         <div className="flex w-full justify-start pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] pb-[max(1.5rem,env(safe-area-inset-bottom,0px))] pt-10 max-md:mb-6 md:mb-0 md:px-8 md:pb-24 md:pt-48">
