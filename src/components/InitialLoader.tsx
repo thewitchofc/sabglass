@@ -35,7 +35,11 @@ export function InitialLoader() {
   }, [isVisible, shouldReduceMotion])
 
   return (
-    <AnimatePresence>
+    <AnimatePresence
+      onExitComplete={() => {
+        window.dispatchEvent(new Event('sab-glass-loader-complete'))
+      }}
+    >
       {isVisible ? (
         <motion.div
           className="fixed inset-0 z-[120] flex min-h-[100dvh] items-center justify-center overflow-hidden bg-neutral-950 text-white"

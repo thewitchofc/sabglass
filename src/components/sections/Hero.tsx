@@ -1,8 +1,25 @@
+import { useEffect, useState } from 'react'
+import { motion, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { premiumCopy } from '../../content/premium'
 
 export function Hero() {
   const { hero, brand } = premiumCopy
+  const shouldReduceMotion = useReducedMotion()
+  const [showHeroBrand, setShowHeroBrand] = useState(false)
+
+  useEffect(() => {
+    const revealBrand = () => setShowHeroBrand(true)
+    const fallbackDelay = shouldReduceMotion ? 120 : 1850
+    const fallback = window.setTimeout(revealBrand, fallbackDelay)
+
+    window.addEventListener('sab-glass-loader-complete', revealBrand, { once: true })
+
+    return () => {
+      window.clearTimeout(fallback)
+      window.removeEventListener('sab-glass-loader-complete', revealBrand)
+    }
+  }, [shouldReduceMotion])
 
   return (
     <section
@@ -45,18 +62,36 @@ export function Hero() {
       >
         <div className="flex w-full justify-center px-8">
           <div className="[text-rendering:geometricPrecision]">
-            <div className="flex flex-col items-center gap-4 text-white">
-              <img
+            <motion.div
+              className="flex flex-col items-center gap-4 text-white"
+              initial={shouldReduceMotion ? false : { opacity: 0, y: 18, scale: 0.985, filter: 'blur(12px)' }}
+              animate={
+                showHeroBrand || shouldReduceMotion
+                  ? { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }
+                  : { opacity: 0, y: 18, scale: 0.985, filter: 'blur(12px)' }
+              }
+              transition={{ duration: shouldReduceMotion ? 0.01 : 1.35, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <motion.img
                 src="/sab-glass-logo.svg"
                 alt=""
                 width={1500}
                 height={260}
                 className="h-auto w-[clamp(24rem,52vw,46rem)] object-contain [filter:brightness(0)_invert(1)_drop-shadow(0_0_10px_rgba(0,0,0,0.95))_drop-shadow(0_0_24px_rgba(0,0,0,0.88))_drop-shadow(0_0_48px_rgba(0,0,0,0.72))]"
               />
-              <span className="max-w-[24rem] text-pretty text-sm font-medium leading-snug tracking-[0.03em] text-white/92 [text-shadow:0_0_8px_rgba(0,0,0,0.9),0_0_18px_rgba(0,0,0,0.68),0_2px_10px_rgba(0,0,0,0.72)] antialiased">
+              <motion.span
+                className="max-w-[24rem] text-pretty text-sm font-medium leading-snug tracking-[0.03em] text-white/92 [text-shadow:0_0_8px_rgba(0,0,0,0.9),0_0_18px_rgba(0,0,0,0.68),0_2px_10px_rgba(0,0,0,0.72)] antialiased"
+                initial={shouldReduceMotion ? false : { opacity: 0, y: 8 }}
+                animate={showHeroBrand || shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
+                transition={{
+                  duration: shouldReduceMotion ? 0.01 : 0.9,
+                  delay: showHeroBrand && !shouldReduceMotion ? 0.32 : 0,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+              >
                 {brand.tagline}
-              </span>
-            </div>
+              </motion.span>
+            </motion.div>
           </div>
         </div>
       </div>
@@ -66,7 +101,12 @@ export function Hero() {
         <div className="flex w-full justify-start pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] pb-[max(1.5rem,env(safe-area-inset-bottom,0px))] pt-10 max-md:mb-6 md:mb-0 md:px-8 md:pb-24 md:pt-48">
           <div className="w-full max-w-6xl">
         {/* מובייל: לוגו ממורכז, טיפוגרפיה בולטת וקריאה על רקע התמונה */}
-        <div className="mb-4 flex w-full flex-col items-center justify-center text-center [text-rendering:geometricPrecision] md:hidden">
+        <motion.div
+          className="mb-4 flex w-full flex-col items-center justify-center text-center [text-rendering:geometricPrecision] md:hidden"
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 14, filter: 'blur(8px)' }}
+          animate={showHeroBrand || shouldReduceMotion ? { opacity: 1, y: 0, filter: 'blur(0px)' } : { opacity: 0, y: 14, filter: 'blur(8px)' }}
+          transition={{ duration: shouldReduceMotion ? 0.01 : 1.05, ease: [0.22, 1, 0.36, 1] }}
+        >
           <Link
             to="/"
             aria-label={`${brand.name} — מעבר לראש דף הבית`}
@@ -79,7 +119,7 @@ export function Hero() {
               {brand.tagline}
             </span>
           </Link>
-        </div>
+        </motion.div>
         <h1
           id="hero-heading"
           className="sr-only"
