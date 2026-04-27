@@ -1,11 +1,8 @@
-import { useState } from 'react'
-import { BEN_PORTRAIT_SRC } from '../../config/site'
 import { premiumCopy } from '../../content/premium'
 import { FadeIn } from '../ui/FadeIn'
 
 export function BenSection() {
   const { ben, about } = premiumCopy
-  const [imgFailed, setImgFailed] = useState(false)
   const trustHighlights = [
     { title: 'ליווי אישי', body: ben.personalLine },
     { title: 'אחריות מלאה', body: 'על כל עבודה' },
@@ -117,38 +114,25 @@ export function BenSection() {
 
           <FadeIn
             variant="image"
-            className="relative mx-auto my-3 w-full max-w-[19rem] md:my-0 md:max-w-[18rem]"
+            className="relative mx-auto my-3 w-full max-w-[20rem] md:my-0 md:max-w-[22rem]"
           >
             <div className="pointer-events-none absolute left-1/2 top-0 h-[15rem] w-[15rem] -translate-x-1/2 rounded-[2rem] bg-gradient-to-br from-gold/18 via-white/5 to-transparent blur-2xl md:-inset-5 md:h-auto md:w-auto md:translate-x-0 md:from-gold/25" aria-hidden />
-            <div className="relative mx-auto max-w-[11rem] rounded-[1.6rem] border border-white/12 bg-white/[0.045] p-2.5 shadow-[0_18px_54px_rgba(0,0,0,0.34),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur md:max-w-none md:rounded-[2rem] md:bg-white/[0.06] md:p-3 md:shadow-[0_28px_90px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.12)]">
-              <div className="aspect-[4/5] overflow-hidden rounded-[1.45rem] bg-neutral-900">
-                {!imgFailed ? (
-                  <img
-                    src={BEN_PORTRAIT_SRC}
-                    srcSet={`${BEN_PORTRAIT_SRC} 480w, ${BEN_PORTRAIT_SRC} 768w, ${BEN_PORTRAIT_SRC} 1200w`}
-                    sizes="(max-width: 768px) 14rem, 18rem"
-                    alt={ben.imageAlt}
-                    width={800}
-                    height={800}
-                    className="h-full w-full object-cover object-center saturate-[0.92]"
-                    loading="lazy"
-                    decoding="async"
-                    onError={() => setImgFailed(true)}
-                  />
-                ) : (
-                  <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-neutral-900 px-6 text-center">
-                    <span className="text-4xl font-light tracking-widest text-white/70">SAB</span>
-                    <span className="text-xs font-light text-white/50">
-                      יש להוסיף תמונה בשם ben.png בתיקיית הקבצים הציבוריים של האתר
-                    </span>
-                  </div>
-                )}
+            <div className="relative mx-auto rounded-[1.7rem] border border-white/12 bg-white/[0.045] p-5 text-center shadow-[0_18px_54px_rgba(0,0,0,0.34),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur md:rounded-[2rem] md:bg-white/[0.06] md:p-8 md:shadow-[0_28px_90px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.12)]">
+              <div className="pointer-events-none absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_50%_0%,rgba(184,163,105,0.16),transparent_42%),linear-gradient(135deg,rgba(255,255,255,0.08),transparent_34%)]" aria-hidden />
+              <div className="relative flex min-h-[12rem] flex-col items-center justify-center gap-4 md:min-h-[16rem]">
+                <img
+                  src="/sab-glass-logo.svg"
+                  alt="SAB Glass"
+                  width={1500}
+                  height={260}
+                  className="h-auto w-[min(14rem,70vw)] object-contain brightness-0 invert drop-shadow-[0_0_22px_rgba(0,0,0,0.72)] md:w-72"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <p className="max-w-[15rem] text-sm font-light leading-relaxed text-white/68 md:max-w-[18rem] md:text-base">
+                  התקנות זכוכית בהתאמה אישית, עם דגש על מדידה מדויקת וגימור נקי.
+                </p>
               </div>
-              <div className="pointer-events-none absolute inset-2.5 rounded-[1.25rem] bg-gradient-to-t from-black/24 via-transparent to-white/8 md:inset-3 md:rounded-[1.45rem]" aria-hidden />
-            </div>
-            <div className="relative mx-auto -mt-4 hidden w-[88%] rounded-2xl border border-white/10 bg-neutral-950/80 px-5 py-4 text-center shadow-[0_18px_48px_rgba(0,0,0,0.35)] backdrop-blur-md md:block">
-              <p className="text-sm font-medium text-white">{ben.greeting}</p>
-              <p className="mt-1 text-xs font-light text-white/58">{ben.role}</p>
             </div>
             <a
               href="https://www.tiktok.com/@sab.glass/video/7454256349329870088"
