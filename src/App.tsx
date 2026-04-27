@@ -35,6 +35,9 @@ const TermsOfUsePage = lazy(() =>
 const AccessibilityStatementPage = lazy(() =>
   import('./pages/AccessibilityStatementPage').then((m) => ({ default: m.AccessibilityStatementPage })),
 )
+const NotFoundPage = lazy(() =>
+  import('./pages/NotFoundPage').then((m) => ({ default: m.NotFoundPage })),
+)
 
 function AnimatedRoutes() {
   const location = useLocation()
@@ -62,6 +65,7 @@ function AnimatedRoutes() {
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
             <Route path="/terms-of-use" element={<TermsOfUsePage />} />
             <Route path="/accessibility-statement" element={<AccessibilityStatementPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
       </motion.div>

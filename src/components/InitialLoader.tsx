@@ -1,38 +1,61 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const query = window.matchMedia('(max-width: 767px)')
+    const update = () => setIsMobile(query.matches)
+
+    update()
+    query.addEventListener('change', update)
+
+    return () => query.removeEventListener('change', update)
+  }, [])
+
+  return isMobile
+}
+
 export function InitialLoader() {
   const shouldReduceMotion = useReducedMotion()
+  const isMobile = useIsMobile()
   const [isVisible, setIsVisible] = useState(true)
 
   useEffect(() => {
     if (!isVisible) return
 
     let isMounted = true
-    const minDelay = shouldReduceMotion ? 220 : 1100
+    const minDelay = shouldReduceMotion ? 160 : isMobile ? 520 : 920
 
-    const waitForPageLoad = new Promise<void>((resolve) => {
-      if (document.readyState === 'complete') {
-        resolve()
-        return
-      }
-
-      window.addEventListener('load', () => resolve(), { once: true })
-    })
-
-    const waitForMinimumDelay = new Promise<void>((resolve) => {
-      window.setTimeout(resolve, minDelay)
-    })
-
-    void Promise.all([waitForPageLoad, waitForMinimumDelay]).then(() => {
+    const timer = window.setTimeout(() => {
       if (!isMounted) return
       setIsVisible(false)
-    })
+    }, minDelay)
 
     return () => {
       isMounted = false
+      window.clearTimeout(timer)
     }
-  }, [isVisible, shouldReduceMotion])
+  }, [isMobile, isVisible, shouldReduceMotion])
+
+  const exitAnimation = shouldReduceMotion
+    ? { opacity: 0 }
+    : isMobile
+      ? { opacity: 0 }
+      : { opacity: 0, scale: 1.015, filter: 'blur(10px)' }
+
+  const contentInitial = shouldReduceMotion
+    ? false
+    : isMobile
+      ? { opacity: 0, y: 8 }
+      : { opacity: 0, y: 18, filter: 'blur(8px)' }
+
+  const contentAnimate = shouldReduceMotion
+    ? { opacity: 1 }
+    : isMobile
+      ? { opacity: 1, y: 0 }
+      : { opacity: 1, y: 0, filter: 'blur(0px)' }
 
   return (
     <AnimatePresence
@@ -47,8 +70,8 @@ export function InitialLoader() {
           aria-live="polite"
           aria-label="האתר נטען"
           initial={shouldReduceMotion ? false : { opacity: 1 }}
-          exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 1.015, filter: 'blur(10px)' }}
-          transition={{ duration: shouldReduceMotion ? 0.01 : 0.55, ease: [0.22, 1, 0.36, 1] }}
+          exit={exitAnimation}
+          transition={{ duration: shouldReduceMotion ? 0.01 : isMobile ? 0.24 : 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
           <div
             className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_34%,rgba(184,163,105,0.22),transparent_32%),radial-gradient(circle_at_18%_78%,rgba(255,255,255,0.08),transparent_28%)]"
@@ -56,9 +79,9 @@ export function InitialLoader() {
           />
           <motion.div
             className="relative flex flex-col items-center px-8 text-center"
-            initial={shouldReduceMotion ? false : { opacity: 0, y: 18, filter: 'blur(8px)' }}
-            animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0, filter: 'blur(0px)' }}
-            transition={{ duration: shouldReduceMotion ? 0.01 : 0.7, ease: [0.22, 1, 0.36, 1] }}
+            initial={contentInitial}
+            animate={contentAnimate}
+            transition={{ duration: shouldReduceMotion ? 0.01 : isMobile ? 0.34 : 0.65, ease: [0.22, 1, 0.36, 1] }}
           >
             <img
               src="/sab-glass-logo.svg"

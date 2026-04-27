@@ -18,16 +18,16 @@ export function ShowerGlassServicePage() {
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_8%,rgba(184,163,105,0.16),transparent_30%),radial-gradient(circle_at_82%_30%,rgba(255,255,255,0.08),transparent_28%),linear-gradient(180deg,rgba(255,255,255,0.045),transparent_34%)]"
         aria-hidden
       />
-      <article className="relative mx-auto max-w-4xl pb-8 pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] pt-24 md:px-8 md:pt-28">
+      <article className="relative mx-auto max-w-4xl pb-8 pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] pt-22 md:px-8 md:pt-28">
         <FadeIn variant="heading">
-        <header className="rounded-[2.25rem] border border-white/10 bg-white/[0.055] p-6 shadow-[0_30px_100px_rgba(0,0,0,0.34),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-sm md:p-10">
+        <header className="rounded-[1.6rem] border border-white/10 bg-white/[0.04] p-4 shadow-[0_18px_54px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-sm md:rounded-[2.25rem] md:bg-white/[0.055] md:p-10 md:shadow-[0_30px_100px_rgba(0,0,0,0.34),inset_0_1px_0_rgba(255,255,255,0.08)]">
           <p className="text-xs font-medium uppercase tracking-[0.36em] text-gold-soft/75">
             Glass Shower Service
           </p>
-          <h1 className="mt-4 max-w-3xl text-balance text-4xl font-light tracking-tight text-white max-md:text-[2rem] md:text-5xl">
+          <h1 className="mt-4 max-w-3xl text-balance text-4xl font-light tracking-tight text-white max-md:text-[1.75rem] md:text-5xl">
             {p.h1}
           </h1>
-          <p className="mt-6 max-w-[95%] text-pretty text-lg font-light leading-relaxed text-white/70 md:max-w-none">
+          <p className="mt-4 max-w-[95%] text-pretty text-sm font-light leading-relaxed text-white/66 md:mt-6 md:max-w-none md:text-lg md:text-white/70">
             {p.intro}
           </p>
         </header>
@@ -36,7 +36,7 @@ export function ShowerGlassServicePage() {
         <ContentFigure src={p.image.src} alt={p.image.alt} />
 
         <FadeIn variant="card">
-        <div className="mt-10 rounded-[2rem] border border-white/10 bg-white/[0.055] px-6 py-8 shadow-[0_24px_80px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-sm">
+        <div className="mt-8 rounded-[1.5rem] border border-white/10 bg-white/[0.04] px-4 py-5 shadow-[0_14px_44px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-sm md:mt-10 md:rounded-[2rem] md:bg-white/[0.055] md:px-6 md:py-8 md:shadow-[0_24px_80px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.08)]">
           <WhatsAppLink
             variant="whatsapp"
             size="lg"
@@ -53,12 +53,12 @@ export function ShowerGlassServicePage() {
 
         {p.sections.map((sec, idx) => (
           <FadeIn key={sec.h2} variant="card" delay={Math.min(idx, 3) * 0.03}>
-          <section key={sec.h2} className="mt-8 rounded-[2rem] border border-white/10 bg-white/[0.045] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.24),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-sm md:p-8">
-            <h2 className="text-2xl font-light tracking-tight text-white md:text-3xl">{sec.h2}</h2>
+          <section key={sec.h2} className="mt-6 rounded-[1.5rem] border border-white/10 bg-white/[0.035] p-4 shadow-[0_14px_44px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-sm md:mt-8 md:rounded-[2rem] md:bg-white/[0.045] md:p-8 md:shadow-[0_24px_80px_rgba(0,0,0,0.24),inset_0_1px_0_rgba(255,255,255,0.06)]">
+            <h2 className="text-xl font-light tracking-tight text-white md:text-3xl">{sec.h2}</h2>
             {sec.paragraphs.map((para, pi) => (
               <p
                 key={`${sec.h2}-${pi}`}
-                className="mt-5 text-pretty text-base font-light leading-relaxed text-white/66 md:text-lg"
+                className="mt-4 text-pretty text-sm font-light leading-relaxed text-white/62 md:mt-5 md:text-lg md:text-white/66"
               >
                 {para}
               </p>
@@ -75,7 +75,7 @@ export function ShowerGlassServicePage() {
           title="מוכנים לשדרוג חדר הרחצה?"
           subtitle="שלחו תמונה — נחזור עם כיוון, מחיר משוער והמשך תיאום."
           variant="dark"
-          className="mt-12 text-center md:text-start"
+          className="mt-9 text-center md:mt-12 md:text-start"
         />
         </FadeIn>
       </article>

@@ -37,7 +37,7 @@ export function ArticlePage() {
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_8%,rgba(184,163,105,0.16),transparent_30%),radial-gradient(circle_at_82%_30%,rgba(255,255,255,0.08),transparent_28%),linear-gradient(180deg,rgba(255,255,255,0.045),transparent_34%)]"
         aria-hidden
       />
-      <article className="relative mx-auto max-w-4xl pb-10 pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] pt-24 md:px-8 md:pt-28 [&_h2]:max-md:text-[1.625rem] [&_section_p]:max-w-[65ch] [&_section_p]:leading-[1.75] max-md:[&_p]:max-w-[100%] max-md:[&_p]:leading-[1.75] max-md:[&_section_p]:max-w-[100%]">
+      <article className="relative mx-auto max-w-4xl pb-8 pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] pt-22 md:px-8 md:pt-28 [&_h2]:max-md:text-[1.45rem] [&_section_p]:max-w-[65ch] [&_section_p]:leading-[1.75] max-md:[&_p]:max-w-[100%] max-md:[&_p]:leading-relaxed max-md:[&_section_p]:max-w-[100%]">
         <nav className="text-sm font-light text-white/58" aria-label="שביל ניווט במאמר">
           <ol className="flex flex-wrap items-center gap-x-2 gap-y-1">
             <li>
@@ -69,26 +69,26 @@ export function ArticlePage() {
         </nav>
 
         <FadeIn variant="heading">
-        <header className="mt-10 rounded-[2.25rem] border border-white/10 bg-white/[0.055] p-6 shadow-[0_30px_100px_rgba(0,0,0,0.34),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-sm md:p-10">
+        <header className="mt-8 rounded-[1.6rem] border border-white/10 bg-white/[0.04] p-4 shadow-[0_18px_54px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-sm md:mt-10 md:rounded-[2.25rem] md:bg-white/[0.055] md:p-10 md:shadow-[0_30px_100px_rgba(0,0,0,0.34),inset_0_1px_0_rgba(255,255,255,0.08)]">
           <p className="text-xs font-medium uppercase tracking-[0.36em] text-gold-soft/75">
             SAB Glass Guide
           </p>
-          <h1 className="mt-4 max-w-3xl text-balance text-4xl font-light tracking-tight text-white max-md:text-[2rem] md:text-5xl">
+          <h1 className="mt-4 max-w-3xl text-balance text-4xl font-light tracking-tight text-white max-md:text-[1.75rem] md:text-5xl">
             {article.h1}
           </h1>
           {article.featuredSnippetAnswer ? (
-            <p className="mt-5 max-w-[65ch] text-pretty text-base font-light leading-[1.75] text-white/70 md:text-lg">
+            <p className="mt-4 max-w-[65ch] text-pretty text-sm font-light leading-relaxed text-white/66 md:mt-5 md:text-lg md:leading-[1.75]">
               {article.featuredSnippetAnswer}
             </p>
           ) : null}
-          <div className="mt-5 flex flex-wrap gap-x-4 gap-y-2 text-sm font-light text-white/52">
+          <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-xs font-light text-white/48 md:mt-5 md:text-sm md:text-white/52">
             {article.readingTimeLabel ? <p>{article.readingTimeLabel}</p> : null}
             {article.lastUpdated ? (
               <p>עודכן לאחרונה: {formatArticleLastUpdated(article.lastUpdated)}</p>
             ) : null}
           </div>
           <p
-            className={`max-w-[65ch] text-pretty text-lg font-light leading-[1.75] text-white/72 ${article.readingTimeLabel || article.lastUpdated || article.featuredSnippetAnswer ? 'mt-5' : 'mt-6'}`}
+            className={`max-w-[65ch] text-pretty text-sm font-light leading-relaxed text-white/66 md:text-lg md:leading-[1.75] ${article.readingTimeLabel || article.lastUpdated || article.featuredSnippetAnswer ? 'mt-4 md:mt-5' : 'mt-5 md:mt-6'}`}
           >
             {article.intro}
           </p>
@@ -108,13 +108,13 @@ export function ArticlePage() {
         {article.introAfterCta?.map((para, i) => (
           <p
             key={`intro-after-${i}`}
-            className="mt-6 max-w-[65ch] text-pretty text-lg font-light leading-[1.75] text-white/70"
+            className="mt-5 max-w-[65ch] text-pretty text-sm font-light leading-relaxed text-white/66 md:mt-6 md:text-lg md:leading-[1.75] md:text-white/70"
           >
             {para}
           </p>
         ))}
         {article.socialProofLine ? (
-          <p className="mt-6 max-w-[65ch] text-pretty text-base font-medium leading-[1.75] text-white/84">
+          <p className="mt-5 max-w-[65ch] text-pretty text-sm font-medium leading-relaxed text-white/78 md:mt-6 md:text-base md:leading-[1.75] md:text-white/84">
             {article.socialProofLine}
           </p>
         ) : null}
@@ -138,7 +138,7 @@ export function ArticlePage() {
           <Fragment key={sec.id ?? sec.h2}>
             <FadeIn variant="card" delay={Math.min(idx, 3) * 0.03}>
               <section
-                className="mt-8 rounded-[2rem] border border-white/10 bg-white/[0.045] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.24),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-sm md:p-8"
+                className="mt-6 rounded-[1.5rem] border border-white/10 bg-white/[0.035] p-4 shadow-[0_14px_44px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-sm md:mt-8 md:rounded-[2rem] md:bg-white/[0.045] md:p-8 md:shadow-[0_24px_80px_rgba(0,0,0,0.24),inset_0_1px_0_rgba(255,255,255,0.06)]"
               >
               <h2
                 id={sec.id}
@@ -149,7 +149,7 @@ export function ArticlePage() {
               {sec.paragraphs.map((para, pi) => (
                 <p
                   key={`${sec.h2}-${pi}`}
-                  className="mt-6 text-pretty text-base font-light leading-[1.75] text-white/66 md:text-lg"
+                  className="mt-4 text-pretty text-sm font-light leading-relaxed text-white/62 md:mt-6 md:text-lg md:leading-[1.75] md:text-white/66"
                 >
                   {para}
                 </p>
@@ -162,7 +162,7 @@ export function ArticlePage() {
                 />
               ) : null}
               {sec.bullets && sec.bullets.length > 0 ? (
-                <ul className="mt-6 max-w-[65ch] list-disc space-y-2.5 ps-5 text-base font-light leading-[1.75] text-white/66 md:text-lg">
+                <ul className="mt-5 max-w-[65ch] list-disc space-y-2 ps-5 text-sm font-light leading-relaxed text-white/62 md:mt-6 md:space-y-2.5 md:text-lg md:leading-[1.75] md:text-white/66">
                   {sec.bullets.map((item) => (
                     <li key={item} className="text-pretty ps-1">
                       {item}
@@ -206,7 +206,7 @@ export function ArticlePage() {
         {article.beforeAfter ? (
           <FadeIn variant="card">
             <section
-              className="mt-8 rounded-[2rem] border border-white/10 bg-white/[0.045] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.24),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-sm md:p-8"
+              className="mt-6 rounded-[1.5rem] border border-white/10 bg-white/[0.035] p-4 shadow-[0_14px_44px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-sm md:mt-8 md:rounded-[2rem] md:bg-white/[0.045] md:p-8 md:shadow-[0_24px_80px_rgba(0,0,0,0.24),inset_0_1px_0_rgba(255,255,255,0.06)]"
               aria-labelledby="article-before-after-title"
             >
             <h2
@@ -237,7 +237,7 @@ export function ArticlePage() {
         {article.faq && article.faq.length > 0 ? (
           <FadeIn variant="card">
             <section
-              className="mt-8 rounded-[2rem] border border-white/10 bg-white/[0.045] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.24),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-sm md:p-8"
+              className="mt-6 rounded-[1.5rem] border border-white/10 bg-white/[0.035] p-4 shadow-[0_14px_44px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-sm md:mt-8 md:rounded-[2rem] md:bg-white/[0.045] md:p-8 md:shadow-[0_24px_80px_rgba(0,0,0,0.24),inset_0_1px_0_rgba(255,255,255,0.06)]"
               aria-labelledby="faq"
             >
             <h2
@@ -247,9 +247,9 @@ export function ArticlePage() {
               שאלות נפוצות
             </h2>
             {article.faq.map((item) => (
-              <div key={item.question} className="mt-10 border-t border-white/10 pt-10 first:mt-8 first:border-t-0 first:pt-0">
-                <h3 className="text-lg font-medium text-white md:text-xl">{item.question}</h3>
-                <p className="mt-4 max-w-[65ch] text-pretty text-base font-light leading-[1.75] text-white/66 md:text-lg">
+              <div key={item.question} className="mt-7 border-t border-white/10 pt-7 first:mt-6 first:border-t-0 first:pt-0 md:mt-10 md:pt-10 md:first:mt-8">
+                <h3 className="text-base font-medium text-white md:text-xl">{item.question}</h3>
+                <p className="mt-3 max-w-[65ch] text-pretty text-sm font-light leading-relaxed text-white/62 md:mt-4 md:text-lg md:leading-[1.75] md:text-white/66">
                   {item.answer}
                 </p>
               </div>
@@ -273,7 +273,7 @@ export function ArticlePage() {
 
         <FadeIn variant="card">
         <nav
-          className="mt-12 rounded-[2rem] border border-white/10 bg-white/[0.045] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.24),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-sm md:p-8"
+          className="mt-9 rounded-[1.5rem] border border-white/10 bg-white/[0.035] p-4 shadow-[0_14px_44px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-sm md:mt-12 md:rounded-[2rem] md:bg-white/[0.045] md:p-8 md:shadow-[0_24px_80px_rgba(0,0,0,0.24),inset_0_1px_0_rgba(255,255,255,0.06)]"
           aria-label="קישורים למדריך מקלחונים ולשירות מקלחון זכוכית בהתאמה אישית"
         >
           <p className="text-sm font-medium text-white">ממשיכים בתכנון?</p>
@@ -307,9 +307,9 @@ export function ArticlePage() {
           title={article.ctaEndTitle ?? ARTICLE_DEFAULT_END_CTA.title}
           subtitle={article.ctaEndSubtitle ?? ARTICLE_DEFAULT_END_CTA.subtitle}
           variant="dark"
-          className="mt-12 text-center md:text-start"
+          className="mt-9 text-center md:mt-12 md:text-start"
         />
-        <p className="mt-3 max-w-[65ch] text-center text-xs font-light leading-relaxed text-white/56 md:text-start">
+        <p className="mt-3 max-w-[65ch] text-center text-[11px] font-light leading-relaxed text-white/48 md:text-start md:text-xs md:text-white/56">
           {premiumCopy.conversion.microPhotoLong}
         </p>
       </article>

@@ -21,8 +21,8 @@ export function SiteFooter() {
       />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-l from-transparent via-white/24 to-transparent" />
 
-      <div className="relative mx-auto max-w-6xl py-14 pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] md:px-8 md:py-20">
-        <div className="grid gap-14 max-md:gap-16 md:grid-cols-3 md:gap-8 md:[&>div]:min-w-0">
+      <div className="relative mx-auto max-w-6xl py-10 pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] md:px-8 md:py-20">
+        <div className="grid gap-8 md:grid-cols-3 md:gap-8 md:[&>div]:min-w-0">
           <div className="min-w-0 text-start">
             <p className="text-xs font-medium uppercase tracking-[0.28em] text-gold-soft/75">Premium</p>
             <img
@@ -30,14 +30,14 @@ export function SiteFooter() {
               alt={footer.brand}
               width={1500}
               height={260}
-              className="mt-4 h-auto w-40 brightness-0 invert drop-shadow-[0_0_18px_rgba(0,0,0,0.65)]"
+              className="mt-4 h-auto w-32 brightness-0 invert drop-shadow-[0_0_18px_rgba(0,0,0,0.65)] md:w-40"
             />
-            <p className="mt-4 text-sm font-light text-white/62">{footer.serviceAreaLine}</p>
-            <p className="mt-1 text-sm font-medium text-white/72 md:hidden">{footer.serviceAreaReachLineMobile}</p>
+            <p className="mt-3 text-xs font-light text-white/58 md:mt-4 md:text-sm md:text-white/62">{footer.serviceAreaLine}</p>
+            <p className="mt-1 text-xs font-medium text-white/66 md:hidden">{footer.serviceAreaReachLineMobile}</p>
             <p className="mt-1 hidden text-sm font-medium text-white/72 md:block">{footer.serviceAreaReachLine}</p>
-            <p className="mt-2 text-sm font-light text-white/52">{footer.rights}</p>
-            <h4 className="mt-10 text-xs font-medium uppercase tracking-[0.2em] text-gold-soft/70">{footer.learnTitle}</h4>
-            <ul className="mt-3 space-y-2 text-sm font-light">
+            <p className="mt-2 text-xs font-light text-white/46 md:text-sm md:text-white/52">{footer.rights}</p>
+            <h4 className="mt-7 text-xs font-medium uppercase tracking-[0.2em] text-gold-soft/70 md:mt-10">{footer.learnTitle}</h4>
+            <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-xs font-light md:block md:space-y-2 md:text-sm">
               <li>
                 <Link
                   to="/articles"
@@ -55,8 +55,8 @@ export function SiteFooter() {
                 </Link>
               </li>
             </ul>
-            <h4 className="mt-8 text-xs font-medium uppercase tracking-[0.2em] text-gold-soft/70">{footer.legalTitle}</h4>
-            <ul className="mt-3 space-y-2 text-sm font-light">
+            <h4 className="mt-6 text-xs font-medium uppercase tracking-[0.2em] text-gold-soft/70 md:mt-8">{footer.legalTitle}</h4>
+            <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-xs font-light md:block md:space-y-2 md:text-sm">
               <li>
                 <Link
                   to="/privacy-policy"
@@ -87,15 +87,15 @@ export function SiteFooter() {
             <h3 id="contact-heading" className="text-sm font-medium text-white">
               {footer.contact}
             </h3>
-            <p className="mt-4 text-sm font-light text-white/62">{WHATSAPP_DISPLAY}</p>
+            <p className="mt-3 text-sm font-light text-white/62 md:mt-4">{WHATSAPP_DISPLAY}</p>
             <Link
               to="/#send-photo"
               className="mt-3 inline-block rounded-sm text-sm font-light text-white/62 underline-offset-4 transition-colors hover:text-white hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
             >
               {footer.sendPhotoLink}
             </Link>
-            <h4 className="mt-8 text-sm font-medium text-white">{footer.hoursTitle}</h4>
-            <div className="mt-3 space-y-1 text-sm font-light text-white/62">
+            <h4 className="mt-6 text-sm font-medium text-white md:mt-8">{footer.hoursTitle}</h4>
+            <div className="mt-3 grid grid-cols-2 gap-x-4 gap-y-1 text-xs font-light text-white/58 md:block md:space-y-1 md:text-sm md:text-white/62">
               {footer.hoursByDay.map((item) => (
                 <p key={item.day}>
                   {item.day}:{' '}
@@ -110,7 +110,7 @@ export function SiteFooter() {
             <h3 className="text-sm font-medium text-white">{footer.whatsapp}</h3>
             <a
               href={wa}
-              className={`mt-4 inline-flex max-w-full break-words rounded-full bg-[#25D366] px-5 py-3 text-sm font-medium text-white shadow-[0_14px_38px_rgba(37,211,102,0.22)] transition-colors hover:bg-[#1DA851] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 ${pathname === '/' ? 'max-md:text-xs' : ''}`}
+              className={`mt-4 inline-flex max-w-full break-words rounded-full bg-[#25D366] px-5 py-3 text-sm font-medium text-white shadow-[0_8px_24px_rgba(37,211,102,0.18)] transition-colors hover:bg-[#1DA851] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 md:shadow-[0_14px_38px_rgba(37,211,102,0.22)] ${pathname === '/' ? 'max-md:text-xs' : ''}`}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={a11y.whatsappSendPhotoQuote}
@@ -119,11 +119,11 @@ export function SiteFooter() {
               <span className="md:hidden">{waMobileLabel}</span>
               <span className="hidden md:inline">{primaryCta}</span>
             </a>
-            <div className="mt-4 max-w-xs space-y-1 text-xs font-light leading-relaxed text-white/58">
+            <div className="mt-3 max-w-xs space-y-1 text-xs font-light leading-relaxed text-white/52 md:mt-4 md:text-white/58">
               <p>{conversion.priceLine1}</p>
               <p>{conversion.priceLine2}</p>
             </div>
-            <p className="mt-2 text-xs font-light text-white/58">
+            <p className="mt-2 text-xs font-light text-white/52 md:text-white/58">
               <svg
                 aria-hidden="true"
                 viewBox="0 0 24 24"
@@ -141,12 +141,18 @@ export function SiteFooter() {
               </svg>{' '}
               {conversion.microQuick}
             </p>
-            <div className="mt-10 border-t border-white/10 pt-8">
+            <div className="mt-10 hidden border-t border-white/10 pt-8 md:block">
               <p className="text-sm font-semibold tracking-wide text-gold-soft">
                 {footer.developerCreditTitle}
               </p>
               <p className="mt-2 text-sm font-semibold text-white/70">{footer.developerCreditSubtitle}</p>
-              <div className="mt-4 inline-flex opacity-95">
+              <a
+                href="https://thewitch.co.il/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex rounded-xl opacity-95 transition-opacity hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/35 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
+                aria-label="מעבר לאתר The Witch"
+              >
                 <img
                   src={DEVELOPER_BRAND_LOGO_SRC}
                   srcSet={`${DEVELOPER_BRAND_LOGO_SRC} 480w, ${DEVELOPER_BRAND_LOGO_SRC} 768w, ${DEVELOPER_BRAND_LOGO_SRC} 1200w`}
@@ -158,7 +164,7 @@ export function SiteFooter() {
                   decoding="async"
                   loading="lazy"
                 />
-              </div>
+              </a>
               <p className="mt-3 text-xs font-medium tracking-wide text-white/50">
                 {footer.developerCopyright}
               </p>

@@ -19,9 +19,9 @@ export function LegalTextPage({ title, updatedAt, sections }: LegalTextPageProps
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_8%,rgba(184,163,105,0.12),transparent_30%),radial-gradient(circle_at_82%_30%,rgba(255,255,255,0.06),transparent_28%)]"
         aria-hidden
       />
-      <article className="relative mx-auto max-w-3xl pb-8 pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] pt-24 md:px-8 md:pt-28">
+      <article className="relative mx-auto max-w-3xl pb-8 pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] pt-22 md:px-8 md:pt-28">
         <FadeIn variant="heading">
-        <header className="rounded-[2rem] border border-white/10 bg-white/[0.045] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.24),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-sm md:p-8">
+        <header className="rounded-[1.5rem] border border-white/10 bg-white/[0.035] p-4 shadow-[0_14px_44px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-sm md:rounded-[2rem] md:bg-white/[0.045] md:p-8 md:shadow-[0_24px_80px_rgba(0,0,0,0.24),inset_0_1px_0_rgba(255,255,255,0.06)]">
           <h1 className="text-balance text-3xl font-light tracking-tight text-white max-md:text-[1.625rem] md:text-4xl">
             {title}
           </h1>
@@ -31,10 +31,10 @@ export function LegalTextPage({ title, updatedAt, sections }: LegalTextPageProps
 
         {sections.map((section, idx) => (
           <FadeIn key={section.title} variant="card" delay={Math.min(idx, 3) * 0.03}>
-          <section key={section.title} className="mt-8 rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 shadow-[0_18px_60px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-sm md:p-8">
-            <h2 className="text-2xl font-light tracking-tight text-white md:text-3xl">{section.title}</h2>
+          <section key={section.title} className="mt-6 rounded-[1.5rem] border border-white/10 bg-white/[0.035] p-4 shadow-[0_14px_44px_rgba(0,0,0,0.16),inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-sm md:mt-8 md:rounded-[2rem] md:bg-white/[0.04] md:p-8 md:shadow-[0_18px_60px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.05)]">
+            <h2 className="text-xl font-light tracking-tight text-white md:text-3xl">{section.title}</h2>
             {section.paragraphs.map((paragraph) => (
-              <p key={`${section.title}-${paragraph}`} className="mt-5 text-pretty text-base font-light leading-relaxed text-white/64 md:text-lg">
+              <p key={`${section.title}-${paragraph}`} className="mt-4 text-pretty text-sm font-light leading-relaxed text-white/60 md:mt-5 md:text-lg md:text-white/64">
                 {paragraph}
               </p>
             ))}

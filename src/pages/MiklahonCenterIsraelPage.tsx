@@ -14,7 +14,7 @@ export function MiklahonCenterIsraelPage() {
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_8%,rgba(184,163,105,0.16),transparent_30%),radial-gradient(circle_at_82%_30%,rgba(255,255,255,0.08),transparent_28%),linear-gradient(180deg,rgba(255,255,255,0.045),transparent_34%)]"
         aria-hidden
       />
-      <article className="relative mx-auto max-w-4xl pb-10 pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] pt-24 md:px-8 md:pt-28">
+      <article className="relative mx-auto max-w-4xl pb-8 pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] pt-22 md:px-8 md:pt-28">
         <nav className="text-sm font-light text-white/58" aria-label="שביל ניווט בעמוד שירות אזור מרכז הארץ">
           <ol className="flex flex-wrap items-center gap-x-2 gap-y-1">
             <li>
@@ -38,15 +38,15 @@ export function MiklahonCenterIsraelPage() {
         </nav>
 
         <FadeIn variant="heading">
-        <header className="mt-10 rounded-[2.25rem] border border-white/10 bg-white/[0.055] p-6 shadow-[0_30px_100px_rgba(0,0,0,0.34),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-sm md:p-10">
+        <header className="mt-8 rounded-[1.6rem] border border-white/10 bg-white/[0.04] p-4 shadow-[0_18px_54px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-sm md:mt-10 md:rounded-[2.25rem] md:bg-white/[0.055] md:p-10 md:shadow-[0_30px_100px_rgba(0,0,0,0.34),inset_0_1px_0_rgba(255,255,255,0.08)]">
           <p className="text-xs font-medium uppercase tracking-[0.36em] text-gold-soft/75">
             Service Area
           </p>
-          <h1 className="mt-4 max-w-3xl text-balance text-4xl font-light tracking-tight text-white max-md:text-[2rem] md:text-5xl">
+          <h1 className="mt-4 max-w-3xl text-balance text-4xl font-light tracking-tight text-white max-md:text-[1.75rem] md:text-5xl">
             {p.h1}
           </h1>
           {p.paragraphs[0] ? (
-            <p className="mt-6 max-w-[95%] text-pretty text-lg font-light leading-relaxed text-white/70 md:max-w-[65ch] md:leading-[1.75]">
+            <p className="mt-4 max-w-[95%] text-pretty text-sm font-light leading-relaxed text-white/66 md:mt-6 md:max-w-[65ch] md:text-lg md:leading-[1.75] md:text-white/70">
               {p.paragraphs[0]}
             </p>
           ) : null}
@@ -60,18 +60,18 @@ export function MiklahonCenterIsraelPage() {
           title="מתחילים מתמונה אחת"
           subtitle="שלחו צילום של חדר הרחצה — נחזור עם הערכה והמשך צעדים."
           variant="dark"
-          className="mt-10 text-center md:text-start"
+            className="mt-8 text-center md:mt-10 md:text-start"
         />
         </FadeIn>
 
         {p.paragraphs[1] ? (
-          <p className="mt-8 max-w-[95%] text-pretty text-lg font-light leading-relaxed text-white/70 md:max-w-[65ch] md:leading-[1.75]">
+          <p className="mt-6 max-w-[95%] text-pretty text-sm font-light leading-relaxed text-white/64 md:mt-8 md:max-w-[65ch] md:text-lg md:leading-[1.75] md:text-white/70">
             {p.paragraphs[1]}
           </p>
         ) : null}
 
         <FadeIn>
-        <p className="mt-8 max-w-[95%] text-pretty text-base font-light leading-relaxed text-white/66 md:max-w-[65ch] md:leading-[1.75]">
+        <p className="mt-6 max-w-[95%] text-pretty text-sm font-light leading-relaxed text-white/62 md:mt-8 md:max-w-[65ch] md:text-base md:leading-[1.75] md:text-white/66">
           לקריאה מעמיקה:{' '}
           <Link
             to="/miklahon-guide"
@@ -97,7 +97,7 @@ export function MiklahonCenterIsraelPage() {
           title="קראתם את המדריך?"
           subtitle="אם נשארו שאלות — שלחו תמונה ונדייק יחד את הפתרון."
           variant="dark"
-          className="mt-10 text-center md:text-start"
+          className="mt-8 text-center md:mt-10 md:text-start"
         />
         </FadeIn>
 
@@ -108,7 +108,7 @@ export function MiklahonCenterIsraelPage() {
           title="רוצים הצעה לפני ביקור בשטח?"
           subtitle="שלחו תמונה של חדר הרחצה — נחזור עם הערכה מדויקת."
           variant="dark"
-          className="mt-12 text-center md:text-start"
+          className="mt-9 text-center md:mt-12 md:text-start"
         />
         </FadeIn>
       </article>

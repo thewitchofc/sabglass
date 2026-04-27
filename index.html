@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/icon-48.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/icon-96.png" />
     <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
     <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
     <link rel="apple-touch-icon" href="/icon-192.png" />
@@ -53,6 +55,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="__SITE_URL__/" />
     <meta property="og:image" content="https://sabglass.co.il/og-image-v2.jpg" />
+    <meta property="og:image:url" content="https://sabglass.co.il/og-image-v2.jpg" />
     <meta property="og:image:secure_url" content="https://sabglass.co.il/og-image-v2.jpg" />
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
@@ -100,7 +103,19 @@
     <link
       rel="preload"
       as="image"
-      href="/hero-luxury-shower.png"
+      href="/hero-luxury-shower-mobile.avif"
+      imagesrcset="/hero-luxury-shower-mobile.avif 640w"
+      imagesizes="100vw"
+      media="(max-width: 767px)"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/hero-luxury-shower-desktop.avif"
+      imagesrcset="/hero-luxury-shower-desktop.avif 1024w"
+      imagesizes="100vw"
+      media="(min-width: 768px)"
       fetchpriority="high"
     />
 
@@ -142,10 +157,10 @@
     </style>
     <img
       id="static-hero-lcp-fallback"
-      src="/hero-luxury-shower.png"
+      src="/hero-luxury-shower-mobile.avif"
       alt=""
-      width="1024"
-      height="528"
+      width="640"
+      height="330"
       fetchpriority="high"
       decoding="async"
       loading="eager"

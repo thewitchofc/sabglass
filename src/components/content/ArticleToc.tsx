@@ -92,7 +92,7 @@ export function ArticleToc({ title, items }: { title: string; items: ArticleTocI
 
   return (
     <nav
-      className="mt-8 rounded-3xl border border-white/10 bg-white/[0.055] px-4 py-4 shadow-[0_24px_80px_rgba(0,0,0,0.24),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-sm sm:py-5 md:px-6 md:py-6"
+      className="mt-7 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-4 shadow-[0_14px_44px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-sm sm:py-5 md:mt-8 md:rounded-3xl md:bg-white/[0.055] md:px-6 md:py-6 md:shadow-[0_24px_80px_rgba(0,0,0,0.24),inset_0_1px_0_rgba(255,255,255,0.08)]"
       aria-labelledby={titleId}
     >
       <p id={titleId} className="text-sm font-medium text-white">
@@ -110,7 +110,7 @@ export function ArticleToc({ title, items }: { title: string; items: ArticleTocI
         </p>
       </div>
       <ol
-        className="mt-3 list-decimal space-y-2.5 ps-5 text-sm font-light leading-relaxed text-white/66 md:mt-3.5 md:space-y-2 md:text-base"
+        className="mt-3 list-decimal space-y-2 ps-5 text-xs font-light leading-relaxed text-white/62 md:mt-3.5 md:space-y-2 md:text-base md:text-white/66"
         aria-describedby={progressId}
       >
         {items.map((item) => {

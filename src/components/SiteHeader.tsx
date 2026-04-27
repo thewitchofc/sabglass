@@ -155,10 +155,10 @@ export function SiteHeader() {
     : 'border-gold-soft/45 bg-white/[0.06] text-white hover:border-gold-soft hover:bg-gold-soft hover:text-neutral-950 focus-visible:ring-gold-soft focus-visible:ring-offset-neutral-950'
 
   const mobileLinkClass =
-    'rounded-sm px-3 py-3 text-sm font-medium text-white/78 transition-colors hover:bg-white/[0.06] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white/30'
+    'rounded-sm px-3 py-2.5 text-sm font-medium text-white/78 transition-colors hover:bg-white/[0.06] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white/30'
 
   const mobileSubLinkClass =
-    'rounded-sm py-2.5 text-sm font-light text-white/64 transition-colors hover:bg-white/[0.05] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white/30'
+    'rounded-sm py-2 text-sm font-light text-white/64 transition-colors hover:bg-white/[0.05] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white/30'
 
   return (
     <header
@@ -323,17 +323,17 @@ export function SiteHeader() {
       {mobileOpen && (
         <div
           id="mobile-nav"
-          className="fixed inset-x-0 bottom-0 z-[69] overflow-y-auto border-t border-white/10 bg-neutral-950/96 py-6 pl-[max(1.25rem,env(safe-area-inset-left,0px))] pr-[max(1.25rem,env(safe-area-inset-right,0px))] pt-6 shadow-[0_-24px_80px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-md md:hidden"
+          className="fixed inset-x-0 bottom-0 z-[69] overflow-y-auto border-t border-white/10 bg-neutral-950/96 py-4 pl-[max(1.25rem,env(safe-area-inset-left,0px))] pr-[max(1.25rem,env(safe-area-inset-right,0px))] pt-4 shadow-[0_-18px_56px_rgba(0,0,0,0.34),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-md md:hidden"
           style={{
             top: 'calc(3.5rem + env(safe-area-inset-top, 0px))',
           }}
         >
-          <div className="mx-auto flex max-w-6xl flex-col gap-1 pb-[env(safe-area-inset-bottom,0px)]">
+          <div className="mx-auto flex max-w-6xl flex-col gap-0.5 pb-[env(safe-area-inset-bottom,0px)]">
             <a
               href={waHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="mb-2 flex items-center justify-center gap-2 rounded-full border border-gold-soft/45 bg-white/[0.06] px-3 py-3 text-center text-xs font-medium leading-snug text-white transition-colors hover:border-gold-soft hover:bg-gold-soft hover:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-soft focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
+              className="mb-2 flex items-center justify-center gap-2 rounded-full border border-gold-soft/40 bg-white/[0.05] px-3 py-2.5 text-center text-xs font-medium leading-snug text-white transition-colors hover:border-gold-soft hover:bg-gold-soft hover:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-soft focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
               aria-label={a11y.whatsappHeader}
               onClick={() => {
                 trackWhatsAppClick('article')
@@ -360,7 +360,7 @@ export function SiteHeader() {
             <button
               type="button"
               id="mobile-catalog-accordion-trigger"
-              className="flex w-full items-center justify-between gap-2 rounded-sm px-3 py-3 text-start text-sm font-medium text-white/78 transition-colors hover:bg-white/[0.06] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white/30"
+              className="flex w-full items-center justify-between gap-2 rounded-sm px-3 py-2.5 text-start text-sm font-medium text-white/78 transition-colors hover:bg-white/[0.06] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white/30"
               aria-expanded={mobileCatalogExpanded}
               aria-controls="mobile-catalog-accordion-panel"
               onClick={() => setMobileCatalogExpanded((v) => !v)}
@@ -384,12 +384,12 @@ export function SiteHeader() {
                 id="mobile-catalog-accordion-panel"
                 role="region"
                 aria-labelledby="mobile-catalog-accordion-trigger"
-                className="ms-2 flex flex-col gap-1 border-s border-white/10 ps-3 pt-0.5"
+                className="ms-2 flex flex-col gap-0.5 border-s border-white/10 ps-3 pt-0.5"
               >
                 <Link
                   to="/catalog"
                   aria-current={isCatalogCurrent ? 'page' : undefined}
-                  className="rounded-sm py-2.5 text-sm font-medium text-white/74 transition-colors hover:bg-white/[0.05] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white/30"
+                  className="rounded-sm py-2 text-sm font-medium text-white/74 transition-colors hover:bg-white/[0.05] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white/30"
                   onClick={onCatalogRootClick}
                 >
                   {navCopy.catalog}, הכל
@@ -433,7 +433,7 @@ export function SiteHeader() {
             <Link
               to="/#contact"
               aria-current={isContactCurrent ? 'page' : undefined}
-              className={`${mobileLinkClass} mt-4`}
+              className={`${mobileLinkClass} mt-2`}
               onClick={onHomeHashClick('#contact')}
             >
               {navCopy.contact}
