@@ -5,29 +5,29 @@ export function ArticleRelated({ articles }: { articles: ArticleContent[] }) {
   if (!articles.length) return null
   return (
     <section
-      className="mt-14 border-t border-neutral-200 pt-12"
+      className="mt-12 rounded-[2rem] border border-white/10 bg-white/[0.045] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.24),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-sm md:p-8"
       aria-labelledby="related-articles-heading"
     >
       <h2
         id="related-articles-heading"
-        className="text-xl font-light tracking-tight text-neutral-950 md:text-2xl"
+        className="text-xl font-light tracking-tight text-white md:text-2xl"
       >
         מאמרים נוספים שיכולים לעזור
       </h2>
-      <ul className="mt-6 space-y-5">
+      <ul className="mt-6 space-y-4">
         {articles.map((a) => (
           <li key={a.slug}>
             <Link
               to={a.path}
-              className="group inline-block max-w-full rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-800 focus-visible:ring-offset-2"
+              className="group block max-w-full rounded-2xl border border-white/10 bg-neutral-950/35 px-5 py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/35 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
             >
-              <span className="text-pretty text-base font-medium text-neutral-900 underline decoration-neutral-400 underline-offset-[5px] transition-colors group-hover:text-emerald-950 group-hover:decoration-emerald-800/40 md:text-lg">
+              <span className="text-pretty text-base font-medium text-white transition-colors group-hover:text-gold-soft md:text-lg">
                 {articleLinkTitle(a)}
               </span>
+              <span className="mt-1.5 block max-w-[62ch] text-pretty text-sm font-light leading-relaxed text-white/58">
+                {a.intro}
+              </span>
             </Link>
-            <p className="mt-1.5 max-w-[62ch] text-pretty text-sm font-light leading-relaxed text-neutral-600">
-              {a.intro}
-            </p>
           </li>
         ))}
       </ul>

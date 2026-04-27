@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { premiumCopy } from '../../content/premium'
 import { FadeIn } from '../ui/FadeIn'
 
@@ -6,54 +5,72 @@ export function Trust() {
   const { trust } = premiumCopy
 
   return (
-    <section className="border-y border-neutral-200/80 bg-white" aria-labelledby="trust-heading">
-      <div className="mx-auto max-w-6xl py-14 pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] md:px-8 md:py-28">
-        <FadeIn>
-          <h2
-            id="trust-heading"
-            className="text-3xl font-light tracking-tight text-neutral-950 max-md:text-[1.625rem] md:text-4xl"
-          >
-            {trust.title}
-          </h2>
-        </FadeIn>
+    <section
+      className="relative isolate overflow-hidden border-y border-white/10 bg-neutral-950 text-white"
+      aria-labelledby="trust-heading"
+    >
+      <div
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_24%,rgba(184,163,105,0.16),transparent_28%),radial-gradient(circle_at_80%_76%,rgba(255,255,255,0.08),transparent_30%),linear-gradient(180deg,rgba(255,255,255,0.045),transparent_30%)]"
+        aria-hidden
+      />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-l from-transparent via-white/24 to-transparent" />
 
-        <div className="mt-14 grid gap-12 max-md:gap-16 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.4fr)] lg:gap-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <p className="text-2xl tracking-wide text-amber-500 md:text-3xl">
-              <span className="sr-only">חמישה כוכבים</span>
-              <span aria-hidden>★★★★★</span>
-            </p>
-            <p className="mt-4 text-xl font-light text-neutral-950 md:text-2xl">{trust.stat}</p>
-            <p className="mt-2 text-sm font-light text-neutral-600 md:hidden">{trust.starsLabelMobile}</p>
-            <p className="mt-2 hidden text-sm font-light text-neutral-600 md:block md:text-base">{trust.starsLabel}</p>
-          </motion.div>
+      <div className="relative mx-auto max-w-6xl py-16 pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] md:px-8 md:py-28">
+        <div className="grid gap-12 max-md:gap-14 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:gap-16">
+          <div>
+            <FadeIn variant="heading">
+              <p className="text-xs font-medium uppercase tracking-[0.36em] text-gold-soft/75">
+                Verified Trust
+              </p>
+              <h2
+                id="trust-heading"
+                className="mt-4 text-balance text-4xl font-light tracking-tight text-white max-md:text-[2rem] md:text-5xl"
+              >
+                {trust.title}
+              </h2>
+            </FadeIn>
+
+            <FadeIn
+              variant="card"
+              className="mt-10 rounded-[2rem] border border-white/10 bg-white/[0.055] p-6 shadow-[0_28px_90px_rgba(0,0,0,0.32),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-sm md:p-8"
+            >
+              <p className="text-3xl tracking-wide text-gold-soft drop-shadow-[0_0_24px_rgba(184,163,105,0.25)] md:text-4xl">
+                <span className="sr-only">חמישה כוכבים</span>
+                <span aria-hidden>★★★★★</span>
+              </p>
+              <p className="mt-5 text-2xl font-light text-white md:text-3xl">{trust.stat}</p>
+              <p className="mt-3 text-sm font-light leading-relaxed text-white/62 md:hidden">
+                {trust.starsLabelMobile}
+              </p>
+              <p className="mt-3 hidden text-sm font-light leading-relaxed text-white/62 md:block md:text-base">
+                {trust.starsLabel}
+              </p>
+            </FadeIn>
+          </div>
 
           <div>
-            <h3 className="text-xl font-light tracking-tight text-neutral-950 md:text-2xl">
+            <h3 className="text-2xl font-light tracking-tight text-white md:text-3xl">
               {trust.testimonialsHeading}
             </h3>
-            <div className="mt-8 space-y-10 md:mt-10 md:space-y-[4.5rem]">
+            <div className="mt-8 grid gap-4 md:mt-10 md:grid-cols-2">
             {trust.testimonials.map((t, i) => (
-              <motion.figure
+              <FadeIn
                 key={`${t.author}-${t.city}`}
-                className={`border-s-2 border-neutral-200 ps-6 md:ps-8 ${i >= 2 ? 'hidden md:block' : ''}`.trim()}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-40px' }}
-                transition={{ duration: 0.5, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
+                as="figure"
+                variant="card"
+                delay={i * 0.06}
+                className={`rounded-3xl border border-white/10 bg-white/[0.055] p-6 shadow-[0_24px_70px_rgba(0,0,0,0.24),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-sm ${
+                  i >= 2 ? 'hidden md:block' : ''
+                } ${i === 0 ? 'md:col-span-2' : ''}`.trim()}
               >
-                <blockquote className="max-w-[95%] text-lg font-light leading-relaxed text-neutral-800 md:max-w-none md:text-xl md:leading-snug">
+                <blockquote className="max-w-[95%] text-lg font-light leading-relaxed text-white/84 md:max-w-none md:text-xl md:leading-snug">
                   «{t.quote}»
                 </blockquote>
-                <figcaption className="mt-4 text-sm font-light text-neutral-600">
+                <figcaption className="mt-5 flex items-center gap-3 text-sm font-light text-white/58">
+                  <span className="h-px w-8 bg-gold-soft/45" aria-hidden />
                   {t.author}, {t.city}
                 </figcaption>
-              </motion.figure>
+              </FadeIn>
             ))}
             </div>
           </div>

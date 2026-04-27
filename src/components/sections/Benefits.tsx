@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { premiumCopy } from '../../content/premium'
 import { FadeIn } from '../ui/FadeIn'
 
@@ -6,45 +5,59 @@ export function Benefits() {
   const { benefits } = premiumCopy
 
   return (
-    <section className="bg-neutral-50" aria-labelledby="benefits-heading">
-      <div className="mx-auto max-w-6xl py-14 pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] md:px-8 md:py-28">
-        <FadeIn>
-          <h2
-            id="benefits-heading"
-            className="text-3xl font-light tracking-tight text-neutral-950 max-md:text-[1.625rem] md:text-4xl"
-          >
-            {benefits.title}
-          </h2>
-          <p className="mt-4 max-w-[95%] text-sm font-light leading-relaxed text-neutral-600 md:hidden">
-            {benefits.leadMobile}
-          </p>
-          <p className="mt-4 hidden max-w-[95%] text-sm font-light leading-relaxed text-neutral-600 md:block md:max-w-xl md:text-base md:leading-normal">
-            {benefits.lead}
-          </p>
-        </FadeIn>
+    <section
+      className="relative isolate overflow-hidden border-b border-white/10 bg-neutral-950 text-white"
+      aria-labelledby="benefits-heading"
+    >
+      <div
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(255,255,255,0.08),transparent_26%),radial-gradient(circle_at_82%_72%,rgba(184,163,105,0.16),transparent_30%),linear-gradient(180deg,rgba(255,255,255,0.05),transparent_28%)]"
+        aria-hidden
+      />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-l from-transparent via-white/25 to-transparent" />
 
-        <div className="mt-14 grid grid-cols-1 gap-7 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
-          {benefits.items.map((item, i) => (
-            <motion.article
-              key={item}
-              className="group border border-neutral-200/90 bg-white p-6 shadow-sm transition-all duration-500 hover:-translate-y-0.5 hover:border-neutral-300 hover:shadow-md sm:p-8"
-              initial={{ opacity: 0, y: 22 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{
-                duration: 0.55,
-                delay: i * 0.06,
-                ease: [0.22, 1, 0.36, 1],
-              }}
+      <div className="relative mx-auto max-w-6xl py-16 pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] md:px-8 md:py-28">
+        <div className="grid gap-10 md:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] md:gap-14">
+          <FadeIn variant="heading">
+            <p className="text-xs font-medium uppercase tracking-[0.36em] text-gold-soft/75">
+              Why SAB
+            </p>
+            <h2
+              id="benefits-heading"
+              className="mt-4 text-balance text-4xl font-light tracking-tight text-white max-md:text-[2rem] md:text-5xl"
             >
-              <span className="text-xs font-medium tabular-nums text-neutral-600 transition-colors group-hover:text-neutral-700">
-                {String(i + 1).padStart(2, '0')}
-              </span>
-              <p className="mt-4 text-base font-light leading-relaxed text-neutral-800 md:text-lg">
-                {item}
-              </p>
-            </motion.article>
-          ))}
+              {benefits.title}
+            </h2>
+            <p className="mt-5 max-w-[95%] text-sm font-light leading-relaxed text-white/68 md:hidden">
+              {benefits.leadMobile}
+            </p>
+            <p className="mt-5 hidden max-w-[95%] text-base font-light leading-relaxed text-white/68 md:block md:max-w-sm">
+              {benefits.lead}
+            </p>
+          </FadeIn>
+
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {benefits.items.map((item, i) => (
+              <FadeIn
+                key={item}
+                variant="card"
+                delay={i * 0.06}
+                className={`group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.055] p-6 shadow-[0_24px_70px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:border-gold-soft/30 hover:bg-white/[0.075] sm:p-7 ${
+                  i === 0 ? 'sm:col-span-2 md:col-span-1' : ''
+                }`}
+              >
+                <div
+                  className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-gold/10 blur-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                  aria-hidden
+                />
+                <span className="text-xs font-medium tabular-nums tracking-[0.22em] text-gold-soft/80">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <p className="mt-5 text-pretty text-base font-light leading-relaxed text-white/86 md:text-lg">
+                  {item}
+                </p>
+              </FadeIn>
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { WHATSAPP_PHOTO_MESSAGE } from '../../config/site'
 import { premiumCopy } from '../../content/premium'
 import { WaMicroLine } from '../WaFrictionHints'
@@ -9,76 +8,85 @@ export function HowItWorks() {
   const { how, primaryCta, a11y } = premiumCopy
 
   return (
-    <section className="bg-neutral-50" aria-labelledby="how-heading">
-      <div className="mx-auto max-w-6xl py-14 pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] md:px-8 md:py-28">
-        <FadeIn>
-          <h2
-            id="how-heading"
-            className="text-3xl font-light tracking-tight text-neutral-950 max-md:text-[1.625rem] md:text-4xl"
-          >
-            {how.title}
-          </h2>
-        </FadeIn>
+    <section
+      className="relative isolate overflow-hidden border-y border-white/10 bg-neutral-950 text-white"
+      aria-labelledby="how-heading"
+    >
+      <div
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_22%_18%,rgba(184,163,105,0.14),transparent_26%),radial-gradient(circle_at_86%_58%,rgba(255,255,255,0.07),transparent_30%),linear-gradient(135deg,transparent,rgba(255,255,255,0.045)_52%,transparent)]"
+        aria-hidden
+      />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-l from-transparent via-white/22 to-transparent" />
 
-        <div className="relative mt-16 max-w-3xl md:mt-20">
-          <span
-            className="absolute end-[0.65rem] top-2 bottom-2 hidden w-px bg-neutral-200 md:block"
-            aria-hidden
-          />
-          <ol className="relative m-0 list-none space-y-8 p-0 md:space-y-14">
-          {how.steps.map((step, i) => (
-            <motion.li
-              key={step.title}
-              className="relative flex gap-6 md:gap-10"
-              initial={{ opacity: 0, x: -16 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{
-                duration: 0.55,
-                delay: i * 0.08,
-                ease: [0.22, 1, 0.36, 1],
-              }}
+      <div className="relative mx-auto max-w-6xl py-16 pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] md:px-8 md:py-28">
+        <div className="grid gap-12 md:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] md:gap-16">
+          <FadeIn variant="heading">
+            <p className="text-xs font-medium uppercase tracking-[0.36em] text-gold-soft/75">
+              The Process
+            </p>
+            <h2
+              id="how-heading"
+              className="mt-4 text-balance text-4xl font-light tracking-tight text-white max-md:text-[2rem] md:text-5xl"
             >
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-neutral-300 bg-white text-sm font-medium text-neutral-900 md:h-12 md:w-12">
-                {i + 1}
-              </span>
-              <div className="pt-1">
-                <h3 className="text-lg font-medium text-neutral-950 md:text-xl">
-                  <span className="md:hidden">
-                    {'titleMobile' in step && step.titleMobile ? step.titleMobile : step.title}
-                  </span>
-                  <span className="hidden md:inline">{step.title}</span>
-                </h3>
-                <p className="mt-2 max-w-[95%] text-sm font-light leading-relaxed text-neutral-600 md:hidden">
-                  {step.textMobile}
-                </p>
-                <p className="mt-2 hidden max-w-[95%] text-sm font-light leading-relaxed text-neutral-600 md:block md:max-w-md md:text-base">
-                  {step.text}
-                </p>
-              </div>
-            </motion.li>
-          ))}
-          </ol>
-        </div>
+              {how.title}
+            </h2>
+            <p className="mt-5 max-w-sm text-base font-light leading-relaxed text-white/65">
+              תהליך קצר, ברור ומדויק — מהתמונה הראשונה ועד התקנה נקייה בבית.
+            </p>
 
-        <motion.div
-          className="mt-16 hidden max-w-md flex-col md:mt-20 md:flex"
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-40px' }}
-          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <WhatsAppLink
-            variant="whatsapp"
-            message={WHATSAPP_PHOTO_MESSAGE}
-            ariaLabel={a11y.whatsappSendPhotoQuote}
-            trackingLabel="article"
-            className="w-full sm:w-auto"
-          >
-            {primaryCta}
-          </WhatsAppLink>
-          <WaMicroLine />
-        </motion.div>
+            <FadeIn
+              variant="default"
+              className="mt-10 hidden max-w-md flex-col md:flex"
+            >
+              <WhatsAppLink
+                variant="whatsapp"
+                message={WHATSAPP_PHOTO_MESSAGE}
+                ariaLabel={a11y.whatsappSendPhotoQuote}
+                trackingLabel="article"
+                className="w-full !rounded-full shadow-[0_14px_40px_rgba(37,211,102,0.24)] sm:w-auto"
+              >
+                {primaryCta}
+              </WhatsAppLink>
+              <WaMicroLine className="[&_p]:text-white/55" />
+            </FadeIn>
+          </FadeIn>
+
+          <div className="relative">
+            <span
+              className="absolute end-[1.35rem] top-8 bottom-8 hidden w-px bg-gradient-to-b from-gold-soft/0 via-gold-soft/35 to-gold-soft/0 md:block"
+              aria-hidden
+            />
+            <ol className="relative m-0 list-none space-y-4 p-0 md:space-y-5">
+            {how.steps.map((step, i) => (
+              <FadeIn
+                key={step.title}
+                as="li"
+                variant="card"
+                delay={i * 0.08}
+                className="relative flex gap-4 rounded-3xl border border-white/10 bg-white/[0.055] p-5 shadow-[0_24px_70px_rgba(0,0,0,0.26),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-sm md:gap-6 md:p-7"
+              >
+                <span className="relative z-10 flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-gold-soft/25 bg-gold/10 text-sm font-medium tabular-nums text-gold-soft shadow-[0_0_32px_rgba(184,163,105,0.18)] md:h-12 md:w-12">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <div className="pt-0.5">
+                  <h3 className="text-lg font-medium text-white md:text-xl">
+                    <span className="md:hidden">
+                      {'titleMobile' in step && step.titleMobile ? step.titleMobile : step.title}
+                    </span>
+                    <span className="hidden md:inline">{step.title}</span>
+                  </h3>
+                  <p className="mt-2 max-w-[95%] text-sm font-light leading-relaxed text-white/65 md:hidden">
+                    {step.textMobile}
+                  </p>
+                  <p className="mt-2 hidden max-w-[95%] text-sm font-light leading-relaxed text-white/65 md:block md:max-w-md md:text-base">
+                    {step.text}
+                  </p>
+                </div>
+              </FadeIn>
+            ))}
+            </ol>
+          </div>
+        </div>
       </div>
     </section>
   )

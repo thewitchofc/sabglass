@@ -83,7 +83,7 @@ export function ArticleScrollNudge({
           exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 10 }}
           transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="pointer-events-auto flex max-w-md flex-col gap-2 rounded-sm border border-neutral-200 bg-white/95 p-3 shadow-lg ring-1 ring-black/5 backdrop-blur-sm md:max-w-sm">
+          <div className="pointer-events-auto flex max-w-md flex-col gap-2 rounded-2xl border border-white/10 bg-neutral-950/92 p-3 shadow-[0_18px_60px_rgba(0,0,0,0.36)] ring-1 ring-white/5 backdrop-blur-md md:max-w-sm">
             <div className="flex items-start justify-between gap-2">
               <WhatsAppLink
                 variant="whatsapp"
@@ -101,14 +101,14 @@ export function ArticleScrollNudge({
               <button
                 type="button"
                 onClick={() => setDismissed(true)}
-                className="shrink-0 rounded-sm px-2 py-1 text-xs font-light text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-800 focus-visible:ring-offset-2"
+                className="shrink-0 rounded-sm px-2 py-1 text-xs font-light text-white/58 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/35 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
                 aria-label="סגירת ההצעה הצפה לשליחת תמונה או ייעוץ בוואטסאפ"
               >
                 סגירה
               </button>
             </div>
             {microLine ? (
-              <p className="text-center text-[11px] font-light text-neutral-600 md:text-start">{microLine}</p>
+              <p className="text-center text-[11px] font-light text-white/58 md:text-start">{microLine}</p>
             ) : null}
           </div>
         </motion.div>

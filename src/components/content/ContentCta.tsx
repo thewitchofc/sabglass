@@ -13,6 +13,7 @@ export function ContentCta({
   title,
   subtitle,
   waTrackingLabel = 'article',
+  variant = 'light',
 }: {
   label: string
   message: Msg
@@ -20,21 +21,36 @@ export function ContentCta({
   title?: string
   subtitle?: string
   waTrackingLabel?: WhatsAppClickLabel
+  variant?: 'light' | 'dark'
 }) {
   const { a11y } = premiumCopy
   const m = message === 'consult' ? WHATSAPP_CONSULT_MESSAGE : WHATSAPP_PHOTO_MESSAGE
   const aria = message === 'consult' ? a11y.whatsappConsult : a11y.whatsappSendPhotoQuote
+  const isDark = variant === 'dark'
+
   return (
     <div
-      className={`mt-8 rounded-sm border border-neutral-200 bg-neutral-50 px-4 py-7 max-md:px-4 max-md:py-7 md:px-6 md:py-8 ${className}`.trim()}
+      className={`mt-8 rounded-3xl px-4 py-7 max-md:px-4 max-md:py-7 md:px-6 md:py-8 ${
+        isDark
+          ? 'border border-white/10 bg-white/[0.055] shadow-[0_24px_80px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-sm'
+          : 'border border-neutral-200 bg-neutral-50'
+      } ${className}`.trim()}
     >
       {title ? (
-        <p className="max-w-full text-lg font-medium tracking-tight text-neutral-950 md:max-w-none md:text-xl">
+        <p
+          className={`max-w-full text-lg font-medium tracking-tight md:max-w-none md:text-xl ${
+            isDark ? 'text-white' : 'text-neutral-950'
+          }`}
+        >
           {title}
         </p>
       ) : null}
       {subtitle ? (
-        <p className="mt-2 max-w-full text-pretty text-base font-light leading-[1.75] text-neutral-600 md:text-lg">
+        <p
+          className={`mt-2 max-w-full text-pretty text-base font-light leading-[1.75] md:text-lg ${
+            isDark ? 'text-white/66' : 'text-neutral-600'
+          }`}
+        >
           {subtitle}
         </p>
       ) : null}
@@ -43,11 +59,11 @@ export function ContentCta({
         message={m}
         ariaLabel={aria}
         trackingLabel={waTrackingLabel}
-        className={`w-full sm:w-auto ${title || subtitle ? 'mt-6' : ''}`.trim()}
+        className={`w-full !rounded-full shadow-[0_12px_34px_rgba(37,211,102,0.24)] sm:w-auto ${title || subtitle ? 'mt-6' : ''}`.trim()}
       >
         {label}
       </WhatsAppLink>
-      <WaMicroLine className="mt-3" />
+      <WaMicroLine variant={isDark ? 'onDark' : 'onLight'} className="mt-3" />
     </div>
   )
 }

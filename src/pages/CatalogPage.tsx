@@ -6,7 +6,7 @@ export function CatalogPage() {
   useScrollToHash()
 
   return (
-    <main className="min-h-screen bg-white pb-[calc(5.5rem+env(safe-area-inset-bottom,0px))] font-sans text-neutral-900 antialiased md:pb-0">
+    <main className="min-h-screen bg-neutral-950 pb-[calc(5.5rem+env(safe-area-inset-bottom,0px))] font-sans text-white antialiased md:pb-0">
       <Gallery />
       <SiteFooter />
     </main>

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { ContentCta } from '../components/content/ContentCta'
 import { SiteFooter } from '../components/sections/SiteFooter'
+import { FadeIn } from '../components/ui/FadeIn'
 import { SITE_WIDE_CTA_BUTTON_LABEL } from '../config/site'
 import {
   articleHubGroups,
@@ -15,96 +16,124 @@ import { SERVICE_AREA_COPY } from '../content/serviceAreaCopy'
 
 export function ArticlesIndexPage() {
   return (
-    <main className="min-h-screen bg-white pb-[calc(5.5rem+env(safe-area-inset-bottom,0px))] font-sans text-neutral-900 antialiased md:pb-0">
-      <div className="mx-auto max-w-2xl pb-10 pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] pt-24 md:px-8 md:pt-28">
-        <nav className="text-sm font-light text-neutral-600" aria-label="שביל ניווט בעמוד מאמרים">
+    <main className="relative min-h-screen overflow-hidden bg-neutral-950 pb-[calc(5.5rem+env(safe-area-inset-bottom,0px))] font-sans text-white antialiased md:pb-0">
+      <div
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_8%,rgba(184,163,105,0.16),transparent_30%),radial-gradient(circle_at_82%_32%,rgba(255,255,255,0.08),transparent_26%),linear-gradient(180deg,rgba(255,255,255,0.045),transparent_34%)]"
+        aria-hidden
+      />
+      <div className="relative mx-auto max-w-4xl pb-10 pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] pt-24 md:px-8 md:pt-28">
+        <nav className="text-sm font-light text-white/58" aria-label="שביל ניווט בעמוד מאמרים">
           <ol className="flex flex-wrap items-center gap-x-2 gap-y-1">
             <li>
               <Link
                 to="/"
-                className="rounded-sm hover:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-800 focus-visible:ring-offset-2"
+                className="rounded-sm hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/35 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
               >
                 בית
               </Link>
             </li>
-            <li className="text-neutral-300 select-none" aria-hidden>
+            <li className="select-none text-white/25" aria-hidden>
               ›
             </li>
-            <li className="font-normal text-neutral-800" aria-current="page">
+            <li className="font-normal text-white" aria-current="page">
               מאמרים
             </li>
           </ol>
         </nav>
 
-        <h1 className="mt-6 text-balance text-3xl font-light tracking-tight text-neutral-950 max-md:text-[1.625rem] md:text-4xl">
-          מדריך מקלחונים וזכוכית בהתאמה אישית
-        </h1>
-        <p className="mt-6 max-w-[95%] text-pretty text-lg font-light leading-relaxed text-neutral-700 md:max-w-[65ch] md:leading-[1.75]">
-          כל מה שצריך לדעת לפני שבוחרים מקלחון — בחירה נכונה, מחיר, זכוכית והתאמה לחלל. מתחילים מהמדריך המלא או בוחרים נושא מהרשימה.
-        </p>
+        <FadeIn variant="heading">
+          <p className="mt-10 text-xs font-medium uppercase tracking-[0.36em] text-gold-soft/75">
+            Shower Guide
+          </p>
+          <h1 className="mt-4 max-w-3xl text-balance text-4xl font-light tracking-tight text-white max-md:text-[2rem] md:text-5xl">
+            מדריך מקלחונים וזכוכית בהתאמה אישית
+          </h1>
+          <p className="mt-6 max-w-[95%] text-pretty text-lg font-light leading-relaxed text-white/70 md:max-w-[65ch] md:leading-[1.75]">
+            כל מה שצריך לדעת לפני שבוחרים מקלחון — בחירה נכונה, מחיר, זכוכית והתאמה לחלל. מתחילים מהמדריך המלא או בוחרים נושא מהרשימה.
+          </p>
+        </FadeIn>
 
+        <FadeIn variant="card">
         <ContentCta
           label={SITE_WIDE_CTA_BUTTON_LABEL}
           message="photo"
           title="מעדיפים לדבר לפני הקריאה?"
           subtitle="שלחו תמונה של חדר הרחצה — נכוון אתכם למאמרים הרלוונטיים."
+          variant="dark"
           className="mt-8 text-center md:text-start"
         />
+        </FadeIn>
 
+        <FadeIn variant="card">
         <Link
           to={pillarMiklahonGuidePage.path}
-          className="mt-8 block rounded-sm border border-emerald-900/20 bg-emerald-50/40 px-5 py-5 transition-colors hover:border-emerald-900/35 hover:bg-emerald-50/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-800 focus-visible:ring-offset-2"
+          className="group relative mt-8 block overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.06] px-6 py-7 shadow-[0_28px_90px_rgba(0,0,0,0.32),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:border-gold-soft/30 hover:bg-white/[0.08] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/35 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
         >
-          <span className="text-xs font-semibold uppercase tracking-wider text-emerald-900/90">
-            עמוד עמודים
+          <span
+            className="pointer-events-none absolute -left-16 -top-16 h-44 w-44 rounded-full bg-gold/10 blur-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+            aria-hidden
+          />
+          <span className="relative text-xs font-semibold uppercase tracking-[0.28em] text-gold-soft/80">
+            המדריך המרכזי
           </span>
-          <span className="mt-1 block text-lg font-medium text-neutral-950">{pillarMiklahonGuidePage.h1}</span>
-          <span className="mt-2 block text-sm font-light leading-relaxed text-neutral-600">
+          <span className="relative mt-2 block text-2xl font-light tracking-tight text-white md:text-3xl">
+            {pillarMiklahonGuidePage.h1}
+          </span>
+          <span className="relative mt-3 block max-w-2xl text-sm font-light leading-relaxed text-white/65 md:text-base">
             סיכום מבנה: סוגים, חלל, מחיר וזכוכית — עם קישורים למאמרים המלאים.
           </span>
         </Link>
+        </FadeIn>
 
+        <FadeIn variant="card">
         <section className="mt-10" aria-labelledby="service-hub-title">
-          <h2 id="service-hub-title" className="text-lg font-medium text-neutral-950">
+          <h2 id="service-hub-title" className="text-lg font-medium text-white">
             שירות והתקנה
           </h2>
           <Link
             to={serviceShowerPage.path}
-            className="mt-4 block rounded-sm border border-neutral-200 bg-neutral-50/50 px-5 py-4 text-neutral-800 transition-colors hover:border-neutral-300 hover:bg-neutral-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-800 focus-visible:ring-offset-2"
+            className="mt-4 block rounded-2xl border border-white/10 bg-white/[0.045] px-5 py-4 text-white/82 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] transition-colors hover:border-white/20 hover:bg-white/[0.065] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/35 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
           >
-            <span className="font-medium text-neutral-950">{serviceShowerPage.h1}</span>
-            <span className="mt-1 block text-sm font-light leading-relaxed text-neutral-600">
+            <span className="font-medium text-white">{serviceShowerPage.h1}</span>
+            <span className="mt-1 block text-sm font-light leading-relaxed text-white/60">
               מקלחוני זכוכית בהתאמה אישית, סוגים, התקנה ויתרונות זכוכית מחוסמת.
             </span>
           </Link>
         </section>
+        </FadeIn>
 
+        <FadeIn variant="card">
         <section className="mt-12" aria-labelledby="local-hub-title">
-          <h2 id="local-hub-title" className="text-lg font-medium text-neutral-950">
+          <h2 id="local-hub-title" className="text-lg font-medium text-white">
             אזור שירות
           </h2>
           <Link
             to={localLandingCenterIsraelPage.path}
-            className="mt-4 block rounded-sm border border-neutral-200 px-5 py-4 transition-colors hover:border-neutral-400 hover:bg-neutral-50/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-800 focus-visible:ring-offset-2"
+            className="mt-4 block rounded-2xl border border-white/10 bg-white/[0.035] px-5 py-4 transition-colors hover:border-white/20 hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/35 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
           >
-            <span className="font-medium text-neutral-950">{localLandingCenterIsraelPage.h1}</span>
-            <span className="mt-1 block text-sm font-light text-neutral-600">
+            <span className="font-medium text-white">{localLandingCenterIsraelPage.h1}</span>
+            <span className="mt-1 block text-sm font-light text-white/60">
               {SERVICE_AREA_COPY.reachTrust}
             </span>
           </Link>
         </section>
+        </FadeIn>
 
+        <FadeIn variant="card">
         <ContentCta
           label={SITE_WIDE_CTA_BUTTON_LABEL}
           message="photo"
           title="כבר בחרתם נושא?"
           subtitle="אם יש תמונה — נענה מהר יותר עם כיוון מדויק."
-          className="mt-14 border-t border-neutral-200 pt-12 text-center md:text-start"
+          variant="dark"
+          className="mt-14 border-t border-white/10 pt-12 text-center md:text-start"
         />
+        </FadeIn>
 
-        {articleHubGroups.map((group) => (
-          <section key={group.id} className="mt-14 border-t border-neutral-200 pt-12" aria-labelledby={`hub-${group.id}`}>
-            <h2 id={`hub-${group.id}`} className="text-xl font-light tracking-tight text-neutral-950 md:text-2xl">
+        {articleHubGroups.map((group, idx) => (
+          <FadeIn key={group.id} variant="card" delay={Math.min(idx, 3) * 0.03}>
+          <section key={group.id} className="mt-14 border-t border-white/10 pt-12" aria-labelledby={`hub-${group.id}`}>
+            <h2 id={`hub-${group.id}`} className="text-xl font-light tracking-tight text-white md:text-2xl">
               {group.title}
             </h2>
             <ul className="mt-6 space-y-3">
@@ -115,10 +144,10 @@ export function ArticlesIndexPage() {
                   <li key={`${group.id}-${item.slug}`}>
                     <Link
                       to={a.path}
-                      className="block rounded-sm border border-neutral-200 px-5 py-4 transition-colors hover:border-neutral-400 hover:bg-neutral-50/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-800 focus-visible:ring-offset-2"
+                      className="block rounded-2xl border border-white/10 bg-white/[0.035] px-5 py-4 transition-colors hover:border-gold-soft/25 hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/35 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
                     >
-                      <span className="font-medium text-neutral-950">{item.label}</span>
-                      <span className="mt-1 block text-sm font-light leading-relaxed text-neutral-600 line-clamp-2">
+                      <span className="font-medium text-white">{item.label}</span>
+                      <span className="mt-1 block text-sm font-light leading-relaxed text-white/58 line-clamp-2">
                         {a.metaDescription}
                       </span>
                     </Link>
@@ -127,54 +156,60 @@ export function ArticlesIndexPage() {
               })}
             </ul>
           </section>
+          </FadeIn>
         ))}
 
-        <section className="mt-14 border-t border-neutral-200 pt-12" aria-labelledby="all-articles-title">
-          <h2 id="all-articles-title" className="text-xl font-light tracking-tight text-neutral-950 md:text-2xl">
-            כל המאמרים
-          </h2>
-          <ul className="mt-6 space-y-3">
-            {articlesList.map((a) => (
-              <li key={a.slug}>
-                <Link
-                  to={a.path}
-                  className="block rounded-sm border border-neutral-200 px-5 py-3 text-sm transition-colors hover:border-neutral-400 hover:bg-neutral-50/80"
-                >
-                  <span className="font-medium text-neutral-950">{a.h1}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        {plannedArticleTopics.length > 0 ? (
-          <section className="mt-14 border-t border-dashed border-neutral-200 pt-12" aria-labelledby="planned-title">
-            <h2 id="planned-title" className="text-lg font-medium text-neutral-950">
-              בקרוב במדריך
+        <FadeIn variant="card">
+        <section className="mt-14 rounded-[2rem] border border-white/10 bg-white/[0.055] p-6 text-white shadow-[0_28px_90px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-sm md:p-8">
+          <div aria-labelledby="all-articles-title">
+            <h2 id="all-articles-title" className="text-xl font-light tracking-tight text-white md:text-2xl">
+              כל המאמרים
             </h2>
-            <p className="mt-2 max-w-[65ch] text-sm font-light leading-relaxed text-neutral-600">
-              נושאים שנוסיף כמאמרים נפרדים — עקבו אחר העדכונים בעמוד זה.
-            </p>
-            <ul className="mt-4 space-y-2 text-sm font-light text-neutral-600">
-              {plannedArticleTopics.map((t) => (
-                <li key={t.id} className="flex items-center gap-2">
-                  <span className="text-neutral-400" aria-hidden>
-                    ○
-                  </span>
-                  {t.title}
+            <ul className="mt-6 space-y-3">
+              {articlesList.map((a) => (
+                <li key={a.slug}>
+                  <Link
+                    to={a.path}
+                    className="block rounded-2xl border border-white/10 bg-neutral-950/35 px-5 py-3 text-sm transition-colors hover:border-gold-soft/25 hover:bg-white/[0.06]"
+                  >
+                    <span className="font-medium text-white/86">{a.h1}</span>
+                  </Link>
                 </li>
               ))}
             </ul>
-          </section>
-        ) : null}
+          </div>
 
-        <ContentCta
-          label={SITE_WIDE_CTA_BUTTON_LABEL}
-          message="photo"
-          title="סיימתם לקרוא?"
-          subtitle="שלחו תמונה בוואטסאפ — נחזור עם הצעה מותאמת למקלחון שלכם."
-          className="mt-14 border-t border-neutral-200 pt-12 text-center md:text-start"
-        />
+          {plannedArticleTopics.length > 0 ? (
+            <div className="mt-12 border-t border-dashed border-white/10 pt-10" aria-labelledby="planned-title">
+              <h2 id="planned-title" className="text-lg font-medium text-white">
+                בקרוב במדריך
+              </h2>
+              <p className="mt-2 max-w-[65ch] text-sm font-light leading-relaxed text-white/58">
+                נושאים שנוסיף כמאמרים נפרדים — עקבו אחר העדכונים בעמוד זה.
+              </p>
+              <ul className="mt-4 space-y-2 text-sm font-light text-white/58">
+                {plannedArticleTopics.map((t) => (
+                  <li key={t.id} className="flex items-center gap-2">
+                    <span className="text-gold-soft/55" aria-hidden>
+                      ○
+                    </span>
+                    {t.title}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+
+          <ContentCta
+            label={SITE_WIDE_CTA_BUTTON_LABEL}
+            message="photo"
+            title="סיימתם לקרוא?"
+            subtitle="שלחו תמונה בוואטסאפ — נחזור עם הצעה מותאמת למקלחון שלכם."
+            variant="dark"
+            className="mt-10 text-center shadow-none md:text-start"
+          />
+        </section>
+        </FadeIn>
       </div>
       <SiteFooter />
     </main>

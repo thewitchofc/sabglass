@@ -173,7 +173,17 @@ export function SiteHeader() {
               : 'text-neutral-950 focus-visible:ring-neutral-950/35 focus-visible:ring-offset-2'
           }`}
         >
-          <span className="text-sm font-bold tracking-[0.14em]">{brand.name}</span>
+          <img
+            src="/sab-glass-logo.svg"
+            alt=""
+            width={1500}
+            height={260}
+            className={`h-auto w-28 object-contain md:w-32 ${
+              blendOverHero
+                ? 'brightness-0 invert drop-shadow-[0_1px_10px_rgba(0,0,0,0.55)]'
+                : 'brightness-0'
+            }`}
+          />
           <span
             className={`hidden max-w-[11rem] text-[10px] font-medium leading-tight md:block ${
               blendOverHero ? 'text-white/88 drop-shadow-[0_1px_10px_rgba(0,0,0,0.45)]' : 'text-neutral-600'

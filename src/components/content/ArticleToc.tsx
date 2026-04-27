@@ -92,25 +92,25 @@ export function ArticleToc({ title, items }: { title: string; items: ArticleTocI
 
   return (
     <nav
-      className="mt-8 rounded-sm border border-neutral-200 bg-neutral-50/80 px-4 py-4 sm:py-5 md:px-6 md:py-6"
+      className="mt-8 rounded-3xl border border-white/10 bg-white/[0.055] px-4 py-4 shadow-[0_24px_80px_rgba(0,0,0,0.24),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-sm sm:py-5 md:px-6 md:py-6"
       aria-labelledby={titleId}
     >
-      <p id={titleId} className="text-sm font-medium text-neutral-950">
+      <p id={titleId} className="text-sm font-medium text-white">
         {title}
       </p>
       <div className="mt-3">
-        <div className="h-1 overflow-hidden rounded-full bg-neutral-200/90" aria-hidden>
+        <div className="h-1 overflow-hidden rounded-full bg-white/10" aria-hidden>
           <div
-            className="h-full rounded-full bg-emerald-900/25 transition-[width] duration-300 ease-out motion-reduce:transition-none"
+            className="h-full rounded-full bg-gold-soft/45 transition-[width] duration-300 ease-out motion-reduce:transition-none"
             style={{ width: `${readPct}%` }}
           />
         </div>
-        <p id={progressId} className="mt-1.5 text-center text-[11px] font-light tabular-nums text-neutral-600 md:text-start">
+        <p id={progressId} className="mt-1.5 text-center text-[11px] font-light tabular-nums text-white/56 md:text-start">
           {readPct}%&nbsp;נקרא
         </p>
       </div>
       <ol
-        className="mt-3 list-decimal space-y-2.5 ps-5 text-sm font-light leading-relaxed text-neutral-700 md:mt-3.5 md:space-y-2 md:text-base"
+        className="mt-3 list-decimal space-y-2.5 ps-5 text-sm font-light leading-relaxed text-white/66 md:mt-3.5 md:space-y-2 md:text-base"
         aria-describedby={progressId}
       >
         {items.map((item) => {
@@ -120,11 +120,11 @@ export function ArticleToc({ title, items }: { title: string; items: ArticleTocI
               <a
                 href={`#${item.id}`}
                 onClick={(e) => onTocClick(e, item.id)}
-                className={`rounded-sm px-1 py-0.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-800 focus-visible:ring-offset-2 ${
+                className={`rounded-sm px-1 py-0.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/35 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 ${
                   isActive
-                    ? 'font-medium text-emerald-950 decoration-emerald-700/70'
-                    : 'text-neutral-800 decoration-neutral-400'
-                } underline underline-offset-[5px] hover:text-neutral-950 hover:decoration-neutral-600`}
+                    ? 'font-medium text-gold-soft decoration-gold-soft/70'
+                    : 'text-white/74 decoration-white/25'
+                } underline underline-offset-[5px] hover:text-white hover:decoration-white/55`}
                 aria-current={isActive ? 'location' : undefined}
               >
                 {item.label}

@@ -12,24 +12,36 @@ export function SiteFooter() {
   return (
     <footer
       id="contact"
-      className="scroll-mt-20 border-t border-neutral-200 bg-white md:scroll-mt-[4.5rem]"
+      className="relative isolate scroll-mt-20 overflow-hidden border-t border-white/10 bg-neutral-950 text-white md:scroll-mt-[4.5rem]"
       aria-labelledby="contact-heading"
     >
-      <div className="mx-auto max-w-6xl py-14 pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] md:px-8 md:py-20">
+      <div
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_12%,rgba(184,163,105,0.14),transparent_28%),radial-gradient(circle_at_86%_82%,rgba(255,255,255,0.08),transparent_30%),linear-gradient(180deg,rgba(255,255,255,0.04),transparent_36%)]"
+        aria-hidden
+      />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-l from-transparent via-white/24 to-transparent" />
+
+      <div className="relative mx-auto max-w-6xl py-14 pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] md:px-8 md:py-20">
         <div className="grid gap-14 max-md:gap-16 md:grid-cols-3 md:gap-8 md:[&>div]:min-w-0">
           <div className="min-w-0 text-start">
-            <p className="text-xs font-medium uppercase tracking-[0.25em] text-gold">Premium</p>
-            <p className="mt-3 text-xl font-light tracking-wide text-neutral-950">{footer.brand}</p>
-            <p className="mt-1 text-sm font-light text-neutral-600">{footer.serviceAreaLine}</p>
-            <p className="mt-1 text-sm font-medium text-neutral-700 md:hidden">{footer.serviceAreaReachLineMobile}</p>
-            <p className="mt-1 hidden text-sm font-medium text-neutral-700 md:block">{footer.serviceAreaReachLine}</p>
-            <p className="mt-2 text-sm font-light text-neutral-600">{footer.rights}</p>
-            <h4 className="mt-10 text-xs font-medium uppercase tracking-[0.2em] text-neutral-600">{footer.learnTitle}</h4>
+            <p className="text-xs font-medium uppercase tracking-[0.28em] text-gold-soft/75">Premium</p>
+            <img
+              src="/sab-glass-logo.svg"
+              alt={footer.brand}
+              width={1500}
+              height={260}
+              className="mt-4 h-auto w-40 brightness-0 invert drop-shadow-[0_0_18px_rgba(0,0,0,0.65)]"
+            />
+            <p className="mt-4 text-sm font-light text-white/62">{footer.serviceAreaLine}</p>
+            <p className="mt-1 text-sm font-medium text-white/72 md:hidden">{footer.serviceAreaReachLineMobile}</p>
+            <p className="mt-1 hidden text-sm font-medium text-white/72 md:block">{footer.serviceAreaReachLine}</p>
+            <p className="mt-2 text-sm font-light text-white/52">{footer.rights}</p>
+            <h4 className="mt-10 text-xs font-medium uppercase tracking-[0.2em] text-gold-soft/70">{footer.learnTitle}</h4>
             <ul className="mt-3 space-y-2 text-sm font-light">
               <li>
                 <Link
                   to="/articles"
-                  className="text-neutral-600 underline-offset-4 transition-colors hover:text-neutral-950 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950/25 focus-visible:ring-offset-2"
+                  className="text-white/60 underline-offset-4 transition-colors hover:text-white hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
                 >
                   {footer.linkArticles}
                 </Link>
@@ -37,18 +49,18 @@ export function SiteFooter() {
               <li>
                 <Link
                   to="/shower-glass-custom"
-                  className="text-neutral-600 underline-offset-4 transition-colors hover:text-neutral-950 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950/25 focus-visible:ring-offset-2"
+                  className="text-white/60 underline-offset-4 transition-colors hover:text-white hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
                 >
                   {footer.linkServiceShower}
                 </Link>
               </li>
             </ul>
-            <h4 className="mt-8 text-xs font-medium uppercase tracking-[0.2em] text-neutral-600">{footer.legalTitle}</h4>
+            <h4 className="mt-8 text-xs font-medium uppercase tracking-[0.2em] text-gold-soft/70">{footer.legalTitle}</h4>
             <ul className="mt-3 space-y-2 text-sm font-light">
               <li>
                 <Link
                   to="/privacy-policy"
-                  className="text-neutral-600 underline-offset-4 transition-colors hover:text-neutral-950 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950/25 focus-visible:ring-offset-2"
+                  className="text-white/60 underline-offset-4 transition-colors hover:text-white hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
                 >
                   {footer.linkPrivacyPolicy}
                 </Link>
@@ -56,7 +68,7 @@ export function SiteFooter() {
               <li>
                 <Link
                   to="/terms-of-use"
-                  className="text-neutral-600 underline-offset-4 transition-colors hover:text-neutral-950 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950/25 focus-visible:ring-offset-2"
+                  className="text-white/60 underline-offset-4 transition-colors hover:text-white hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
                 >
                   {footer.linkTermsOfUse}
                 </Link>
@@ -64,7 +76,7 @@ export function SiteFooter() {
               <li>
                 <Link
                   to="/accessibility-statement"
-                  className="text-neutral-600 underline-offset-4 transition-colors hover:text-neutral-950 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950/25 focus-visible:ring-offset-2"
+                  className="text-white/60 underline-offset-4 transition-colors hover:text-white hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
                 >
                   {footer.linkAccessibilityStatement}
                 </Link>
@@ -72,18 +84,18 @@ export function SiteFooter() {
             </ul>
           </div>
           <div className="min-w-0 text-start">
-            <h3 id="contact-heading" className="text-sm font-medium text-neutral-950">
+            <h3 id="contact-heading" className="text-sm font-medium text-white">
               {footer.contact}
             </h3>
-            <p className="mt-4 text-sm font-light text-neutral-600">{WHATSAPP_DISPLAY}</p>
+            <p className="mt-4 text-sm font-light text-white/62">{WHATSAPP_DISPLAY}</p>
             <Link
               to="/#send-photo"
-              className="mt-3 inline-block rounded-sm text-sm font-light text-neutral-600 underline-offset-4 transition-colors hover:text-neutral-950 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950/30 focus-visible:ring-offset-2"
+              className="mt-3 inline-block rounded-sm text-sm font-light text-white/62 underline-offset-4 transition-colors hover:text-white hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
             >
               {footer.sendPhotoLink}
             </Link>
-            <h4 className="mt-8 text-sm font-medium text-neutral-950">{footer.hoursTitle}</h4>
-            <div className="mt-3 space-y-1 text-sm font-light text-neutral-600">
+            <h4 className="mt-8 text-sm font-medium text-white">{footer.hoursTitle}</h4>
+            <div className="mt-3 space-y-1 text-sm font-light text-white/62">
               {footer.hoursByDay.map((item) => (
                 <p key={item.day}>
                   {item.day}:{' '}
@@ -95,10 +107,10 @@ export function SiteFooter() {
             </div>
           </div>
           <div className="min-w-0 text-start">
-            <h3 className="text-sm font-medium text-neutral-950">{footer.whatsapp}</h3>
+            <h3 className="text-sm font-medium text-white">{footer.whatsapp}</h3>
             <a
               href={wa}
-              className={`mt-4 inline-block max-w-full break-words rounded-sm text-sm font-light text-neutral-600 underline-offset-4 transition-colors hover:text-neutral-950 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950/30 focus-visible:ring-offset-2 ${pathname === '/' ? 'max-md:text-xs' : ''}`}
+              className={`mt-4 inline-flex max-w-full break-words rounded-full bg-[#25D366] px-5 py-3 text-sm font-medium text-white shadow-[0_14px_38px_rgba(37,211,102,0.22)] transition-colors hover:bg-[#1DA851] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 ${pathname === '/' ? 'max-md:text-xs' : ''}`}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={a11y.whatsappSendPhotoQuote}
@@ -107,39 +119,50 @@ export function SiteFooter() {
               <span className="md:hidden">{waMobileLabel}</span>
               <span className="hidden md:inline">{primaryCta}</span>
             </a>
-            <div className="mt-3 max-w-xs space-y-1 text-xs font-light leading-relaxed text-neutral-600">
+            <div className="mt-4 max-w-xs space-y-1 text-xs font-light leading-relaxed text-white/58">
               <p>{conversion.priceLine1}</p>
               <p>{conversion.priceLine2}</p>
             </div>
-            <p className="mt-2 text-xs font-light text-neutral-600">
-              <span aria-hidden>⏱️</span> {conversion.microQuick}
+            <p className="mt-2 text-xs font-light text-white/58">
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                className="inline-block h-3.5 w-3.5 align-[-0.15em]"
+                fill="none"
+              >
+                <circle cx="12" cy="12" r="8.5" stroke="currentColor" strokeWidth="1.7" />
+                <path
+                  d="M12 7.75v4.75l3.1 1.85"
+                  stroke="currentColor"
+                  strokeWidth="1.7"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>{' '}
+              {conversion.microQuick}
             </p>
-          </div>
-        </div>
-
-        {/* קרדיט פיתוח — שורה מלאה, מיושר לימין הדף (התחלה ב־RTL) */}
-        <div className="mt-12 flex w-full justify-start border-t border-neutral-100 pt-10 md:mt-14 md:pt-12">
-          <div className="flex max-w-[220px] flex-col items-start text-start">
-            <p className="text-sm font-semibold tracking-wide text-[#b8943f]">
-              {footer.developerCreditTitle}
-            </p>
-            <p className="mt-2 text-sm font-semibold text-[#1a3d2c]">{footer.developerCreditSubtitle}</p>
-            <div className="mt-4 inline-flex opacity-95">
-              <img
-                src={DEVELOPER_BRAND_LOGO_SRC}
-                srcSet={`${DEVELOPER_BRAND_LOGO_SRC} 480w, ${DEVELOPER_BRAND_LOGO_SRC} 768w, ${DEVELOPER_BRAND_LOGO_SRC} 1200w`}
-                sizes="(max-width: 768px) 120px, 104px"
-                alt={footer.developerLogoAlt}
-                width={120}
-                height={120}
-                className="h-auto max-h-14 w-auto max-w-[120px] rounded-md object-contain object-center contrast-[1.02] md:max-h-12 md:max-w-[104px]"
-                decoding="async"
-                loading="lazy"
-              />
+            <div className="mt-10 border-t border-white/10 pt-8">
+              <p className="text-sm font-semibold tracking-wide text-gold-soft">
+                {footer.developerCreditTitle}
+              </p>
+              <p className="mt-2 text-sm font-semibold text-white/70">{footer.developerCreditSubtitle}</p>
+              <div className="mt-4 inline-flex opacity-95">
+                <img
+                  src={DEVELOPER_BRAND_LOGO_SRC}
+                  srcSet={`${DEVELOPER_BRAND_LOGO_SRC} 480w, ${DEVELOPER_BRAND_LOGO_SRC} 768w, ${DEVELOPER_BRAND_LOGO_SRC} 1200w`}
+                  sizes="(max-width: 768px) 96px, 88px"
+                  alt={footer.developerLogoAlt}
+                  width={1024}
+                  height={1024}
+                  className="h-24 w-24 rounded-xl object-cover object-center shadow-[0_14px_34px_rgba(0,0,0,0.28)] md:h-22 md:w-22"
+                  decoding="async"
+                  loading="lazy"
+                />
+              </div>
+              <p className="mt-3 text-xs font-medium tracking-wide text-white/50">
+                {footer.developerCopyright}
+              </p>
             </div>
-            <p className="mt-3 text-xs font-medium tracking-wide text-neutral-600">
-              {footer.developerCopyright}
-            </p>
           </div>
         </div>
       </div>
