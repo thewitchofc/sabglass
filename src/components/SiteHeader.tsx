@@ -144,22 +144,28 @@ export function SiteHeader() {
 
   const midNavLinkClass = blendOverHero
     ? `${linkClass} px-1 py-0.5 text-white/90 drop-shadow-[0_1px_10px_rgba(0,0,0,0.45)] hover:text-white focus-visible:ring-white/45 focus-visible:ring-offset-transparent`
-    : `${linkClass} px-1 py-0.5 text-neutral-600 hover:text-neutral-950 focus-visible:ring-neutral-950/35 focus-visible:ring-offset-2`
+    : `${linkClass} px-1 py-0.5 text-white/70 hover:text-white focus-visible:ring-white/45 focus-visible:ring-offset-neutral-950`
 
   const catalogTriggerClass = blendOverHero
     ? `${linkClass} inline-flex items-center gap-1 px-0.5 font-semibold text-white drop-shadow-[0_1px_10px_rgba(0,0,0,0.45)] hover:text-white focus-visible:ring-white/45 focus-visible:ring-offset-transparent`
-    : `${linkClass} inline-flex items-center gap-1 px-0.5 font-semibold text-neutral-900 hover:text-neutral-950 focus-visible:ring-neutral-950/35 focus-visible:ring-offset-2`
+    : `${linkClass} inline-flex items-center gap-1 px-0.5 font-semibold text-white hover:text-gold-soft focus-visible:ring-white/45 focus-visible:ring-offset-neutral-950`
 
   const headerWaToneClass = blendOverHero
     ? 'border-white bg-white/12 text-white hover:bg-white hover:text-neutral-950 focus-visible:ring-white/55 focus-visible:ring-offset-transparent'
-    : 'border-neutral-950 bg-white text-neutral-950 hover:bg-neutral-950 hover:text-white focus-visible:ring-neutral-950 focus-visible:ring-offset-2'
+    : 'border-gold-soft/45 bg-white/[0.06] text-white hover:border-gold-soft hover:bg-gold-soft hover:text-neutral-950 focus-visible:ring-gold-soft focus-visible:ring-offset-neutral-950'
+
+  const mobileLinkClass =
+    'rounded-sm px-3 py-3 text-sm font-medium text-white/78 transition-colors hover:bg-white/[0.06] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white/30'
+
+  const mobileSubLinkClass =
+    'rounded-sm py-2.5 text-sm font-light text-white/64 transition-colors hover:bg-white/[0.05] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white/30'
 
   return (
     <header
       className={`fixed inset-x-0 top-0 z-[70] min-h-[calc(3.5rem+env(safe-area-inset-top,0px))] pt-[env(safe-area-inset-top,0px)] transition-[background-color,border-color,backdrop-filter] duration-300 md:min-h-[calc(3.25rem+env(safe-area-inset-top,0px))] ${
         blendOverHero
           ? 'border-b border-white/15 bg-gradient-to-b from-black/45 via-black/20 to-transparent backdrop-blur-[2px] supports-[backdrop-filter]:from-black/40'
-          : 'border-b border-neutral-200/70 bg-white/90 backdrop-blur-md supports-[backdrop-filter]:bg-white/80'
+          : 'border-b border-white/10 bg-neutral-950/88 shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur-md supports-[backdrop-filter]:bg-neutral-950/78'
       }`}
     >
       <div className="relative mx-auto flex h-14 max-w-6xl items-center justify-between gap-3 pl-[max(1.25rem,env(safe-area-inset-left,0px))] pr-[max(1.25rem,env(safe-area-inset-right,0px))] md:h-[3.25rem] md:gap-6 md:pl-8 md:pr-8">
@@ -170,7 +176,7 @@ export function SiteHeader() {
           className={`relative z-[71] flex shrink-0 flex-col items-start gap-0.5 rounded-sm transition-[color,opacity,filter] duration-300 hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 [text-rendering:geometricPrecision] ${
             blendOverHero
               ? 'text-white focus-visible:ring-white/50 focus-visible:ring-offset-transparent drop-shadow-[0_2px_14px_rgba(0,0,0,0.55)]'
-              : 'text-neutral-950 focus-visible:ring-neutral-950/35 focus-visible:ring-offset-2'
+              : 'text-white focus-visible:ring-white/40 focus-visible:ring-offset-neutral-950'
           }`}
         >
           <img
@@ -181,12 +187,12 @@ export function SiteHeader() {
             className={`h-auto w-28 object-contain md:w-32 ${
               blendOverHero
                 ? 'brightness-0 invert drop-shadow-[0_1px_10px_rgba(0,0,0,0.55)]'
-                : 'brightness-0'
+                : 'brightness-0 invert drop-shadow-[0_1px_14px_rgba(0,0,0,0.55)]'
             }`}
           />
           <span
             className={`hidden max-w-[11rem] text-[10px] font-medium leading-tight md:block ${
-              blendOverHero ? 'text-white/88 drop-shadow-[0_1px_10px_rgba(0,0,0,0.45)]' : 'text-neutral-600'
+              blendOverHero ? 'text-white/88 drop-shadow-[0_1px_10px_rgba(0,0,0,0.45)]' : 'text-white/58'
             }`}
           >
             {brand.tagline}
@@ -216,12 +222,12 @@ export function SiteHeader() {
             {catalogOpen && (
               <div
                 id="catalog-submenu"
-                className="absolute start-0 top-[calc(100%+0.35rem)] z-50 min-w-[16rem] rounded-sm border border-neutral-200/90 bg-white/95 py-1.5 shadow-[0_12px_40px_-12px_rgba(0,0,0,0.15)] backdrop-blur-md"
+                className="absolute start-0 top-[calc(100%+0.35rem)] z-50 min-w-[16rem] rounded-2xl border border-white/10 bg-neutral-950/94 py-2 shadow-[0_20px_70px_rgba(0,0,0,0.42),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-md"
               >
                 <Link
                   to="/catalog"
                   aria-current={isCatalogCurrent ? 'page' : undefined}
-                  className="block rounded-sm px-4 py-2 text-[12px] font-medium text-neutral-600 transition-colors hover:bg-neutral-50 hover:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-neutral-950/20"
+                  className="block rounded-xl px-4 py-2 text-[12px] font-medium text-white/78 transition-colors hover:bg-white/[0.06] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white/30"
                   onClick={onCatalogRootClick}
                 >
                   {navCopy.catalog}, הכל
@@ -229,17 +235,17 @@ export function SiteHeader() {
                 <Link
                   to="/shower-glass-custom"
                   aria-current={location.pathname === '/shower-glass-custom' ? 'page' : undefined}
-                  className="block rounded-sm px-4 py-2 text-[12px] font-light text-neutral-700 transition-colors hover:bg-neutral-50 hover:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-neutral-950/20"
+                  className="block rounded-xl px-4 py-2 text-[12px] font-light text-white/64 transition-colors hover:bg-white/[0.06] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white/30"
                   onClick={closeAll}
                 >
                   {footer.linkServiceShower}
                 </Link>
-                <div className="my-1 h-px bg-neutral-100" />
+                <div className="my-1 h-px bg-white/10" />
                 {catalogProducts.map((p) => (
                   <Link
                     key={p.id}
                     to={`/catalog#catalog-${p.id}`}
-                    className="block rounded-sm px-4 py-2 text-[12px] font-light text-neutral-700 transition-colors hover:bg-neutral-50 hover:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-neutral-950/20"
+                    className="block rounded-xl px-4 py-2 text-[12px] font-light text-white/64 transition-colors hover:bg-white/[0.06] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white/30"
                     onClick={(e) => {
                       e.stopPropagation()
                       onCatalogHashClick(`#catalog-${p.id}`)(e)
@@ -291,7 +297,7 @@ export function SiteHeader() {
 
           <button
             type="button"
-            className="flex h-10 w-10 items-center justify-center rounded-sm border border-neutral-200/80 text-neutral-700 transition-colors hover:border-neutral-300 hover:bg-neutral-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950/35 focus-visible:ring-offset-2 md:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-sm border border-white/14 bg-white/[0.04] text-white/82 transition-colors hover:border-gold-soft/35 hover:bg-white/[0.08] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/35 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 md:hidden"
             aria-expanded={mobileOpen}
             aria-controls="mobile-nav"
             aria-label={mobileOpen ? navCopy.closeMenu : navCopy.openMenu}
@@ -317,7 +323,7 @@ export function SiteHeader() {
       {mobileOpen && (
         <div
           id="mobile-nav"
-          className="fixed inset-x-0 bottom-0 z-[69] overflow-y-auto border-t border-neutral-100 bg-white/98 py-6 pl-[max(1.25rem,env(safe-area-inset-left,0px))] pr-[max(1.25rem,env(safe-area-inset-right,0px))] pt-6 backdrop-blur-md md:hidden"
+          className="fixed inset-x-0 bottom-0 z-[69] overflow-y-auto border-t border-white/10 bg-neutral-950/96 py-6 pl-[max(1.25rem,env(safe-area-inset-left,0px))] pr-[max(1.25rem,env(safe-area-inset-right,0px))] pt-6 shadow-[0_-24px_80px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-md md:hidden"
           style={{
             top: 'calc(3.5rem + env(safe-area-inset-top, 0px))',
           }}
@@ -327,7 +333,7 @@ export function SiteHeader() {
               href={waHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="mb-2 flex items-center justify-center gap-2 rounded-sm border-2 border-neutral-950 bg-white px-3 py-3 text-center text-xs font-medium leading-snug text-neutral-950 transition-colors hover:bg-neutral-950 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2"
+              className="mb-2 flex items-center justify-center gap-2 rounded-full border border-gold-soft/45 bg-white/[0.06] px-3 py-3 text-center text-xs font-medium leading-snug text-white transition-colors hover:border-gold-soft hover:bg-gold-soft hover:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-soft focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
               aria-label={a11y.whatsappHeader}
               onClick={() => {
                 trackWhatsAppClick('article')
@@ -339,14 +345,14 @@ export function SiteHeader() {
             <Link
               to="/"
               aria-current={isHomeCurrent ? 'page' : undefined}
-              className="rounded-sm px-3 py-3 text-sm font-medium text-neutral-800 hover:bg-neutral-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-neutral-950/20"
+              className={mobileLinkClass}
               onClick={onHomeClick}
             >
               {navCopy.home}
             </Link>
             <Link
               to="/#about"
-              className="rounded-sm px-3 py-3 text-sm font-medium text-neutral-800 hover:bg-neutral-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-neutral-950/20"
+              className={mobileLinkClass}
               onClick={onHomeHashClick('#about')}
             >
               {navCopy.about}
@@ -354,14 +360,14 @@ export function SiteHeader() {
             <button
               type="button"
               id="mobile-catalog-accordion-trigger"
-              className="flex w-full items-center justify-between gap-2 rounded-sm px-3 py-3 text-start text-sm font-medium text-neutral-800 transition-colors hover:bg-neutral-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-neutral-950/20"
+              className="flex w-full items-center justify-between gap-2 rounded-sm px-3 py-3 text-start text-sm font-medium text-white/78 transition-colors hover:bg-white/[0.06] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white/30"
               aria-expanded={mobileCatalogExpanded}
               aria-controls="mobile-catalog-accordion-panel"
               onClick={() => setMobileCatalogExpanded((v) => !v)}
             >
               <span>{navCopy.catalog}</span>
               <svg
-                className={`h-4 w-4 shrink-0 text-neutral-500 transition-transform duration-200 ${mobileCatalogExpanded ? 'rotate-180' : ''}`}
+                className={`h-4 w-4 shrink-0 text-gold-soft/60 transition-transform duration-200 ${mobileCatalogExpanded ? 'rotate-180' : ''}`}
                 viewBox="0 0 20 20"
                 fill="currentColor"
                 aria-hidden
@@ -378,12 +384,12 @@ export function SiteHeader() {
                 id="mobile-catalog-accordion-panel"
                 role="region"
                 aria-labelledby="mobile-catalog-accordion-trigger"
-                className="ms-2 flex flex-col gap-1 border-s border-neutral-200/90 ps-3 pt-0.5"
+                className="ms-2 flex flex-col gap-1 border-s border-white/10 ps-3 pt-0.5"
               >
                 <Link
                   to="/catalog"
                   aria-current={isCatalogCurrent ? 'page' : undefined}
-                  className="rounded-sm py-2.5 text-sm font-medium text-neutral-700 hover:bg-neutral-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-neutral-950/20"
+                  className="rounded-sm py-2.5 text-sm font-medium text-white/74 transition-colors hover:bg-white/[0.05] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white/30"
                   onClick={onCatalogRootClick}
                 >
                   {navCopy.catalog}, הכל
@@ -392,7 +398,7 @@ export function SiteHeader() {
                   <Link
                     key={p.id}
                     to={`/catalog#catalog-${p.id}`}
-                    className="rounded-sm py-2.5 text-sm font-light text-neutral-600 hover:bg-neutral-50 hover:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-neutral-950/20"
+                    className={mobileSubLinkClass}
                     onClick={onCatalogHashClick(`#catalog-${p.id}`)}
                   >
                     {p.title}
@@ -401,7 +407,7 @@ export function SiteHeader() {
                 <Link
                   to="/shower-glass-custom"
                   aria-current={location.pathname === '/shower-glass-custom' ? 'page' : undefined}
-                  className="rounded-sm py-2.5 text-sm font-light text-neutral-700 hover:bg-neutral-50 hover:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-neutral-950/20"
+                  className={mobileSubLinkClass}
                   onClick={closeAll}
                 >
                   {footer.linkServiceShower}
@@ -411,7 +417,7 @@ export function SiteHeader() {
             <Link
               to="/articles"
               aria-current={isArticlesCurrent ? 'page' : undefined}
-              className="rounded-sm px-3 py-3 text-sm font-medium text-neutral-800 hover:bg-neutral-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-neutral-950/20"
+              className={mobileLinkClass}
               onClick={closeAll}
             >
               {navCopy.articles}
@@ -419,7 +425,7 @@ export function SiteHeader() {
             <Link
               to="/miklahon-guide"
               aria-current={isGuideCurrent ? 'page' : undefined}
-              className="rounded-sm px-3 py-3 text-sm font-medium text-neutral-800 hover:bg-neutral-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-neutral-950/20"
+              className={mobileLinkClass}
               onClick={closeAll}
             >
               מדריך מקלחונים
@@ -427,7 +433,7 @@ export function SiteHeader() {
             <Link
               to="/#contact"
               aria-current={isContactCurrent ? 'page' : undefined}
-              className="mt-4 rounded-sm px-3 py-3 text-sm font-medium text-neutral-800 hover:bg-neutral-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-neutral-950/20"
+              className={`${mobileLinkClass} mt-4`}
               onClick={onHomeHashClick('#contact')}
             >
               {navCopy.contact}

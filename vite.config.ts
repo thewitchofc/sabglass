@@ -93,7 +93,7 @@ export default defineConfig(({ mode }) => {
     ],
     telephone: businessPhone,
     url: siteUrl,
-    image: `${siteUrl}/og-image.jpg`,
+    image: `${siteUrl}/og-image-v2.jpg`,
   }
   if (instagramForLd) {
     orgLd.sameAs = [instagramForLd]

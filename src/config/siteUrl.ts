@@ -1,5 +1,5 @@
 /** כתובת קנונית ל־og:image / twitter:image — תואם ל־index.html */
-export const OG_IMAGE_ABSOLUTE_URL = 'https://sabglass.co.il/og-image.jpg'
+export const OG_IMAGE_ABSOLUTE_URL = 'https://sabglass.co.il/og-image-v2.jpg'
 
 /** כתובת בסיס לקנוניקל, OG ו־JSON-LD בצד הלקוח (מסונכן עם ברירת המחדל ב־vite.config) */
 export function getSiteUrl(): string {
