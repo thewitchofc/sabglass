@@ -1,35 +1,15 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 
-const SEEN_KEY = 'sab-glass-initial-loader-seen'
-
-function shouldShowInitialLoader() {
-  if (typeof window === 'undefined') return false
-
-  try {
-    return window.sessionStorage.getItem(SEEN_KEY) !== '1'
-  } catch {
-    return true
-  }
-}
-
 export function InitialLoader() {
   const shouldReduceMotion = useReducedMotion()
-  const [isVisible, setIsVisible] = useState(shouldShowInitialLoader)
+  const [isVisible, setIsVisible] = useState(true)
 
   useEffect(() => {
     if (!isVisible) return
 
     let isMounted = true
-    const minDelay = shouldReduceMotion ? 180 : 850
-
-    const markAsSeen = () => {
-      try {
-        window.sessionStorage.setItem(SEEN_KEY, '1')
-      } catch {
-        // If sessionStorage is unavailable, the loader still closes normally.
-      }
-    }
+    const minDelay = shouldReduceMotion ? 220 : 1100
 
     const waitForPageLoad = new Promise<void>((resolve) => {
       if (document.readyState === 'complete') {
@@ -46,7 +26,6 @@ export function InitialLoader() {
 
     void Promise.all([waitForPageLoad, waitForMinimumDelay]).then(() => {
       if (!isMounted) return
-      markAsSeen()
       setIsVisible(false)
     })
 
