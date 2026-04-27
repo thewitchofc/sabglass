@@ -34,23 +34,23 @@ export function Hero() {
           <source
             type="image/avif"
             media="(max-width: 767px)"
-            srcSet="/hero-luxury-shower-mobile.avif"
+            srcSet="/hero-luxury-shower-mobile-v2.avif"
           />
           <source
             type="image/webp"
             media="(max-width: 767px)"
-            srcSet="/hero-luxury-shower-mobile.webp"
+            srcSet="/hero-luxury-shower-mobile-v2.webp"
           />
           <source
             type="image/avif"
-            srcSet="/hero-luxury-shower-desktop.avif"
+            srcSet="/hero-luxury-shower-desktop-v2.avif"
           />
           <source
             type="image/webp"
-            srcSet="/hero-luxury-shower-desktop.webp"
+            srcSet="/hero-luxury-shower-desktop-v2.webp"
           />
           <img
-            src="/hero-luxury-shower.png"
+            src="/hero-luxury-shower-v2.jpg"
             alt=""
             width={1024}
             height={528}
