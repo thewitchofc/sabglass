@@ -34,12 +34,12 @@ export function Hero() {
           <source
             type="image/avif"
             media="(max-width: 767px)"
-            srcSet="/hero-luxury-shower-mobile-v2.avif"
+            srcSet="/hero-luxury-shower-mobile-v3.avif"
           />
           <source
             type="image/webp"
             media="(max-width: 767px)"
-            srcSet="/hero-luxury-shower-mobile-v2.webp"
+            srcSet="/hero-luxury-shower-mobile-v3.webp"
           />
           <source
             type="image/avif"
