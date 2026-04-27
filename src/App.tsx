@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import { FloatingWhatsApp } from './components/FloatingWhatsApp'
+import { InitialLoader } from './components/InitialLoader'
 import { ScrollToTop } from './components/ScrollToTop'
 import { SeoHead } from './components/SeoHead'
 import { SiteHeader } from './components/SiteHeader'
@@ -131,6 +132,7 @@ function App() {
         <AnimatedRoutes />
       </main>
       <FloatingWhatsApp />
+      <InitialLoader />
     </BrowserRouter>
   )
 }
