@@ -83,7 +83,7 @@ export function Hero() {
         </div>
         <h1
           id="hero-heading"
-          className="sr-only max-w-[95%] text-balance text-3xl font-light leading-[1.15] tracking-tight text-white md:not-sr-only md:max-w-4xl md:text-5xl lg:text-6xl xl:text-7xl"
+          className="sr-only"
         >
           {hero.titleLine1}
         </h1>
