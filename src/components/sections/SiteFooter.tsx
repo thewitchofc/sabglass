@@ -7,7 +7,7 @@ export function SiteFooter() {
 
   return (
     <footer
-      className="relative isolate scroll-mt-20 overflow-hidden border-t border-white/10 bg-neutral-950 text-white md:scroll-mt-[4.5rem]"
+      className="relative isolate scroll-mt-20 overflow-hidden border-t border-white/10 bg-neutral-950 pb-[env(safe-area-inset-bottom,0px)] text-white md:scroll-mt-[4.5rem]"
       aria-labelledby="footer-brand-heading"
     >
       <div

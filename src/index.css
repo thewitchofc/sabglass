@@ -9,8 +9,10 @@
 @layer base {
   html {
     height: 100%;
+    min-height: 100dvh;
     overflow-x: hidden;
     overflow-y: scroll;
+    @apply bg-neutral-950;
   }
   /**
    * subpixel-antialiased = טקסט כהה על רקע בהיר חד יותר לעין.
@@ -18,15 +20,19 @@
    */
   body {
     min-height: 100%;
+    min-height: 100dvh;
     overflow-y: auto;
-    @apply bg-white text-neutral-800 subpixel-antialiased;
+    /* מסתנכרן עם האתר הכהה — מונע פס רקע (לבן/#000) מתחת לפוטר במובייל */
+    @apply bg-neutral-950 subpixel-antialiased;
     touch-action: pan-y;
   }
 
   #root {
-    min-height: 100vh;
+    min-height: 100%;
+    min-height: 100dvh;
     height: auto;
     overflow: visible;
+    @apply bg-neutral-950;
   }
 }
 
