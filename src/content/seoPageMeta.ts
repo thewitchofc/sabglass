@@ -15,6 +15,7 @@ const CATALOG_DESC =
 const PRIVACY_POLICY_DESC = 'מדיניות הפרטיות של SAB Glass: פירוט סוגי המידע שנאסף, מטרות שימוש ושמירה על מידע אישי.'
 const TERMS_OF_USE_DESC = 'תנאי השימוש באתר SAB Glass: כללי שימוש, אחריות, קניין רוחני והבהרות בנוגע לתוכן ולהצעות מחיר.'
 const ACCESSIBILITY_STATEMENT_DESC = 'הצהרת הנגישות של SAB Glass: מחויבות להנגשת האתר, פרטי פנייה ודיווח על בעיות נגישות.'
+const CONTACT_DESC = 'יצירת קשר עם SAB Glass: שליחת תמונה, קבלת הצעת מחיר ותיאום מקלחון זכוכית בהתאמה אישית.'
 
 /** כותרת ותיאור לכל נתיב (למטא דינמי ב־SPA) */
 export function getSeoForPath(pathname: string): { title: string; description: string } {
@@ -41,6 +42,9 @@ export function getSeoForPath(pathname: string): { title: string; description: s
   }
   if (norm === '/accessibility-statement') {
     return { title: 'הצהרת נגישות | SAB Glass', description: ACCESSIBILITY_STATEMENT_DESC }
+  }
+  if (norm === '/contact') {
+    return { title: 'צור קשר | SAB Glass', description: CONTACT_DESC }
   }
   if (norm === '/miklahon-guide') {
     return {
@@ -91,6 +95,10 @@ export function getBreadcrumbs(pathname: string): BreadcrumbItem[] | null {
   }
   if (norm === '/accessibility-statement') {
     items.push({ name: 'הצהרת נגישות', path: '/accessibility-statement' })
+    return items
+  }
+  if (norm === '/contact') {
+    items.push({ name: 'צור קשר', path: '/contact' })
     return items
   }
   if (norm === '/miklahon-guide') {

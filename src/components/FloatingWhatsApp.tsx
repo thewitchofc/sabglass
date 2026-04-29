@@ -11,11 +11,11 @@ export function FloatingWhatsApp() {
     <section
       role="region"
       aria-label="פעולה מהירה"
-      className="fixed right-4 bottom-4 z-40 h-14 w-14"
+      className="fixed right-3 bottom-3 z-40 h-12 w-12 md:right-4 md:bottom-4 md:h-14 md:w-14"
     >
       <motion.a
         href={href}
-        className="flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_8px_28px_rgba(37,211,102,0.42)] ring-2 ring-white/90 transition-transform duration-300 hover:scale-105 hover:bg-[#1DA851] hover:shadow-[0_10px_32px_rgba(29,168,81,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#25D366]"
+        className="flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366]/78 text-white shadow-[0_8px_24px_rgba(37,211,102,0.26)] ring-1 ring-white/60 backdrop-blur-sm transition-[background-color,box-shadow,opacity,transform] duration-300 hover:scale-105 hover:bg-[#1DA851] hover:opacity-100 hover:shadow-[0_10px_32px_rgba(29,168,81,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#25D366] active:bg-[#1DA851] active:opacity-100 md:h-14 md:w-14 md:bg-[#25D366] md:shadow-[0_8px_28px_rgba(37,211,102,0.42)] md:ring-2 md:ring-white/90"
         target="_blank"
         rel="noopener noreferrer"
         aria-label={label}
@@ -25,7 +25,7 @@ export function FloatingWhatsApp() {
         transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
         whileTap={{ scale: 0.95 }}
       >
-        <WhatsAppIcon className="h-7 w-7 md:h-8 md:w-8" />
+        <WhatsAppIcon className="h-6 w-6 md:h-8 md:w-8" />
       </motion.a>
     </section>
   )

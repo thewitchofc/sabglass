@@ -96,15 +96,6 @@ export function SiteHeader() {
     }
   }
 
-  const onHomeHashClick =
-    (hash: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
-      closeAll()
-      if (location.pathname === '/' && location.hash === hash) {
-        e.preventDefault()
-        scrollToHash(hash)
-      }
-    }
-
   const onCatalogHashClick =
     (hash: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
       closeAll()
@@ -130,7 +121,7 @@ export function SiteHeader() {
     'inline-flex max-w-[10.5rem] shrink-0 items-center justify-center gap-1.5 rounded-sm border-2 px-2 py-2 text-center text-[10px] font-medium leading-tight transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 md:max-w-[14rem] md:px-3 md:py-2 md:text-xs md:leading-snug lg:max-w-none lg:text-[13px]'
   const isHomeCurrent = location.pathname === '/' && (!location.hash || location.hash === '#home')
   const isGuideCurrent = location.pathname === '/miklahon-guide'
-  const isContactCurrent = location.pathname === '/' && location.hash === '#contact'
+  const isContactCurrent = location.pathname === '/contact'
   const isArticlesCurrent = location.pathname === '/articles' || location.pathname.startsWith('/articles/')
   const isCatalogCurrent =
     location.pathname === '/catalog' || location.pathname === '/shower-glass-custom' || location.pathname === '/catalog/'
@@ -162,7 +153,7 @@ export function SiteHeader() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-[70] min-h-[calc(3.5rem+env(safe-area-inset-top,0px))] pt-[env(safe-area-inset-top,0px)] transition-[background-color,border-color,backdrop-filter] duration-300 md:min-h-[calc(3.25rem+env(safe-area-inset-top,0px))] ${
+      className={`fixed inset-x-0 top-0 z-[120] min-h-[calc(3.5rem+env(safe-area-inset-top,0px))] pt-[env(safe-area-inset-top,0px)] transition-[background-color,border-color,backdrop-filter] duration-300 md:min-h-[calc(3.25rem+env(safe-area-inset-top,0px))] ${
         blendOverHero
           ? 'border-b border-white/15 bg-gradient-to-b from-black/45 via-black/20 to-transparent backdrop-blur-[2px] supports-[backdrop-filter]:from-black/40'
           : 'border-b border-white/10 bg-neutral-950/88 shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur-md supports-[backdrop-filter]:bg-neutral-950/78'
@@ -173,7 +164,7 @@ export function SiteHeader() {
           to="/"
           onClick={onHomeClick}
           aria-current={isHomeCurrent ? 'page' : undefined}
-          className={`relative z-[71] flex shrink-0 flex-col items-start gap-0.5 rounded-sm transition-[color,opacity,filter] duration-300 hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 [text-rendering:geometricPrecision] ${
+          className={`relative z-[121] flex shrink-0 flex-col items-start gap-0.5 rounded-sm transition-[color,opacity,filter] duration-300 hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 [text-rendering:geometricPrecision] ${
             blendOverHero
               ? 'text-white focus-visible:ring-white/50 focus-visible:ring-offset-transparent drop-shadow-[0_2px_14px_rgba(0,0,0,0.55)]'
               : 'text-white focus-visible:ring-white/40 focus-visible:ring-offset-neutral-950'
@@ -200,7 +191,7 @@ export function SiteHeader() {
         </Link>
 
         <nav
-          className="absolute left-1/2 top-1/2 z-[71] hidden -translate-x-1/2 -translate-y-1/2 items-center gap-10 lg:gap-12 md:flex"
+          className="absolute left-1/2 top-1/2 z-[121] hidden -translate-x-1/2 -translate-y-1/2 items-center gap-10 lg:gap-12 md:flex"
           aria-label="ניווט ראשי באתר — קטלוג, מדריך מקלחונים וצור קשר"
         >
           <div className="relative" ref={catalogRef}>
@@ -268,8 +259,8 @@ export function SiteHeader() {
           </Link>
 
           <Link
-            to="/#contact"
-            onClick={onHomeHashClick('#contact')}
+            to="/contact"
+            onClick={closeAll}
             className={midNavLinkClass}
             aria-current={isContactCurrent ? 'page' : undefined}
           >
@@ -277,7 +268,7 @@ export function SiteHeader() {
           </Link>
         </nav>
 
-        <div className="relative z-[71] flex items-center gap-2 md:gap-3">
+        <div className="relative z-[121] flex items-center gap-2 md:gap-3">
           <a
             href={waHref}
             target="_blank"
@@ -323,7 +314,7 @@ export function SiteHeader() {
       {mobileOpen && (
         <div
           id="mobile-nav"
-          className="fixed inset-x-0 bottom-0 z-[69] overflow-y-auto border-t border-white/10 bg-neutral-950/96 py-4 pl-[max(1.25rem,env(safe-area-inset-left,0px))] pr-[max(1.25rem,env(safe-area-inset-right,0px))] pt-4 shadow-[0_-18px_56px_rgba(0,0,0,0.34),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-md md:hidden"
+          className="fixed inset-x-0 bottom-0 z-[120] overscroll-contain overflow-y-auto border-t border-white/10 bg-neutral-950 py-4 pl-[max(1.25rem,env(safe-area-inset-left,0px))] pr-[max(1.25rem,env(safe-area-inset-right,0px))] pt-4 shadow-[0_18px_70px_rgba(0,0,0,0.55),inset_0_1px_0_rgba(255,255,255,0.06)] md:hidden"
           style={{
             top: 'calc(3.5rem + env(safe-area-inset-top, 0px))',
           }}
@@ -424,10 +415,10 @@ export function SiteHeader() {
               מדריך מקלחונים
             </Link>
             <Link
-              to="/#contact"
+              to="/contact"
               aria-current={isContactCurrent ? 'page' : undefined}
               className={`${mobileLinkClass} mt-2`}
-              onClick={onHomeHashClick('#contact')}
+              onClick={closeAll}
             >
               {navCopy.contact}
             </Link>

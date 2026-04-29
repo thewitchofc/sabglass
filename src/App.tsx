@@ -26,6 +26,9 @@ const MiklahonGuidePage = lazy(() =>
 const MiklahonCenterIsraelPage = lazy(() =>
   import('./pages/MiklahonCenterIsraelPage').then((m) => ({ default: m.MiklahonCenterIsraelPage })),
 )
+const ContactPage = lazy(() =>
+  import('./pages/ContactPage').then((m) => ({ default: m.ContactPage })),
+)
 const PrivacyPolicyPage = lazy(() =>
   import('./pages/PrivacyPolicyPage').then((m) => ({ default: m.PrivacyPolicyPage })),
 )
@@ -62,6 +65,7 @@ function AnimatedRoutes() {
             <Route path="/miklahon-guide" element={<MiklahonGuidePage />} />
             <Route path="/miklahon-center-israel" element={<MiklahonCenterIsraelPage />} />
             <Route path="/miklahon-rishon-lezion" element={<Navigate to="/miklahon-center-israel" replace />} />
+            <Route path="/contact" element={<ContactPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
             <Route path="/terms-of-use" element={<TermsOfUsePage />} />
             <Route path="/accessibility-statement" element={<AccessibilityStatementPage />} />

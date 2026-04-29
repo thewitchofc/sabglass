@@ -3,6 +3,7 @@ export const PREFETCH_PATHS: readonly string[] = [
   '/articles/miklahon-price',
   '/miklahon-guide',
   '/shower-glass-custom',
+  '/contact',
   '/articles/miklahon-mithapeach',
   '/articles/miklahon-hazit-vs-pinati',
   '/articles/miklahon-lefi-mida-advanced',
