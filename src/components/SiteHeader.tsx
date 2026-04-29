@@ -350,13 +350,6 @@ export function SiteHeader() {
             >
               {navCopy.home}
             </Link>
-            <Link
-              to="/#about"
-              className={mobileLinkClass}
-              onClick={onHomeHashClick('#about')}
-            >
-              {navCopy.about}
-            </Link>
             <button
               type="button"
               id="mobile-catalog-accordion-trigger"

@@ -141,16 +141,18 @@ export function SiteFooter() {
               </svg>{' '}
               {conversion.microQuick}
             </p>
-            <div className="mt-8 border-t border-white/10 pt-6 md:mt-10 md:pt-8">
-              <p className="text-xs font-semibold tracking-wide text-gold-soft md:text-sm">
+            <div className="mt-6 border-t border-white/10 pt-5 md:mt-10 md:pt-8">
+              <p className="text-[10px] font-semibold tracking-wide text-gold-soft md:text-sm">
                 {footer.developerCreditTitle}
               </p>
-              <p className="mt-2 text-xs font-semibold text-white/70 md:text-sm">{footer.developerCreditSubtitle}</p>
+              <p className="mt-1.5 text-[11px] font-semibold text-white/70 md:mt-2 md:text-sm">
+                {footer.developerCreditSubtitle}
+              </p>
               <a
                 href="https://thewitch.co.il/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-3 inline-flex rounded-xl opacity-95 transition-opacity hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/35 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 md:mt-4"
+                className="mt-2.5 inline-flex rounded-xl opacity-95 transition-opacity hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/35 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 md:mt-4"
                 aria-label="מעבר לאתר The Witch"
               >
                 <img
@@ -160,12 +162,12 @@ export function SiteFooter() {
                   alt={footer.developerLogoAlt}
                   width={1024}
                   height={1024}
-                  className="h-20 w-20 rounded-xl object-cover object-center shadow-[0_12px_28px_rgba(0,0,0,0.24)] md:h-22 md:w-22 md:shadow-[0_14px_34px_rgba(0,0,0,0.28)]"
+                  className="h-14 w-14 rounded-lg object-cover object-center shadow-[0_10px_22px_rgba(0,0,0,0.22)] md:h-22 md:w-22 md:rounded-xl md:shadow-[0_14px_34px_rgba(0,0,0,0.28)]"
                   decoding="async"
                   loading="lazy"
                 />
               </a>
-              <p className="mt-3 text-[11px] font-medium tracking-wide text-white/50 md:text-xs">
+              <p className="mt-2 text-[10px] font-medium tracking-wide text-white/50 md:mt-3 md:text-xs">
                 {footer.developerCopyright}
               </p>
             </div>
