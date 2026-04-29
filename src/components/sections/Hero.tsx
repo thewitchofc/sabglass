@@ -17,12 +17,14 @@ export function Hero() {
           <source
             type="image/avif"
             media="(max-width: 767px)"
-            srcSet="/hero-luxury-shower-mobile-v3.avif"
+            srcSet="/hero-luxury-shower-mobile-v3-w960.avif 960w, /hero-luxury-shower-mobile-v3-w1280.avif 1280w, /hero-luxury-shower-mobile-v3.avif 1536w"
+            sizes="100vw"
           />
           <source
             type="image/webp"
             media="(max-width: 767px)"
-            srcSet="/hero-luxury-shower-mobile-v3.webp"
+            srcSet="/hero-luxury-shower-mobile-v3-w960.webp 960w, /hero-luxury-shower-mobile-v3-w1280.webp 1280w, /hero-luxury-shower-mobile-v3.webp 1536w"
+            sizes="100vw"
           />
           <source
             type="image/avif"
