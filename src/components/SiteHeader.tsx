@@ -175,6 +175,8 @@ export function SiteHeader() {
             alt=""
             width={1500}
             height={260}
+            fetchPriority="high"
+            decoding="async"
             className={`h-auto w-28 object-contain md:w-32 ${
               blendOverHero
                 ? 'brightness-0 invert drop-shadow-[0_1px_10px_rgba(0,0,0,0.55)]'
