@@ -100,7 +100,7 @@ export function Hero() {
             aria-label={`${brand.name} — מעבר לראש דף הבית`}
             className="mx-auto flex w-full max-w-[min(22.5rem,calc(100vw-1rem))] flex-col items-center gap-2.5 rounded-lg px-4 py-2 text-white transition-[opacity,transform] duration-300 hover:opacity-90 active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
           >
-            <span className="font-['Marcellus'] text-[clamp(1.85rem,8vw,2.45rem)] font-normal leading-none tracking-[0.12em] drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)]">
+            <span className="max-md:font-serif max-md:tracking-[0.14em] font-['Marcellus'] text-[clamp(1.85rem,8vw,2.45rem)] font-normal leading-none tracking-[0.12em] drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)]">
               {brand.name}
             </span>
             <span className="max-w-[18rem] text-pretty text-[13px] font-medium leading-snug text-white/84 drop-shadow-[0_1px_8px_rgba(0,0,0,0.35)]">

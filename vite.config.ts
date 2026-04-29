@@ -106,7 +106,8 @@ export default defineConfig(({ mode }) => {
   const gtmBody = gtmContainerId ? gtmBodySnippet(gtmContainerId) : ''
 
   const gaRaw = env.VITE_GA_MEASUREMENT_ID?.trim() ?? ''
-  const ga4Head = isValidGa4MeasurementId(gaRaw) ? ga4HeadSnippet(gaRaw) : ''
+  const ga4Head =
+    !gtmContainerId && isValidGa4MeasurementId(gaRaw) ? ga4HeadSnippet(gaRaw) : ''
 
   return {
     plugins: [

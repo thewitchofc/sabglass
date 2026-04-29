@@ -91,13 +91,28 @@
     <link
       rel="preload"
       as="style"
-      href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&family=Marcellus&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap"
       onload="this.onload=null;this.rel='stylesheet'"
     />
     <noscript>
       <link
         rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&family=Marcellus&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap"
+      />
+    </noscript>
+    <!-- Marcellus — רק דסקטופ, כדי שלא יעכב LCP במובייל -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap"
+      media="(min-width: 768px)"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap"
+        media="(min-width: 768px)"
       />
     </noscript>
     <link
@@ -123,13 +138,7 @@
       __JSON_LD__
     </script>
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6DQKJ4X5D5"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-6DQKJ4X5D5');
-    </script>
+    __GA4_HEAD__
   </head>
   <body>
     __GTM_BODY__
