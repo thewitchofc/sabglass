@@ -156,7 +156,7 @@ export function SiteHeader() {
       className={`fixed inset-x-0 top-0 z-[120] min-h-[calc(3.5rem+env(safe-area-inset-top,0px))] pt-[env(safe-area-inset-top,0px)] transition-[background-color,border-color,backdrop-filter] duration-300 md:min-h-[calc(3.25rem+env(safe-area-inset-top,0px))] ${
         blendOverHero
           ? 'border-b border-white/15 bg-gradient-to-b from-black/45 via-black/20 to-transparent backdrop-blur-[2px] supports-[backdrop-filter]:from-black/40'
-          : 'border-b border-white/10 bg-neutral-950/88 shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur-md supports-[backdrop-filter]:bg-neutral-950/78'
+          : 'border-b border-white/10 bg-neutral-950 shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur-none md:bg-neutral-950/88 md:backdrop-blur-md md:supports-[backdrop-filter]:bg-neutral-950/78'
       }`}
     >
       <div className="relative mx-auto flex h-14 max-w-6xl items-center justify-between gap-3 pl-[max(1.25rem,env(safe-area-inset-left,0px))] pr-[max(1.25rem,env(safe-area-inset-right,0px))] md:h-[3.25rem] md:gap-6 md:pl-8 md:pr-8">
