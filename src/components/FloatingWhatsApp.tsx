@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { trackWhatsAppClick } from '../analytics/whatsappTracking'
 import { premiumCopy } from '../content/premium'
 import { WHATSAPP_PHOTO_MESSAGE, whatsappHref } from '../config/site'
@@ -13,20 +12,16 @@ export function FloatingWhatsApp() {
       aria-label="פעולה מהירה"
       className="fixed right-3 bottom-3 z-40 h-12 w-12 md:right-4 md:bottom-4 md:h-14 md:w-14"
     >
-      <motion.a
+      <a
         href={href}
         className="flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366]/78 text-white shadow-[0_8px_24px_rgba(37,211,102,0.26)] ring-1 ring-white/60 backdrop-blur-sm transition-[background-color,box-shadow,opacity,transform] duration-300 hover:scale-105 hover:bg-[#1DA851] hover:opacity-100 hover:shadow-[0_10px_32px_rgba(29,168,81,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#25D366] active:bg-[#1DA851] active:opacity-100 md:h-14 md:w-14 md:bg-[#25D366] md:shadow-[0_8px_28px_rgba(37,211,102,0.42)] md:ring-2 md:ring-white/90"
         target="_blank"
         rel="noopener noreferrer"
         aria-label={label}
         onClick={() => trackWhatsAppClick('article')}
-        initial={{ opacity: 0, scale: 0.85 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-        whileTap={{ scale: 0.95 }}
       >
         <WhatsAppIcon className="h-6 w-6 md:h-8 md:w-8" />
-      </motion.a>
+      </a>
     </section>
   )
 }

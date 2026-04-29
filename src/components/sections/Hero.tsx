@@ -1,25 +1,8 @@
-import { useEffect, useState } from 'react'
-import { motion, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { premiumCopy } from '../../content/premium'
 
 export function Hero() {
   const { hero, brand } = premiumCopy
-  const shouldReduceMotion = useReducedMotion()
-  const [showHeroBrand, setShowHeroBrand] = useState(false)
-
-  useEffect(() => {
-    const revealBrand = () => setShowHeroBrand(true)
-    const fallbackDelay = shouldReduceMotion ? 120 : 1500
-    const fallback = window.setTimeout(revealBrand, fallbackDelay)
-
-    window.addEventListener('sab-glass-loader-complete', revealBrand, { once: true })
-
-    return () => {
-      window.clearTimeout(fallback)
-      window.removeEventListener('sab-glass-loader-complete', revealBrand)
-    }
-  }, [shouldReduceMotion])
 
   return (
     <section
@@ -82,36 +65,22 @@ export function Hero() {
       >
         <div className="flex w-full justify-center px-8">
           <div className="[text-rendering:geometricPrecision]">
-            <motion.div
+            <div
               className="flex flex-col items-center gap-4 text-white"
-              initial={shouldReduceMotion ? false : { opacity: 0, y: 18, scale: 0.985, filter: 'blur(12px)' }}
-              animate={
-                showHeroBrand || shouldReduceMotion
-                  ? { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }
-                  : { opacity: 0, y: 18, scale: 0.985, filter: 'blur(12px)' }
-              }
-              transition={{ duration: shouldReduceMotion ? 0.01 : 1.35, ease: [0.22, 1, 0.36, 1] }}
             >
-              <motion.img
+              <img
                 src="/sab-glass-logo.svg"
                 alt=""
                 width={1500}
                 height={260}
                 className="h-auto w-[clamp(24rem,52vw,46rem)] object-contain [filter:brightness(0)_invert(1)_drop-shadow(0_0_10px_rgba(0,0,0,0.95))_drop-shadow(0_0_24px_rgba(0,0,0,0.88))_drop-shadow(0_0_48px_rgba(0,0,0,0.72))]"
               />
-              <motion.span
+              <span
                 className="max-w-[24rem] text-pretty text-sm font-medium leading-snug tracking-[0.03em] text-white/92 [text-shadow:0_0_8px_rgba(0,0,0,0.9),0_0_18px_rgba(0,0,0,0.68),0_2px_10px_rgba(0,0,0,0.72)] antialiased"
-                initial={shouldReduceMotion ? false : { opacity: 0, y: 8 }}
-                animate={showHeroBrand || shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
-                transition={{
-                  duration: shouldReduceMotion ? 0.01 : 0.9,
-                  delay: showHeroBrand && !shouldReduceMotion ? 0.32 : 0,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
               >
                 {brand.tagline}
-              </motion.span>
-            </motion.div>
+              </span>
+            </div>
           </div>
         </div>
       </div>
