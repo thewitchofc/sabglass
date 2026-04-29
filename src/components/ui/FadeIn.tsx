@@ -13,20 +13,20 @@ type Props = {
 
 const revealVariants: Record<RevealVariant, { hidden: Record<string, number | string>, visible: Record<string, number | string> }> = {
   default: {
-    hidden: { opacity: 0, y: 28, filter: 'blur(6px)' },
-    visible: { opacity: 1, y: 0, filter: 'blur(0px)' },
+    hidden: { opacity: 0, y: 28 },
+    visible: { opacity: 1, y: 0 },
   },
   heading: {
-    hidden: { opacity: 0, y: 18, filter: 'blur(5px)' },
-    visible: { opacity: 1, y: 0, filter: 'blur(0px)' },
+    hidden: { opacity: 0, y: 18 },
+    visible: { opacity: 1, y: 0 },
   },
   card: {
-    hidden: { opacity: 0, y: 34, scale: 0.985, filter: 'blur(8px)' },
-    visible: { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' },
+    hidden: { opacity: 0, y: 34, scale: 0.985 },
+    visible: { opacity: 1, y: 0, scale: 1 },
   },
   image: {
-    hidden: { opacity: 0, y: 24, scale: 1.025, filter: 'blur(10px)' },
-    visible: { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' },
+    hidden: { opacity: 0, y: 24, scale: 1.025 },
+    visible: { opacity: 1, y: 0, scale: 1 },
   },
 }
 
@@ -50,7 +50,9 @@ const mobileRevealVariants: typeof revealVariants = {
 }
 
 function useIsMobile() {
-  const [isMobile, setIsMobile] = useState(false)
+  const [isMobile, setIsMobile] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches,
+  )
 
   useEffect(() => {
     const query = window.matchMedia('(max-width: 767px)')
